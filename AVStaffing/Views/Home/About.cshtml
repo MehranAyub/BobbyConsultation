@@ -1,160 +1,295 @@
 ﻿@using AVStaffing.Infrastructure
 @using AVStaffing.Models
+@using AVStaffing.Models.Entities
 @{
     ViewBag.Title = "About";
-    Layout = "~/Views/Shared/_WebBaseLayout.cshtml";
-    var homePage = LoadedPermissions.Portfolios.First(x => x.Key == Session["CultureContent"].ToString()).Value;
+    Layout = "~/Views/Shared/_ConsultorLayout.cshtml";
+    var aboutPage = new ApplicationDbContext().Pages.FirstOrDefault(x => x.Route == "about");
 }
 
+@Html.Raw(aboutPage.Content)
 
-<div class="container" style="margin-bottom:100px">
-    <div class="page-header">
+<!--============= pages-hero-area ============-->
+<!--<div class="inner-page-hero-area _relative">
+    <div class="container">
         <div class="row">
-            <!--<div class="col-md-6 col-sm-6">
-                <h2 class="page-title">How It works</h2>
-            </div>--> <!-- /.col-md-6 -->
-            <div class="col-md-6 col-sm-6 hidden-xs back-home">
-                <a href="index-2.html">← Go back Home</a>
-            </div> <!-- /.col-md-6 -->
-        </div> <!-- /.row -->
-    </div> <!-- /.page-header -->
-
-    <div class="row">
-
-        <div class="col-md-9">
-            <div class="blog-single">
-
-                <div class="post-content">
-                    <h3 class="post-title" style="text-align:center"><b>WHAT WE DO</b></h3>
-                    <div class="row">
-                        <div class="col-md-12" style="text-align:center;margin-top:30px;">
-                            <b>
-                                <i>
-                                    AV STAFFING INC appreciates the opportunity to supply the key workers necessary to permit
-                                    your business to continue to successfully operate on an ongoing basis.<br /><br /> Our professional
-                                    services and great rates will establish our relationship for long term, and you’ll always be able
-                                    to count on us, especially when time is of the essence.
-                                </i>
-                            </b>
-                        </div>
-                        @*<div class="col-md-4" >
-                            <img src="../Assets/Images/jobDesc.png" style="margin-right: 5px;width:100%" />
-                        </div>*@
-                    </div>
-                    <p>
-                        <br />
-                        AV Staffing Inc is dedicated to providing essential personnel to ensure the smooth operation of your business. Our mission is to be a reliable partner, delivering professional services at competitive prices. We strive to establish long-lasting relationships with our clients and to always be there when time is of the essence. With our commitment to excellence, we are confident in our ability to help your business succeed.
-                    </p>
-                    <h3 class="post-title" style="text-align:center;margin-top:50px">
-                        <b>  OUR MISSION</b>
-                    </h3>
-                    <p style="font-size: 20px; text-align: center; margin-top: 30px">
-                        " Customer satisfaction is our number one priority and building an entrepreneurial
-                        recruitment business, Offering flexible services & solutions that we are proud of.
-                        Putting our employees, clients and candidates in a better place". <br /> <br />
-                        <br />
-                    </p>
-                    <div class="col-md-6" style="align-content:center">
-
-                        <img src="../Assets/Images/JobPlacement.jpg" width="100%">
-                    </div>
-                    <p>
-                        At AV Staffing Inc, we take customer satisfaction very seriously and it is at the forefront of everything we do. Our goal is to build a successful recruitment business that offers flexible and tailored solutions to meet the needs of our clients. We are committed to putting our employees, clients, and candidates in a better place by providing them with top-quality services that they can be proud of. Our commitment to excellence is evident in everything we do, and we are constantly striving to exceed our clients' expectations. With a focus on flexibility, professionalism, and customer satisfaction, AV Staffing Inc is the go-to choice for businesses in need of top-notch personnel solutions.
-
-
-
-                    </p>
-
-                    <h3 style="font-size:40px;text-align:left;margin-top:50px" class="post-title">
-                        <b>
-                            TEMP?
-                            <br />
-                            PERMANENT?
-                            <br />
-                            SORTED.
-                        </b>
-                    </h3>
-                    <p>
-                        AV STAFFING can source recruits for your company to suit any length of contract:
-                        <div class="row">
-                            <div class="col col-md-6">
-                                <ul>
-                                    <li>
-                                        <i class="fas fa-arrow-circle-right"></i>  Temporary Roles
-                                    </li>
-                                    <li style="margin-top:20px">
-                                        <i class="fas fa-arrow-circle-right"></i>   Permanent Roles
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div class="col col-md-6">
-                                <ul>
-                                    <li>
-                                        <i class="fas fa-arrow-circle-right"></i>Temp to Hire
-                                    </li>
-                                    <li style="margin-top:20px">
-                                        <i class="fas fa-arrow-circle-right"></i>   Seasonal Workers
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <ul>
-                        </ul>
-                    </p>
-
-                    <h3 class="post-title" style="margin-top:50px">
-                        <b>
-                            BENEFITS OF JOINING WITH AV STAFFING INC.
-                        </b>
-                    </h3>
-                    <br />
-                    <div class="row">
-                        <div class="col col-md-12">
-                            <ul>
-                                <li>
-                                    <i class="fas fa-arrow-circle-right"></i>  Cost Effective
-                                </li>
-                                <li style="margin-top:20px">
-                                    <i class="fas fa-arrow-circle-right"></i>   Speedy Turnaround Time
-
-                                </li>
-                                <li style="margin-top:20px">
-                                    <i class="fas fa-arrow-circle-right"></i>   Complete Client Satisfaction
-
-                                </li>
-
-
-                                <li style="margin-top:20px">
-                                    <i class="fas fa-arrow-circle-right"></i>   24 X 7 Availability For Emergencies
-
-
-                                </li>
-                                <li style="margin-top:20px">
-                                    <i class="fas fa-arrow-circle-right"></i>   Performing Complete Recruitment Cycle Along
-
-
-                                </li>
-                                <li style="margin-top:20px">
-                                    <i class="fas fa-arrow-circle-right"></i>  Competent In Filling Staffing Needs In Diverse Range Of Requirements
-
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
+            <div class="col-md-8 m-auto text-center">
+                <div class="hadding hadding-sec">
+                    <h1>About Us</h1>
+                    <h6>Home > About Us</h6>
                 </div>
+            </div>
+        </div>
+    </div>
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-bottom-right _absolute">
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-bottom-left _absolute">
+</div>-->
 
+<!--============= pages-hero-area ============-->
+<!--============= about-page-sec-about-start ============-->
+
+<!--<div class="about-page-about-sec sec-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="about-page-img-all">
+                    <div class="about-page-about-img1 img-border img100">
+                        <img src="@Url.Content("~/Assets/img/image/about-page-img-1.png")" alt="">
+                    </div>
+                    <div class="space20"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="about-page-img-2 img-border img100">
+                                <img src="@Url.Content("~/Assets/img/image/about-page-img-2.png")" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="about-page-img-3 img-border img100 space-sm-30">
+                                <img src="@Url.Content("~/Assets/img/image/about-page-img-3.png")" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="about-haddings">
+                    <div class="hadding hadding-p space-sm-30">
+                        <span class="span">Who we Are</span>
+                        <h1>We Prepare Federal, And <br> State Income Tax Returns <br> <span>Individuals Businesses.</span></h1>
+                        <p>As tax specialists, we are completely computerized and use e-file services for IRS, California Franchise Tax Board, and out-of-state tax returns to Tax Consultant to Consultore Full Range. </p>
+                        <div class="space20"></div>
+                        <p>
+                            Please feel free to browse our website to see the tax services we offer as well as the many helpful resources we provide.
+                        </p>
+                    </div>
+
+                    <div class="check-list-all">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="chek-list">
+                                    <p><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> IRS Tax Problems</p>
+                                </div>
+                                <div class="space20"></div>
+                                <div class="chek-list">
+                                    <p><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Payroll Services</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="chek-list">
+                                    <p><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Tax Prepration and Planning</p>
+                                </div>
+                                <div class="space20"></div>
+                                <div class="chek-list">
+                                    <p><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Bookkeeping and Virtual CFO</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-btn-1 button btn-after home1-button">
+                        <a href="#">Explore More About Us</a>
+                    </div>
+                </div>
             </div>
 
         </div>
-        @*<div class="col-md-3">
-            <img src="../Assets/Images/jobDesc.png" style="margin-right: 5px;width:100%" />
-        </div>*@
-        <div class="col-md-3">
+    </div>
+</div>-->
 
-            @Html.Partial("~/Views/Shared/Rightnav.cshtml")
+
+<!--============= about-page-sec-about-end ============-->
+<!--============= about-page-sec-what-we-do-start ============-->
+<!--<div class="what-we-do sec-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-5">
+                <div class="hadding hadding-p">
+                    <span class="span">What We Do</span>
+                    <h1>We Can Help Resolve All Of Your Income <span>Tax Issues.</span></h1>
+                    <p>As tax specialists, we are completely computerized and use e-file services for IRS, California Franchise Tax Board, and out-of-state.</p>
+                </div>
+                <div class="space10"></div>
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <div class="preview-counter text-center hadding-p">
+                            <h1><span class="counter-up">20</span>+</h1>
+                            <p>Years of Experience</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        <div class="preview-counter text-center hadding-p">
+                            <h1><span class="counter-up">25</span>K</h1>
+                            <p>Happy Clients</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        <div class="preview-counter text-center hadding-p">
+                            <h1><span class="counter-up">15</span>K</h1>
+                            <p>Client Served</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        <div class="preview-counter text-center hadding-p">
+                            <h1><span class="counter-up">100</span>%</h1>
+                            <p>Client Satisfaction</p>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="about-page-img img-border space-sm-30">
+                    <img src="@Url.Content("~/Assets/img/image/about-what-img.png")" alt="">
+                </div>
+            </div>
         </div>
     </div>
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-top-right _absolute">
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-bottom-left _absolute">
+</div>-->
 
-</div>
+<!--============= about-page-sec-what-we-do-end ============-->
+<!--============= about-page-why-choose-start ============-->
+<!--<div class="about-choose sec-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="hadding about-page-hadding hadding-p">
+                    <span class="span">Why Choose Us</span>
+                    <h1>Our All-Inclusive Proactive <br> Advising System <span> Saves Money.</span></h1>
+                    <p>I specialize in helping you pay the absolute legal minimum in taxes and keeping the IRS off your back. I am a seasoned pro with over 20 years of experience helping clients apply the tax code Tax. </p>
+                    <div class="space20"></div>
+                    <p>If you are looking for a blend of personal service and expertise, you have come to the right place! I offer a broad range of services.</p>
+                    <div class="space30"></div>
+                    <div class="header-btn-1 button btn-after home1-button">
+                        <a href="#">Explore More About Us</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 space-sm-50">
+                <div class="about-choose-box">
+                    <div class="about-choose-icon">
+                        <img src="@Url.Content("~/Assets/img/icons/about-choose-icon-1.svg")" alt="">
+                    </div>
+                    <div class="hadding hadding-p">
+                        <h4><a href="#">Cryptocurrency Taxes</a></h4>
+                        <p>Consultore Tax is a service accounting firm Tax.</p>
+                    </div>
+                </div>
+
+                <div class="about-choose-box">
+                    <div class="about-choose-icon">
+                        <img src="@Url.Content("~/Assets/img/icons/about-choose-icon-2.svg")" alt="">
+                    </div>
+                    <div class="hadding hadding-p">
+                        <h4><a href="#">Strategic Planning</a></h4>
+                        <p>Consultore Tax is a service accounting firm Tax.</p>
+                    </div>
+                </div>
+
+                <div class="about-choose-box">
+                    <div class="about-choose-icon">
+                        <img src="@Url.Content("~/Assets/img/icons/about-choose-icon-3.svg")" alt="">
+                    </div>
+                    <div class="hadding hadding-p">
+                        <h4><a href="#">Strategic Planning</a></h4>
+                        <p>Consultore Tax is a service accounting firm Tax.</p>
+                    </div>
+                </div>
+
+                <div class="about-choose-box">
+                    <div class="about-choose-icon">
+                        <img src="@Url.Content("~/Assets/img/icons/about-choose-icon-4.svg")" alt="">
+                    </div>
+                    <div class="hadding hadding-p">
+                        <h4><a href="#">Strategic Planning</a></h4>
+                        <p>Consultore Tax is a service accounting firm Tax.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!--============= about-page-why-choose-end ============-->
+<!--============= our-vision-start ============-->
+<!--<div class="our-vision sec-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto text-center">
+                <div class="hadding">
+                    <span class="span">Our Vision</span>
+                    <h1>We Review Your Tax Returns To Create a Formal <span>Tax Strategy</span></h1>
+                </div>
+            </div>
+            <div class="space-30"></div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="about-vision-box box-after">
+                        <div class="about-vision-img">
+                            <img src="@Url.Content("~/Assets/img/icons/about-vision-icon-1.svg")" alt="">
+                        </div>
+                        <div class="space20"></div>
+                        <div class="hadding hadding-p">
+                            <h4><a href="#">More Better Tax <br> Consultant</a></h4>
+                            <div class="space10"></div>
+                            <p>We prepare federal, and state income tax returns for the an small businesses.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="about-vision-box box-after">
+                        <div class="about-vision-img">
+                            <img src="@Url.Content("~/Assets/img/icons/about-vision-icon-2.svg")" alt="">
+                        </div>
+                        <div class="space20"></div>
+                        <div class="hadding hadding-p">
+                            <h4><a href="#">24/7 All Time Customer Service</a></h4>
+                            <div class="space10"></div>
+                            <p>We prepare federal, and state income tax returns for the an small businesses.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="about-vision-box box-after">
+                        <div class="about-vision-img">
+                            <img src="@Url.Content("~/Assets/img/icons/about-vision-icon-3.svg")" alt="">
+                        </div>
+                        <div class="space20"></div>
+                        <div class="hadding hadding-p">
+                            <h4><a href="#">Great World Record Awards</a></h4>
+                            <div class="space10"></div>
+                            <p>We prepare federal, and state income tax returns for the an small businesses.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="about-vision-box box-after">
+                        <div class="about-vision-img">
+                            <img src="@Url.Content("~/Assets/img/icons/about-vision-icon-4.svg")" alt="">
+                        </div>
+                        <div class="space20"></div>
+                        <div class="hadding hadding-p">
+                            <h4><a href="#">Easy Consult Working Process</a></h4>
+                            <div class="space10"></div>
+                            <p>We prepare federal, and state income tax returns for the an small businesses.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-top-right _absolute">
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-bottom-left _absolute">
+</div>-->

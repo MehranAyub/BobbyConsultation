@@ -1,0 +1,321 @@
+﻿@using AVStaffing.Models.Entities
+@{
+    ViewBag.Title = "Services";
+    Layout = "~/Views/Shared/_ConsultorLayout.cshtml";
+    var services = new ApplicationDbContext().Pages.FirstOrDefault(x => x.Route == "serviceDetails");
+}
+
+@Html.Raw(services.Content)
+
+<!--<div class="inner-page-hero-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-auto text-center">
+                <div class="hadding hadding-sec">
+                    <h1>Strategic Planning</h1>
+                    <h6>Home > Strategic Planning</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-bottom-right _absolute">
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-bottom-left _absolute">
+</div>-->
+
+<!--============= pages-hero-area ============-->
+<!--============= service-details-start ============-->
+<!--<div class="service-details sec-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="details-box">
+                    <div class="hadding details-hadding">
+                        <h2>Search</h2>
+                    </div>
+                    <form action="#">
+                        <div class="service-details-serch">
+                            <div class="service-details-input">
+                                <input type="search" name="search" placeholder="Search">
+                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="details-box">
+                    <div class="hadding details-hadding">
+                        <h2>Our Service</h2>
+                    </div>
+                    <div class="service-details-list">
+                        <ul>
+                            <li><a href="#">Strategic Planning <i class="fa-solid fa-angle-down"></i></a></li>
+                            <li><a href="#">Company Formation <i class="fa-solid fa-angle-down"></i></a></li>
+                            <li><a href="#">Payroll Services <i class="fa-solid fa-angle-down"></i></a></li>
+                            <li><a href="#">Tax Preparation <i class="fa-solid fa-angle-down"></i></a></li>
+                            <li><a href="#">Cryptocurrency Taxes <i class="fa-solid fa-angle-down"></i></a></li>
+                            <li><a href="#">Business Immigration <i class="fa-solid fa-angle-down"></i></a></li>
+                            <li><a href="#">Corporate & Partnership Tax <i class="fa-solid fa-angle-down"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="details-box">
+                    <div class="hadding details-hadding">
+                        <h2>Contact</h2>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-details-icon">
+                            <img src="@Url.Content("~/Assets/img/icons/contact-details-icon-1.svg")" alt="">
+                        </div>
+                        <div class="contact-details-p hadding-p">
+                            <p>3111 West Allegheny Avenue </p>
+                            <p>Pennsylvania 19132</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-details">
+                        <div class="contact-details-icon">
+                            <img src="@Url.Content("~/Assets/img/icons/contact-details-icon-2.svg")" alt="">
+                        </div>
+                        <div class="contact-details-p hadding-p">
+                            <p>0-982-343-4567</p>
+                            <p>1-345-765-0876</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-details-1">
+                        <div class="contact-details-icon">
+                            <img src="@Url.Content("~/Assets/img/icons/contact-details-icon-3.svg")" alt="">
+                        </div>
+                        <div class="contact-details-p hadding-p">
+                            <p>Support@consultore.com</p>
+                            <p>Info@consultore.com</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="details-box">
+                    <div class="hadding details-hadding">
+                        <h2>Company Profile</h2>
+                    </div>
+                    <div class="header-btn-1 button btn-after home1-button">
+                        <a href="#">Download Brochure</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <div class="service-details-all">
+                    <div class="service-details-img img-border">
+                        <img src="@Url.Content("~/Assets/img/image/service-details-img-1.png")" alt="">
+                    </div>
+                    <div class="hadding hadding-p">
+                        <div class="space30"></div>
+                        <h2>Strategic Planning</h2>
+                        <div class="space10"></div>
+                        <p>Tax preparation services are great for reducing your financial stress. Instead of gathering your paperwork and sorting through everything on your own, trust Fog City Tax Prep in San to the a Francisco, California to handle it for you. We can handle any step of the tax preparation the consultant process you're struggling with or manage everything from start to finish.</p>
+                        <div class="space20"></div>
+                        <p>Our process is designed to be friendly, approachable, and fun. Business is important, but we’re not about being overwhelming, intimidating, or super serious. We’ll start from where you are in your business journey. Our customizable programs can help you.</p>
+                    </div>
+                    <div class="space20"></div>
+                    <div class="service-details-img img-border">
+                        <img src="@Url.Content("~/Assets/img/image/service-details-img-2.png")" alt="">
+                    </div>
+                    <div class="space20"></div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="service-details-img img-border">
+                                <img src="@Url.Content("~/Assets/img/image/service-details-img-3.png")" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="service-details-img space-sm-30 img-border">
+                                <img src="@Url.Content("~/Assets/img/image/service-details-img-4.png")" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space30"></div>
+                    <div class="hadding hadding-p">
+                        <h2>Tax preparation services reducing your financial stress.</h2>
+                        <div class="space10"></div>
+                        <p>Tax preparation services are great for reducing your financial stress. Instead of gathering your paperwork and sorting through everything on your own, trust Fog City Tax Prep in San to the a Francisco, California to handle it for you. We can handle any step of the tax preparation the consultant process you're struggling with or manage everything from start to finish.</p>
+                        <div class="space20"></div>
+                        <p>Our process is designed to be friendly, approachable, and fun. Business is important, but we’re not about being overwhelming, intimidating, or super serious. We’ll start from where you are in your business journey. Our customizable programs can help you.</p>
+                    </div>
+                    <div class="space40"></div>
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="service-details-img img-border">
+                                <img src="@Url.Content("~/Assets/img/image/service-details-img-5.png")" alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="hadding hadding-p space-sm-30">
+                                <h2>Service Benefit</h2>
+                                <div class="space10"></div>
+                                <p>After years of serving clients in some of the largest to a metropolitan area of tax consultant.</p>
+                            </div>
+                            <div class="space20"></div>
+                            <div class="price-list">
+                                <ul>
+                                    <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> IRS Tax Problems</li>
+                                    <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Payroll Services</li>
+                                    <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Tax Prepration and Planning</li>
+                                    <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Company Formation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<!--============= service-details-end ============-->
+<!--=====service-start=======-->
+<!--<div class="service sec-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto text-center">
+                <div class="hadding">
+                    <h1>Our other <span>Services</span> for you</h1>
+                </div>
+            </div>
+        </div>
+        <div class="space20"></div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-1.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2>Strategic Planning</h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-2.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2>Company Formation</h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-3.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2>Payroll Services</h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-top-right _absolute">
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-bottom-left _absolute">
+</div>-->
+
+<!--=====service-end=======-->
+<!--=====service-faq-start=======-->
+<!--<div class="service-faq sec-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto text-center">
+                <div class="hadding">
+                    <h1>Tax Consultant A Selection & Implementation <span>Decisions To  FAQ</span></h1>
+                </div>
+            </div>
+        </div>
+        <div class="space40"></div>
+        <div class="row align-items-center">
+            <div class="col-md-6">
+
+                <div class="service-details-img img-border">
+                    <img src="@Url.Content("~/Assets/img/image/service-faq.png")" alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="hadding hadding-p space-sm-30">
+                    <h2>Business acumen and analytical capabilities to help you make the right decisions.</h2>
+                    <p>There is no shortage of accounting software solutions for your to a business. Software as a service (SaaS), cloud computing.</p>
+                </div>
+                <div class="space20"></div>
+
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header active-header" id="headingOne">
+                            <button class="accordion-button accordion-button-active" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                How to reduce federal, state or local tax ?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Coaching can be indicative of increased employee engagement; 65% of employees from companies with strong coaching cultures rated themselves as highly engaged. Coaching also has an impact on financial performance, with 60% of respondents from organizations with strong coaching cultures reporting their 2013 revenue to be above average, compared to their peer group.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                How to help you deal with any business ?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Coaching can be indicative of increased employee engagement; 65% of employees from companies with strong coaching cultures rated themselves as highly engaged. Coaching also has an impact on financial performance, with 60% of respondents from organizations with strong coaching cultures reporting their 2013 revenue to be above average, compared to their peer group.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                How your business grows and Changes ?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Coaching can be indicative of increased employee engagement; 65% of employees from companies with strong coaching cultures rated themselves as highly engaged. Coaching also has an impact on financial performance, with 60% of respondents from organizations with strong coaching cultures reporting their 2013 revenue to be above average, compared to their peer group.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                How personal and your business tax issues ?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Coaching can be indicative of increased employee engagement; 65% of employees from companies with strong coaching cultures rated themselves as highly engaged. Coaching also has an impact on financial performance, with 60% of respondents from organizations with strong coaching cultures reporting their 2013 revenue to be above average, compared to their peer group.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>-->

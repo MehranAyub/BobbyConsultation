@@ -7,7 +7,7 @@
 @using AVStaffing.LocalResource.Home.Index
 
 @{
-    Layout = "~/Views/Shared/_WebBaseLayout.cshtml";
+    Layout = "~/Views/Shared/_ConsultorLayout.cshtml";
 
     ViewBag.Title = "Home Page";
     var homePage = new ApplicationDbContext().Pages.FirstOrDefault(x => x.Route == "home");
@@ -21,448 +21,857 @@
 
 
 @*@Html.Raw(homePage.Content)*@
+<!--=====hero-area=======-->
 
-
-<!-- slider Area Start-->
-<div class="slider-area ">
-    <!-- Mobile Menu -->
-    <div class="slider-active">
-        <div class="single-slider slider-height d-flex align-items-center" data-background="@Url.Content("~/Theme/assets/img/hero/h1_hero.jpg")">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-9 col-md-10">
-                        <div class="hero__caption">
-                            <h1 style="font-size:32px;margin-bottom:0px">
-                                We help build people’s dream jobs here..
-                                We actually “listen” to our
-                                Employees and Employers!
-
-                            </h1>
-                            <h1 style="color: #CD6D19; font-size: 32px; margin-bottom: 0px">
-                                The Right Job,
-                                The Right Candidate,
-                                The Right Place.
-                            </h1>
+    <div class="home3-hero-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12 col-lg-5" data-aos="fade-right" data-aos-duration="800">
+                    <div class="home2-main-hadding hadding-space hadding-span home2-padding-after">
+                        <h1>Financial <span class="after">Consulting</span> Solution For You <br> Business.</h1>
+                        <p>We listen and effectively respond to your needs and those of your clients, <br> We are experts at translating those needs into solutions.</p>
+                        <div class="home2-header-button home2-btn">
+                            <a href="#">Get Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <!-- Search Box -->
-                <div class="row" style="margin-top:10px">
-                    <div class="col-xl-8">
-                        <!-- form -->
-                        <form action="#" class="search-box" style="box-shadow:none">
+            </div>
+        </div>
+    </div>
 
-                            <div class="search-form">
-                                @*<a id="jobFormBtn">Looking for a Job</a>*@
-                                <button style="height: 70px; background: #CD6D19;cursor:pointer; border:none" id="jobFormBtn">Looking for a Job</button>
+    <!--=====hero-area=======-->
+    <!--=====about-start=======-->
+
+    <div class="home2-about sec-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-12 col-lg-6" data-aos="flip-left" data-aos-duration="800">
+                    <div class="home2-about-img">
+                        <img src="@Url.Content("~/Assets/img/image/home2-about.png")" alt="">
+                        <div class="home2-about-text">
+                            <div class="home2-about-after">
+                                <p>
+                                    “Take your life to Financial Consultant Around The World to a
+                                    e next level with Rise, built-in financial consultation with our a an expert with 10+ years of experience emitters according.”
+                                </p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6" data-aos="fade-left" data-aos-duration="800">
+                    <div class="home2-hadding home2-hadding-p hadding-span home2-padding-after">
+                        <span class="span">Why Choose Us</span>
+                        <h1>Build A Strategy That Puts <span class="after">An</span> <br> Your Money To Work.</h1>
+                        <p>At Albert Financial, Wealth Management and Insurance Services we simplify your Financial Plan. Build a strategy that puts your money to work, protects the people you care about most, and when you.</p>
+                    </div>
+                    <div class="space30"></div>
+                    <div class="home2-about-list">
+                        <ul>
+                            <li>
+                                <img src="@Url.Content("~/Assets/img/icons/chek-cercle.svg")" alt="">Planing your Future Better
+                            </li>
+                            <li>
+                                <img src="@Url.Content("~/Assets/img/icons/chek-cercle.svg")" alt="">Financial planing for safe investment
+                            </li>
+                            <li>
+                                <img src="@Url.Content("~/Assets/img/icons/chek-cercle.svg")" alt="">Experience a brand new financial attitude
+                            </li>
+                            <li>
+                                <img src="@Url.Content("~/Assets/img/icons/chek-cercle.svg")" alt="">Your financial matters according our plans
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="space10"></div>
+                    <div class="home2-btn">
+                        <a href="#">More About Us<i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                            <div class="search-form">
-                                @*<a href="@Url.Action("Contact", "Home")">Looking to hire</a>*@
-                                <button type="button" style="height: 70px; color:white;background: #CD6D19;cursor:pointer ;border:none" onclick='window.location="@Url.Action("Contact", "Home")"'>Looking For Hiring</button>
+    <!--=====about-end=======-->
+    <!--=====counter-start=======-->
+    <div class="home3-counter sec-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 text-center" data-aos="fade-left" data-aos-duration="800">
+                    <div class="home3-counter-box home2-hadding hadding-p white-hadding">
+                        <img src="@Url.Content("~/Assets/img/image/home3-fact-icon-2.png")" alt="">
+                        <h1><span class="counter-up">1,023</span> +</h1>
+                        <p>Happy Customer</p>
+                    </div>
+                </div>
 
+                <div class="col-md-3 col-sm-6 text-center" data-aos="fade-left" data-aos-duration="1200">
+                    <div class="home3-counter-box home2-hadding hadding-p white-hadding">
+                        <img src="@Url.Content("~/Assets/img/image/home3-fact-icon-2.png")" alt="">
+                        <h1><span class="counter-up">450</span> +</h1>
+                        <p>Completed Projects</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 text-center" data-aos="fade-left" data-aos-duration="1600">
+                    <div class="home3-counter-box home2-hadding hadding-p white-hadding">
+                        <img src="@Url.Content("~/Assets/img/image/home3-fact-icon-3.png")" alt="">
+                        <h1><span class="counter-up">30</span> +</h1>
+                        <p>Yeras of Experience</p>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 text-center" data-aos="fade-left" data-aos-duration="2000">
+                    <div class="home3-counter-box home2-hadding hadding-p white-hadding">
+                        <img src="@Url.Content("~/Assets/img/image/home3-fact-icon-4.png")" alt="">
+                        <h1><span class="counter-up">45</span> +</h1>
+                        <p>Professional Team</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--=====counter-end=======-->
+    <!--=====service-start=======-->
+    <div class="home3-service sec-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 m-auto text-center" data-aos="fade-up" data-aos-duration="800">
+                    <div class="home2-hadding home2-hadding-p hadding-span home2-padding-after">
+                        <span class="span">SUR SERVICE</span>
+                        <h1>Get Solutions From First <span class="after">Class</span> Financial Consultants.</h1>
+
+                    </div>
+                </div>
+            </div>
+            <div class="space20"></div>
+            <div class="row">
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-duration="800">
+                    <div class="home3-service-box home2-all-before">
+                        <div class="home2-hadding home2-hadding-p hadding-span">
+                            <img src="@Url.Content("~/Assets/img/icons/home2-service-icon.svg")" alt="">
+                            <div class="space10"></div>
+                            <h4><a href="#">Manage Investment</a></h4>
+                            <div class="space10"></div>
+                            <p>Take your life the Financial Consultant Around The World next level with Rise, built in financial consultation with our Team</p>
+                        </div>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="home3-service-box home2-all-before">
+                        <div class="home2-hadding home2-hadding-p hadding-span">
+                            <img src="@Url.Content("~/Assets/img/icons/home2-service-icon.svg")" alt="">
+                            <div class="space10"></div>
+                            <h4><a href="#">Corporate Finance</a></h4>
+                            <div class="space10"></div>
+                            <p>Take your life the Financial Consultant Around The World next level with Rise, built in financial consultation with our Team</p>
+                        </div>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-duration="1200">
+                    <div class="home3-service-box home2-all-before">
+                        <div class="home2-hadding home3-service-hadding home2-hadding-p hadding-span">
+                            <img src="@Url.Content("~/Assets/img/icons/home2-service-icon.svg")" alt="">
+                            <div class="space10"></div>
+                            <h4><a href="#">Strategy Consulting</a></h4>
+                            <div class="space10"></div>
+                            <p>Take your life the Financial Consultant Around The World next level with Rise, built in financial consultation with our Team</p>
+                        </div>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-duration="1400">
+                    <div class="home3-service-box home2-all-before">
+                        <div class="home2-hadding home2-hadding-p hadding-span">
+                            <img src="@Url.Content("~/Assets/img/icons/home2-service-icon.svg")" alt="">
+                            <div class="space10"></div>
+                            <h4><a href="#">Financial Plan</a></h4>
+                            <div class="space10"></div>
+                            <p>Take your life the Financial Consultant Around The World next level with Rise, built in financial consultation with our Team</p>
+                        </div>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-duration="1600">
+                    <div class="home3-service-box home2-all-before">
+                        <div class="home2-hadding home2-hadding-p hadding-span">
+                            <img src="@Url.Content("~/Assets/img/icons/home2-service-icon.svg")" alt="">
+                            <div class="space10"></div>
+                            <h4><a href="#">Profit Planning</a></h4>
+                            <div class="space10"></div>
+                            <p>Take your life the Financial Consultant Around The World next level with Rise, built in financial consultation with our Team</p>
+                        </div>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center" data-aos="fade-up" data-aos-duration="1800">
+                    <div class="home3-service-box home2-all-before">
+                        <div class="home2-hadding home2-hadding-p hadding-span">
+                            <img src="@Url.Content("~/Assets/img/icons/home2-service-icon.svg")" alt="">
+                            <div class="space10"></div>
+                            <h4><a href="#">Accounting Advisory</a></h4>
+                            <div class="space10"></div>
+                            <p>Take your life the Financial Consultant Around The World next level with Rise, built in financial consultation with our Team</p>
+                        </div>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <!--=====service-end=======-->
+    <!--=====advice-start=======-->
+    <div class="advice sec-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos="fade-right" data-aos-duration="800">
+                    <div class="home2-hadding home2-padding-after hadding-span advice-padding">
+                        <span class="span">teacher ADVICE</span>
+                        <h1>Get Solutions From First <span class="after">Class</span> Financial Consultants.</h1>
+
+                        <p>“We worked with Piedmont Avenue Consulting to implement new sales processes and launch a successful customer loyalty program result, we have dramatically increased revenues from catering events and “front of mind: sales on the sales to the money for give.”</p>
+
+                        <div class="advice-comment">
+                            <div class="advice-comment-img">
+                                <img src="@Url.Content("~/Assets/img/image/advice-img-1.png")" alt="">
                             </div>
+                            <div class="advice-comment-hadding">
+                                <h6><a href="#">Shelia Willms Sr.</a></h6>
+                                <p>Consultant - Financy</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                        </form>
+                <div class="col-md-6" data-aos="flip-left" data-aos-duration="800">
+                    <div class="advice-img space-sm-30">
+                        <img src="@Url.Content("~/Assets/img/image/advice-img.png")" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- slider Area End-->
-<!-- Our Services Start -->
-<div class="our-services section-pad-t30">
-    <div class="container">
-        <!-- Section Tittle -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-tittle text-center">
-                    <span>FEATURED TOURS Packages</span>
-                    <h2>Browse Top Categories </h2>
-                </div>
-            </div>
-        </div>
-        <div class="row d-flex justify-contnet-center">
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-tour"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="job_listing.html">General Labour</a></h5>
-                        <span>(35)</span>
+
+    <!--=====advice-end=======-->
+    <!--=====pricing-plan-start=======-->
+    <div class="home2-pricing-plan sec-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 m-auto text-center" data-aos="fade-down" data-aos-duration="800">
+                    <div class="home2-hadding hadding-span home2-padding-after">
+                        <span class="span">Pricing Plan</span>
+                        <h1>Our Plan Makes You Feel <span class="after">More</span> Comfortable In Financial</h1>
+                        <p></p>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-cms"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="job_listing.html">Project Manager</a></h5>
-                        <span>(10)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-report"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="job_listing.html">Forklift Operators</a></h5>
-                        <span>(26)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-app"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="job_listing.html">Supervisor</a></h5>
-                        <span>(30)</span>
-                    </div>
-                </div>
-            </div>
-           
-        </div>
-        <!-- More Btn -->
-        <!-- Section Button -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="browse-btn2 text-center mt-50">
-                    <a href="@Url.Action("Services", "Home")" class="border-btn2">Browse All Sectors</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Our Services End -->
-<!-- Online CV Area Start -->
-<div class="online-cv cv-bg section-overly pt-90 pb-120" data-background="@Url.Content("~/Theme/assets/img/gallery/cv_bg.jpg")">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-10">
-                <div class="cv-caption text-center">
-                    <p class="pera1">FEATURED TOURS Packages</p>
-                    <p class="pera2"> Make a Difference with Your Online Resume!</p>
-                    <a href="#" class="border-btn2 border-btn4">Upload your cv</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Online CV Area End-->
-<!-- Featured_job_start -->
-<section class="featured-job-area feature-padding">
-    <div class="container">
-        <!-- Section Tittle -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-tittle text-center">
-                    <span>Recent Job</span>
-                    <h2>Featured Jobs</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-xl-10">
-                <!-- single-job-content -->
-                <div class="single-job-items mb-30">
-                    <div class="job-items">
-                        <div class="company-img">
-                            <a href="#"><img src="@Url.Content("~/Theme/assets/img/icon/job-list1.png")" alt=""></a>
-                        </div>
-                        <div class="job-tittle">
-                            <a href="#"><h4>Bakers</h4></a>
-                            <ul>
-                                <li>Creative Agency</li>
-                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                <li>$3500 - $4000</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="items-link f-right">
-                        <a href="#">Full Time</a>
-                        <span>7 hours ago</span>
-                    </div>
-                </div>
-                <!-- single-job-content -->
-                <div class="single-job-items mb-30">
-                    <div class="job-items">
-                        <div class="company-img">
-                            <a href="#"><img src="@Url.Content("~/Theme/assets/img/icon/job-list2.png")" alt=""></a>
-                        </div>
-                        <div class="job-tittle">
-                            <a href="#"><h4>Handyman</h4></a>
-                            <ul>
-                                <li>Creative Agency</li>
-                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                <li>$3500 - $4000</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="items-link f-right">
-                        <a href="#">Full Time</a>
-                        <span>11 hours ago</span>
-                    </div>
-                </div>
-                <!-- single-job-content -->
-                <div class="single-job-items mb-30">
-                    <div class="job-items">
-                        <div class="company-img">
-                            <a href="#"><img src="@Url.Content("~/Theme/assets/img/icon/job-list3.png")" alt=""></a>
-                        </div>
-                        <div class="job-tittle">
-                            <a href="#"><h4>Plumber/ Electrician</h4></a>
-                            <ul>
-                                <li>Creative Agency</li>
-                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                <li>$3500 - $4000</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="items-link f-right">
-                        <a href="#">Full Time</a>
-                        <span>13 hours ago</span>
-                    </div>
-                </div>
-                <!-- single-job-content -->
-                <div class="single-job-items mb-30">
-                    <div class="job-items">
-                        <div class="company-img">
-                            <a href="#"><img src="@Url.Content("~/Theme/assets/img/icon/job-list4.png")" alt=""></a>
-                        </div>
-                        <div class="job-tittle">
-                            <a href="#"><h4>Supervisor</h4></a>
-                            <ul>
-                                <li>Creative Agency</li>
-                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                <li>$3500 - $4000</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="items-link f-right">
-                        <a href="#">Full Time</a>
-                        <span>7 hours ago</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Featured_job_end -->
-<!-- How  Apply Process Start-->
-<div class="apply-process-area apply-bg pt-150 pb-150" data-background="@Url.Content("~/Theme/assets/img/gallery/how-applybg.png")">
-    <div class="container">
-        <!-- Section Tittle -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-tittle white-text text-center">
-                    <span>Apply process</span>
-                    <h2> How it works</h2>
-                </div>
-            </div>
-        </div>
-        <!-- Apply Process Caption -->
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="single-process text-center mb-30">
-                    <div class="process-ion">
-                        <span class="flaticon-search"></span>
-                    </div>
-                    <div class="process-cap">
-                        <h5>1. Search a job</h5>
-                        <p>Search your appropriate job with matching skills from our portal .</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-process text-center mb-30">
-                    <div class="process-ion">
-                        <span class="flaticon-curriculum-vitae"></span>
-                    </div>
-                    <div class="process-cap">
-                        <h5>2. Apply for job</h5>
-                        <p>Apply for selected and matched job with your skills by uploading your Resume.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="single-process text-center mb-30">
-                    <div class="process-ion">
-                        <span class="flaticon-tour"></span>
-                    </div>
-                    <div class="process-cap">
-                        <h5>3. Get your job</h5>
-                        <p>Wait for our response after applying and get Job if you meet criteria.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- How  Apply Process End-->
-<!-- Testimonial Start -->
-<div class="testimonial-area testimonial-padding">
-    <div class="container">
-        <!-- Testimonial contents -->
-        <div class="row d-flex justify-content-center">
-            <div class="col-xl-8 col-lg-8 col-md-10">
-                <div class="h1-testimonial-active dot-style">
-                    <!-- Single Testimonial -->
-                    <div class="single-testimonial text-center">
-                        <!-- Testimonial Content -->
-                        <div class="testimonial-caption ">
-                            <!-- founder -->
-                            <div class="testimonial-founder  ">
-                                <div class="founder-img mb-30">
-                                    <img src="@Url.Content("~/Theme/assets/img/testmonial/testimonial-founder.png")" alt="">
-                                    <span>Margaret Lawson</span>
-                                    <p>Creative Director</p>
+            <div class="home2-princing-plans">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center" data-aos="fade-down" data-aos-duration="800">
+                            <div class="plan-toggle-wrap">
+                                <div class="toggle-inner home2-toggle-inner">
+                                    <input id="ce-toggle" checked type="checkbox">
+                                    <span class="custom-toggle"></span>
+                                    <span class="t-month">Monthly</span>
+                                    <span class="t-year">Annual</span>
                                 </div>
                             </div>
-                            <div class="testimonial-top-cap">
-                                <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
-                            </div>
                         </div>
                     </div>
-                    <!-- Single Testimonial -->
-                    <div class="single-testimonial text-center">
-                        <!-- Testimonial Content -->
-                        <div class="testimonial-caption ">
-                            <!-- founder -->
-                            <div class="testimonial-founder  ">
-                                <div class="founder-img mb-30">
-                                    <img src="@Url.Content("~/Theme/assets/img/testmonial/testimonial-founder.png")" alt="">
-                                    <span>Margaret Lawson</span>
-                                    <p>Creative Director</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-top-cap">
-                                <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Single Testimonial -->
-                    <div class="single-testimonial text-center">
-                        <!-- Testimonial Content -->
-                        <div class="testimonial-caption ">
-                            <!-- founder -->
-                            <div class="testimonial-founder  ">
-                                <div class="founder-img mb-30">
-                                    <img src="@Url.Content("~/Theme/assets/img/testmonial/testimonial-founder.png")" alt="">
-                                    <span>Margaret Lawson</span>
-                                    <p>Creative Director</p>
-                                </div>
-                            </div>
-                            <div class="testimonial-top-cap">
-                                <p>“I am at an age where I just want to be fit and healthy our bodies are our responsibility! So start caring for your body and it will care for you. Eat clean it will care for you and workout hard.”</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Testimonial End -->
-<!-- Support Company Start-->
-<div class="support-company-area support-padding fix">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-xl-6 col-lg-6">
-                <div class="right-caption">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle section-tittle2">
-                        <span>What we are doing</span>
-                        <h2>24k Talented people are getting Jobs</h2>
-                    </div>
-                    <div class="support-caption">
-                        <p class="pera-top">
-                            AV Staffing Inc is a leading provider of top-notch personnel solutions for businesses of all sizes. With a strong focus on quality and efficiency, our team is dedicated to helping you achieve your goals and overcome any challenges that come your way. Our mission is to be a trusted and reliable partner that you can count on, no matter what.
+                    <div class="tab-content">
+                        <div id="monthly">
+                            <div class="row">
+                                <div class="col-md-4" data-aos="fade-down" data-aos-duration="800">
+                                    <div class="home2-pricing-box">
+                                        <div class="home2-hadding home2-single-service home2-hadding-p">
+                                            <h2>Basic</h2>
+                                            <p>Financial planning and coaching is designed to help you have a clear view of your money and your financial goals</p>
+                                            <div class="space10"></div>
+                                            <h1>$1299/year</h1>
+                                            <p>Billed Yearly</p>
+                                            <div class="space20"></div>
+                                            <div class="home2-price-list">
+                                                <ul>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Knowledge Management</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Operational Excellence</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Tax Prepration and Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Next Genaration Accounting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Financial Freedom Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Money Management Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Short-Range Finance Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Purposive Finance Planning</li>
+                                                </ul>
+                                            </div>
 
-                            </p>
-                        <p>
-                            Our services are designed to meet the needs of any business, and our professional approach ensures that you receive the best possible results. Whether you need temporary or permanent staff, we have the resources and expertise to help. Our rigorous screening process ensures that only the most qualified and.
-                            
-                        </p>
-                        <a href="@Url.Action("Contact", "Home")" class="btn post-btn">Post a job</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div class="support-location-img">
-                    <img src="@Url.Content("~/Theme/assets/img/service/support-img.jpg")" alt="">
-                    <div class="support-img-cap text-center">
-                        <p>Since</p>
-                        <span>1994</span>
+                                            <div class="home2-btn home2-btn-testimonial">
+                                                <a href="#">Choose a Plan<i class="fa-solid fa-arrow-right"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4" data-aos="fade-down" data-aos-duration="1000">
+                                    <div class="home2-pricing-box">
+                                        <div class="home2-hadding home2-single-service home2-hadding-p">
+                                            <h2>Pro</h2>
+                                            <p>Financial planning and coaching is designed to help you have a clear view of your money and your financial goals</p>
+                                            <div class="space10"></div>
+                                            <h1>$1499/year</h1>
+                                            <p>Billed Yearly</p>
+                                            <div class="space20"></div>
+                                            <div class="home2-price-list">
+                                                <ul>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Knowledge Management</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Operational Excellence</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Tax Prepration and Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Next Genaration Accounting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Financial Freedom Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Money Management Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Short-Range Finance Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Purposive Finance Planning</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="home2-btn home2-btn-testimonial">
+                                                <a href="#">Choose a Plan<i class="fa-solid fa-arrow-right"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4" data-aos="fade-down" data-aos-duration="1200">
+                                    <div class="home2-pricing-box">
+                                        <div class="home2-hadding home2-single-service home2-hadding-p">
+                                            <h2>Basic</h2>
+                                            <p>Financial planning and coaching is designed to help you have a clear view of your money and your financial goals</p>
+                                            <div class="space10"></div>
+                                            <h1>$1399/year</h1>
+                                            <p>Billed Yearly</p>
+                                            <div class="space20"></div>
+                                            <div class="home2-price-list">
+                                                <ul>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Knowledge Management</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Operational Excellence</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Tax Prepration and Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Next Genaration Accounting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Financial Freedom Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Money Management Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Short-Range Finance Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Purposive Finance Planning</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="home2-btn home2-btn-testimonial">
+                                                <a href="#">Choose a Plan<i class="fa-solid fa-arrow-right"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="yearly" style="display:none;">
+                            <div class="row">
+                                <div class="col-md-4" data-aos="fade-down" data-aos-duration="1400">
+                                    <div class="home2-pricing-box">
+                                        <div class="home2-hadding home2-single-service home2-hadding-p">
+                                            <h2>Basic</h2>
+                                            <p>Financial planning and coaching is designed to help you have a clear view of your money and your financial goals</p>
+                                            <div class="space10"></div>
+                                            <h1>$299/mo</h1>
+                                            <p>Billed Monthly</p>
+                                            <div class="space20"></div>
+                                            <div class="home2-price-list">
+                                                <ul>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Knowledge Management</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Operational Excellence</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Tax Prepration and Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Next Genaration Accounting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Financial Freedom Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Money Management Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Short-Range Finance Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Purposive Finance Planning</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="home2-btn home2-btn-testimonial">
+                                                <a href="#">Choose a Plan<i class="fa-solid fa-arrow-right"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4" data-aos="fade-down" data-aos-duration="1600">
+                                    <div class="home2-pricing-box">
+                                        <div class="home2-hadding home2-single-service home2-hadding-p">
+                                            <h2>Pro</h2>
+                                            <p>Financial planning and coaching is designed to help you have a clear view of your money and your financial goals</p>
+                                            <div class="space10"></div>
+                                            <h1>$499/mo</h1>
+                                            <p>Billed Monthly</p>
+                                            <div class="space20"></div>
+                                            <div class="home2-price-list">
+                                                <ul>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Knowledge Management</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Operational Excellence</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Tax Prepration and Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Next Genaration Accounting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Financial Freedom Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Money Management Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Short-Range Finance Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Purposive Finance Planning</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="home2-btn home2-btn-testimonial">
+                                                <a href="#">Choose a Plan<i class="fa-solid fa-arrow-right"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4" data-aos="fade-down" data-aos-duration="1800">
+                                    <div class="home2-pricing-box">
+                                        <div class="home2-hadding home2-single-service home2-hadding-p">
+                                            <h2>Basic</h2>
+                                            <p>Financial planning and coaching is designed to help you have a clear view of your money and your financial goals</p>
+                                            <div class="space10"></div>
+                                            <h1>$399/mo</h1>
+                                            <p>Billed Monthly</p>
+                                            <div class="space20"></div>
+                                            <div class="home2-price-list">
+                                                <ul>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Knowledge Management</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Operational Excellence</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Tax Prepration and Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Next Genaration Accounting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Financial Freedom Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Money Management Consulting</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Short-Range Finance Planning</li>
+                                                    <li><img src="@Url.Content("~/Assets/img/icons/testi-chercle.svg")" alt=""> Purposive Finance Planning</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="home2-btn home2-btn-testimonial">
+                                                <a href="#">Choose a Plan<i class="fa-solid fa-arrow-right"></i></a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Support Company End-->
-<!-- Blog Area Start -->
-<div class="home-blog-area blog-h-padding">
-    <div class="container">
-        <!-- Section Tittle -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-tittle text-center">
-                    <span>Our latest blog</span>
-                    <h2>Our recent news</h2>
+
+    <!--=====pricing-plan-end=======-->
+    <!--=====team-member-start=======-->
+    <div class="home2-team-member sec-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 m-auto text-center" data-aos="fade-up" data-aos-duration="800">
+                    <div class="hadding-span home2-hadding home2-padding-after">
+                        <span class="span">Team Member</span>
+                        <h1>Leading The Way In <span class="after">Financial</span> Management Forever!</h1>
+                    </div>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center" data-aos="fade-right" data-aos-duration="800">
+                    <div class="team-member-box">
+                        <div class="team-member-img">
+                            <img src="@Url.Content("~/Assets/img/image/team-member-img-1.png")" alt="">
+                        </div>
+                        <div class="home2-all-before team-member-hadding-all">
+                            <div class="team-member-hadding">
+                                <h6>Mrs. Levi Mills</h6>
+                                <p>Techer Financy</p>
+                            </div>
+                            <div class="team-shere">
+                                <ul>
+                                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+
+                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+
+                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center" data-aos="fade-right" data-aos-duration="1400">
+                    <div class="team-member-box">
+                        <div class="team-member-img">
+                            <img src="@Url.Content("~/Assets/img/image/team-member-img-2.png")" alt="">
+                        </div>
+                        <div class="home2-all-before team-member-hadding-all">
+                            <div class="team-member-hadding">
+                                <h6>Miss Eugene Hettinger</h6>
+                                <p>Founder</p>
+                            </div>
+                            <div class="team-shere">
+                                <ul>
+                                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+
+                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+
+                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center" data-aos="fade-right" data-aos-duration="1800">
+                    <div class="team-member-box">
+                        <div class="team-member-img">
+                            <img src="@Url.Content("~/Assets/img/image/team-member-img-3.png")" alt="">
+                        </div>
+                        <div class="home2-all-before team-member-hadding-all">
+                            <div class="team-member-hadding">
+                                <h6>Roxanne Schaefer</h6>
+                                <p>Techer Financy</p>
+                            </div>
+                            <div class="team-shere">
+                                <ul>
+                                    <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+
+                                    <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+
+                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6">
-                <div class="home-blog-single mb-30">
-                    <div class="blog-img-cap">
-                        <div class="blog-img">
-                            <img src="@Url.Content("~/Theme/assets/img/blog/home-blog1.jpg")" alt="">
-                            <!-- Blog date -->
-                            <div class="blog-date text-center">
-                                <span>24</span>
-                                <p>Now</p>
-                            </div>
-                        </div>
-                        <div class="blog-cap">
-                            <p>|   Properties</p>
-                            <h3><a href="#">AVStaffing in Time is perfect House in Toranto</a></h3>
-                            <a href="#" class="more-btn">Read more »</a>
-                        </div>
+    </div>
+
+    <!--=====team-member-end=======-->
+    <!--=====testimonial-start=======-->
+    <div class="home3-testimonial sec-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 m-auto text-center" data-aos="fade-up" data-aos-duration="800">
+                    <div class="home2-hadding hadding-span home2-padding-after">
+                        <span class="span">Testimonial</span>
+                        <h1>The Journey Of Building A <span class="after">Financial</span> <br> Plan That Is Both Successful</h1>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-6 col-lg-6 col-md-6">
-                <div class="home-blog-single mb-30">
-                    <div class="blog-img-cap">
-                        <div class="blog-img">
-                            <img src="@Url.Content("~/Theme/assets/img/blog/home-blog2.jpg")" alt="">
-                            <!-- Blog date -->
-                            <div class="blog-date text-center">
-                                <span>24</span>
-                                <p>Now</p>
+            <div class="row">
+                <div class="testimonial-slider owl-carousel">
+                    <div class="all-home-testimonial-slider">
+
+                        <div class="home3-testimonial-slider-single home2-all-before">
+                            <div class="home3-tesimonial-img">
+                                <img src="@Url.Content("~/Assets/img/icons/home3-testimonial-img.svg")" alt="">
+                            </div>
+
+                            <div class="home3-testimonial-stars">
+                                <ul>
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
+
+                            <div class="testimonial-hadding">
+                                <p>I’m a UC Davis graduate with a BA in Rhetoric and Communications. As an enrolled agent, I an hold the same authority as an attorney and CPA in an IRS audit and can represent you are to an have throughout all levels of the IRS. I’m with a available year round if you need assistance with an IRS letter to Tax Consultant.</p>
+                            </div>
+                            <div class="home3-testimonial-slider-bottom">
+                                <div class="home3-tes-bottom-img">
+                                    <img src="@Url.Content("~/Assets/img/image/home3-tes-iocn-1.png")" alt="">
+                                </div>
+                                <div class="testimonial-slider-bottom-hadding">
+                                    <h6>Sabrina Stamm</h6>
+                                    <p>Founder, Vanwirk</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="blog-cap">
-                            <p>|   Properties</p>
-                            <h3><a href="#">AVStaffing is offering more than 12k Jobs.</a></h3>
-                            <a href="#" class="more-btn">Read more »</a>
+                    </div>
+
+
+                    <div class="all-home-testimonial-slider">
+
+                        <div class="home3-testimonial-slider-single home2-all-before">
+                            <div class="home3-tesimonial-img">
+                                <img src="@Url.Content("~/Assets/img/icons/home3-testimonial-img.svg")" alt="">
+                            </div>
+
+                            <div class="home3-testimonial-stars">
+                                <ul>
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
+
+                            <div class="testimonial-hadding">
+                                <p>I’m a UC Davis graduate with a BA in Rhetoric and Communications. As an enrolled agent, I an hold the same authority as an attorney and CPA in an IRS audit and can represent you are to an have throughout all levels of the IRS. I’m with a available year round if you need assistance with an IRS letter to Tax Consultant.</p>
+                            </div>
+                            <div class="home3-testimonial-slider-bottom">
+                                <div class="home3-tes-bottom-img">
+                                    <img src="@Url.Content("~/Assets/img/image/home3-tes-iocn-2.png")" alt="">
+                                </div>
+                                <div class="testimonial-slider-bottom-hadding">
+                                    <h6>Sabrina Stamm</h6>
+                                    <p>Founder, Vanwirk</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="all-home-testimonial-slider">
+
+                        <div class="home3-testimonial-slider-single home2-all-before">
+                            <div class="home3-tesimonial-img">
+                                <img src="@Url.Content("~/Assets/img/icons/home3-testimonial-img.svg")" alt="">
+                            </div>
+
+                            <div class="home3-testimonial-stars">
+                                <ul>
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
+
+                            <div class="testimonial-hadding">
+                                <p>I’m a UC Davis graduate with a BA in Rhetoric and Communications. As an enrolled agent, I an hold the same authority as an attorney and CPA in an IRS audit and can represent you are to an have throughout all levels of the IRS. I’m with a available year round if you need assistance with an IRS letter to Tax Consultant.</p>
+                            </div>
+                            <div class="home3-testimonial-slider-bottom">
+                                <div class="home3-tes-bottom-img">
+                                    <img src="@Url.Content("~/Assets/img/image/home3-tes-iocn-3.png")" alt="">
+                                </div>
+                                <div class="testimonial-slider-bottom-hadding">
+                                    <h6>Sabrina Stamm</h6>
+                                    <p>Founder, Vanwirk</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="all-home-testimonial-slider">
+
+                        <div class="home3-testimonial-slider-single home2-all-before">
+                            <div class="home3-tesimonial-img">
+                                <img src="@Url.Content("~/Assets/img/icons/home3-testimonial-img.svg")" alt="">
+                            </div>
+
+                            <div class="home3-testimonial-stars">
+                                <ul>
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
+
+                            <div class="testimonial-hadding">
+                                <p>I’m a UC Davis graduate with a BA in Rhetoric and Communications. As an enrolled agent, I an hold the same authority as an attorney and CPA in an IRS audit and can represent you are to an have throughout all levels of the IRS. I’m with a available year round if you need assistance with an IRS letter to Tax Consultant.</p>
+                            </div>
+                            <div class="home3-testimonial-slider-bottom">
+                                <div class="home3-tes-bottom-img">
+                                    <img src="@Url.Content("~/Assets/img/image/home3-tes-iocn-2.png")" alt="">
+                                </div>
+                                <div class="testimonial-slider-bottom-hadding">
+                                    <h6>Sabrina Stamm</h6>
+                                    <p>Founder, Vanwirk</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="all-home-testimonial-slider">
+
+                        <div class="home3-testimonial-slider-single home2-all-before">
+                            <div class="home3-tesimonial-img">
+                                <img src="@Url.Content("~/Assets/img/icons/home3-testimonial-img.svg")" alt="">
+                            </div>
+
+                            <div class="home3-testimonial-stars">
+                                <ul>
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+
+                                    <li><i class="fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
+
+                            <div class="testimonial-hadding">
+                                <p>I’m a UC Davis graduate with a BA in Rhetoric and Communications. As an enrolled agent, I an hold the same authority as an attorney and CPA in an IRS audit and can represent you are to an have throughout all levels of the IRS. I’m with a available year round if you need assistance with an IRS letter to Tax Consultant.</p>
+                            </div>
+                            <div class="home3-testimonial-slider-bottom">
+                                <div class="home3-tes-bottom-img">
+                                    <img src="@Url.Content("~/Assets/img/image/home3-tes-iocn-3.png")" alt="">
+                                </div>
+                                <div class="testimonial-slider-bottom-hadding">
+                                    <h6>Sabrina Stamm</h6>
+                                    <p>Founder, Vanwirk</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Blog Area End -->
+
+    <!--=====testimonial-end=======-->
+    <!--=====our-blog-start=======-->
+    <div class="home2-blog sec-padding space-sm-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 text-center m-auto" data-aos="fade-up" data-aos-duration="800">
+                    <div class="home2-hadding hadding-span home2-padding-after">
+                        <span class="span">Our Blog</span>
+                        <h1>Financial Management <span class="after">Insurance</span> <br> Services We Simplify</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4" data-aos="fade-left" data-aos-duration="800">
+                    <div class="home2-service-box">
+                        <div class="home2-service-box-img">
+                            <div class="home2-service-box-img-1">
+                                <img src="@Url.Content("~/Assets/img/image/home2-blog-img-1.png")" alt="">
+                            </div>
+
+                        </div>
+                        <div class="home2-service-hadding home2-hadding-p home2-hadding home2-all-before">
+                            <h4><a href="blog.html">Financial planning for people who Love financial planning.</a></h4>
+                            <div class="space10"></div>
+                            <p>Take your life the Financial Consultant Around The World next level with Rise, built in financial consultation with our Team</p>
+                            <div class="space20"></div>
+                            <div class="read-more-btn">
+                                <a href="blog.html">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-left" data-aos-duration="1400">
+                    <div class="home2-service-box">
+                        <div class="home2-service-box-img">
+                            <div class="home2-service-box-img-1">
+                                <img src="@Url.Content("~/Assets/img/image/home2-blog-img-2.png")" alt="">
+                            </div>
+
+                        </div>
+                        <div class="home2-service-hadding home2-hadding-p home2-hadding home2-all-before">
+                            <h4><a href="blog.html">Ispirations drive the creation your financial plan and your portfolio.</a></h4>
+                            <div class="space10"></div>
+                            <p>Take your life the Financial Consultant Around The World next level with Rise, built in financial consultation with our Team</p>
+                            <div class="space20"></div>
+                            <div class="read-more-btn">
+                                <a href="blog.html">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-6 col-lg-4" data-aos="fade-left" data-aos-duration="1800">
+                    <div class="home2-service-box">
+                        <div class="home2-service-box-img">
+                            <div class="home2-service-box-img-1">
+                                <img src="@Url.Content("~/Assets/img/image/home2-blog-img-3.png")" alt="">
+                            </div>
+
+                        </div>
+                        <div class="home2-service-hadding home2-hadding-p home2-hadding home2-all-before">
+                            <h4><a href="blog.html">Financial advisor that believes everyone deserves the right Team</a></h4>
+                            <div class="space10"></div>
+                            <p>Take your life the Financial Consultant Around The World next level with Rise, built in financial consultation with our Team</p>
+                            <div class="space20"></div>
+                            <div class="read-more-btn">
+                                <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<!--=====our-blog-end=======-->
+
 
 
 @section Scripts{

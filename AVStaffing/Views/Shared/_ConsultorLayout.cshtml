@@ -1,0 +1,458 @@
+﻿
+@using AVStaffing.Infrastructure
+@using AVStaffing.Models.Entities
+@{
+    Layout = null;
+    ViewBag.Title = "healthcare Information Tracking System";
+    var pages = Session["Pages"] as List<ContentPage>;
+    var headerPages = pages.OrderBy(x => x.PageOrder).Where(x => x.PageId == null).ToList();
+    var portfolio = new ApplicationDbContext().Portfolios.FirstOrDefault();
+}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=`device-width`, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--=====TITLE=======-->
+    <title>Consultore Home 3</title>
+
+    <!--=====FAV ICON=======-->
+    <link rel="shortcut icon" href="@Url.Content("~/Assets/img/logo/home2-titel.png")">
+
+    <!--=====CSS=======-->
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/bootstrap.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/swiper.bundle.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/fontawesome.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/mobile-menu.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/owl.carousel.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/aos.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/modal-video.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/plugins/nice-select.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/typography.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/comon.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/animation.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Assets/css/master.css")">
+
+
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/bootstrap.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/owl.carousel.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/flaticon.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/price_rangs.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/slicknav.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/animate.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/magnific-popup.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/fontawesome-all.min.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/themify-icons.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/slick.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/nice-select.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Theme/assets/css/style.css")">
+
+    <!--=====JQUERY=======-->
+    <script src="@Url.Content("~/Assets/js/plugins/jquery-3-6-0.min.js")"></script>
+</head>
+
+<body>
+    <div class="paginacontainer">
+
+        <div class="progress-wrap">
+            <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+            </svg>
+        </div>
+
+    </div>
+
+    <!--=====progress END=======-->
+    <!--=====HEADER START=======-->
+    <header>
+        <div class="header-area-home1 header-area-home3 d-none d-lg-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="header-elements">
+                            <div class="site-logo">
+                                <a href="@Url.Action("index", "Home")"><img style="width:110px" src="@Url.Content("~/Assets/img/logo/Logo.png")" alt=""></a>
+                            </div>
+                            <div class="main-menu-ex home2-menu">
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("index", "Home")">Home  </a>
+
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("About", "Home")">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Contact", "Home")">Contact Us</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="#">Our Service <i class="fa-solid fa-angle-down"></i></a>
+                                        <ul>
+                                            <li><a href="@Url.Action("Services", "Home")">Service</a></li>
+                                            <li><a href="@Url.Action("ServiceDetails", "Home")">Service Details</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="d-lg-none d-block"><a href="#"><img src="@Url.Content("~/Assets/img/icons/phone.svg")" alt="">658-593-8295</a></li>
+                                </ul>
+                            </div>
+                            <div class="cta-btn d-none d-lg-block home2-btn">
+                                <a href="#" id="LoginBtn">Login <i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="mobile-header mobile-header-4 d-block d-lg-none ">
+        <div class="container-fluid">
+            <div class="col-12">
+                <div class="mobile-header-elements">
+                    <div class="mobile-logo">
+                        <a href="index1.html"><img src="@Url.Content("~/Assets/img/logo/header-logo.png")" alt=""></a>
+                    </div>
+                    <div class="mobile-nav-icon">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-sidebar">
+        <div class="menu-close">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="mobile-nav">
+
+            <ul class="mobile-nav-list">
+                <li>
+                    <a href="@Url.Action("index", "Home")">Home  </a>
+
+                </li>
+                <li>
+                    <a href="@Url.Action("About", "Home")">About Us</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Contact", "Home")">Contact Us</a>
+
+                </li>
+                <li>
+                    <a href="#">Our Service</a>
+                    <ul>
+                        <li><a href="@Url.Action("Services", "Home")">Service</a></li>
+                        <li><a href="@Url.Action("ServiceDetails", "Home")">Service Details</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="text-center d-lg-block home2-btn">
+                        <a href="#" id="LoginBtn">Login <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </li>
+            </ul>
+           
+
+        </div>
+    </div>
+    <main>
+        @RenderBody()
+
+    </main>
+
+
+    <div class="modal fade" id="LoginModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <form action="/Account/Login" method="post">
+                    <div class="modal-header">Login</div>
+                    <div class="modal-body">
+                        <fieldset>
+                            <input id="Email" class="form-control" name="Email" type="email" value="" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." />
+                        </fieldset>
+                        <fieldset>
+                            <input id="Password" class="form-control" name="Password" type="password" value="" data-val="true" data-val-required="The Password field is required." />
+                        </fieldset>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button id="send-button" class="btn main-btn" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--=====contact-start=======-->
+
+    <div class="contact sec-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6" data-aos-duration="800" data-aos="flip-right">
+                    <div class="contact-img"><img src="@Url.Content("~/Assets/img/image/contact-img.png")" alt=""></div>
+                </div>
+                <div class="col-md-6 space-sm-30" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="home2-hadding home2-hadding-p home2-padding-after hadding-span">
+                        <span class="span">
+                            Contact Us
+                        </span>
+                        <h1>Schedule A Free 15-min <span class="after">Call</span> <br> With The Coaching Center.</h1>
+                        <p>Working with a life coach is like hanging out with a really honest friend who to the believes in your dreams, always wants the best for you, and is willing to ask you for hard questions and call you on your bullshit.</p>
+                    </div>
+                    <div class="space30"></div>
+                    <form action="#">
+                        <div class="contact-form">
+                            <div class="contact-from-input">
+                                <input type="text" name="name" placeholder="First Name">
+                                <input type="text" name="email" placeholder="Email">
+                            </div>
+                            <div class="contact-from-input">
+                                <input type="number" name="phone" placeholder="Phone">
+                                <input type="text" placeholder="Subject">
+                            </div>
+                            <div class="contact-from-input">
+                                <textarea cols="30" rows="4" placeholder="Message"></textarea>
+                            </div>
+                            <div class="space20"></div>
+                            <div class="home2-btn">
+                                <button>Chat With Advisor <i class="fa-solid fa-arrow-right"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--=====contact-end=======-->
+    <!--=====subsribe-start=======-->
+    <div class="home2-subsribe sec-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 m-auto text-center">
+                    <div class="home2-padding-after white-hadding home2-hadding-p home2-hadding hadding-span">
+                        <h1>Let’s Manage Your Financial <span class="after">Accounts!</span></h1>
+                        <p>Let’s start togethers! Get a free trial of 7 days. Use our platform and enjoy managing your all the social accounts. </p>
+                    </div>
+                    <form action="#">
+                        <div class="home2-subsribe-input-all">
+                            <div class="home2-subsribe-input home2-subsribe-input1">
+                                <input type="email" name="email" placeholder="Enter your email...">
+                                <div class="home2-btn home2-subsribe-btn">
+                                    <button>Subscribe Now <i class="fa-solid fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="footer sec-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="footer-hadding">
+                        <p>Working with a life coach is like hanging out with a really honest friend who believes in your dreams, always wants the best.</p>
+                        <div class="footer-shere home2-footer-shere">
+                            <ul>
+                                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-menu">
+                        <h4>Main Pages</h4>
+                        <ul>
+                            <li><a href="@Url.Action("index", "Home")">Home</a></li>
+                            <li><a href="@Url.Action("About", "Home")">About Us</a></li>
+                            <li><a href="@Url.Action("Contact", "Home")">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+                    <div class="footer-menu">
+                        <h4>Other Pages</h4>
+                        <ul>
+                            <li><a href="@Url.Action("Services", "Home")">Services</a></li>
+                            <li><a href="@Url.Action("ServiceDetails", "Home")">Service Details</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="footer-menu">
+                        <h4>Contact Us</h4>
+                        <div class="foter-contact">
+                            <div class="footer-contact-icon">
+                                <img src="@Url.Content("~/Assets/img/icons/footer-icon-1.svg")" alt="">
+                            </div>
+                            <div class="footer-contact-p">
+                                <p>FleexStudio New York <br>831 SW 149th Street, Burien. </p>
+                            </div>
+                        </div>
+
+                        <div class="foter-contact">
+                            <div class="footer-contact-icon">
+                                <img src="@Url.Content("~/Assets/img/icons/footer-icon-2.svg")" alt="">
+                            </div>
+                            <div class="footer-contact-p">
+                                <a href="tel:496-525-9376"><p>496-525-9376</p></a>
+                            </div>
+                        </div>
+
+                        <div class="foter-contact">
+                            <div class="footer-contact-icon">
+                                <img src="@Url.Content("~/Assets/img/icons/footer-icon-3.svg")" alt="">
+                            </div>
+                            <div class="footer-contact-p">
+                                <a href="mailto:coaching@gmail.com"><p>coaching@gmail.com</p></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fonter-end">
+        <div class="contaier">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="footer-end-p">
+                        <a href="#">© Copyright 2022 Consultore All rights reserved.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JS here -->
+    <!-- All JS Custom Plugins Link Here here -->
+    <script src="@Url.Content("~/Assets/js/plugins/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Assets/js/plugins/swiper.bundle.js")"></script>
+    <script src="@Url.Content("~/Assets/js/plugins/fontawesome.js")"></script>
+    <script src="@Url.Content("~/Assets/unpkg.com/aos%403.0.0-beta.6/dist/aos.js")"></script>
+    <script src="@Url.Content("~/Assets/code.jquery.com/jquery-1.12.4.min.js")"></script>
+    <script src="@Url.Content("~/Assets/cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js")"></script>
+    <script src="@Url.Content("~/Assets/cdn.jsdelivr.net/npm/%40popperjs/core%402.11.6/dist/umd/popper.min.js")" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="@Url.Content("~/Assets/js/plugins/mobile-menu.js")"></script>
+    <script src="@Url.Content("~/Assets/js/plugins/modal-video.min.js")"></script>
+    <script src="@Url.Content("~/Assets/js/plugins/jquery.nice-select.js")"></script>
+    <script src="@Url.Content("~/Assets/js/plugins/jquery.countup.js")"></script>
+    <script src="@Url.Content("~/Assets/js/plugins/owl.carousel.min.js")"></script>
+    <script src="@Url.Content("~/Assets/js/main.js")"></script>
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,400i,600,700&amp;display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.3.0/css/flag-icon.min.css" rel="stylesheet" />
+    @Styles.Render("~/bundles/webBaseLayoutCss")
+
+    @Scripts.Render("~/bundles/webBaseLayoutJs")
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")"></script>
+    <script src="@Url.Content("~/Scripts/owl.carousel.js")"></script>
+    <script type="text/javascript">
+        (($) => {
+            var now = new Date;
+            var day = 864e5;
+            var weeksToAdd = 2;
+            var tenWeeksFromNow = new Date(+now + day * 7 * weeksToAdd).toISOString().slice(0, 10).replace(/\-/g, 'index-2.html');
+            $('[data-countdown-date].add-countdown-time').attr('data-countdown-date', tenWeeksFromNow);
+        })(jQuery);
+        jQuery("form:not([action])").on('submit', function () { return false; });
+        window.addEventListener("load", function () { document.querySelector('body').classList.add('loaded'); });
+
+
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        }
+
+        function isNullOrEmpty(s) {
+            return (s == null || s === "");
+        }
+
+        function Notify(message) {
+            Swal.fire({
+                icon: message.Type.toLowerCase(),
+                title: message.Title,
+                html: message.Message
+            })
+        }
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                var delayedImages = document.querySelectorAll('[data-delay-src]');
+                theme.mrUtil.forEach(delayedImages, (index, elem) => {
+                    var source = elem.getAttribute('data-delay-src');
+                    elem.removeAttribute('data-delay-src');
+                    elem.setAttribute('src', source);
+                });
+            }, 500);
+        });
+
+        function readURL(input) {
+            console.log("called");
+            var id = $(input).attr("data-src");
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $(id).css("background", e.target.result);
+                    //$(id).attr("src", e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+    </script>
+
+
+    @if (ViewBag.NotificationMessage != null)
+    {
+        <script>
+        $(function () {
+            var message = @(Html.Raw(Json.Encode(ViewBag.NotificationMessage)));
+            if (message.IsViewMessage) {
+                Notify(message);
+            }
+        });
+        </script>
+    }
+    @if (TempData["NotificationMessage"] != null)
+    {
+        <script>
+        $(function () {
+            var message = @(Html.Raw(Json.Encode(TempData["NotificationMessage"])));
+            if (message.IsRedirectMessage) {
+                Notify(message);
+            }
+        });
+        </script>
+    }
+
+    @RenderSection("Scripts", false)
+
+    <script>
+        $("#LoginBtn").click(function () {
+            $("#LoginModal").modal("show");
+        });
+    </script>
+
+</body>
+</html>
+
+
+

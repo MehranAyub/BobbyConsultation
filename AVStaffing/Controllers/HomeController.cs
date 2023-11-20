@@ -80,7 +80,7 @@ namespace AVStaffing.Controllers
         public ActionResult Services()
         {
            
-            return View("HowItWorks");
+            return View();
         }
         [AllowAnonymous]
         public ActionResult ContentPage(int pageId)
@@ -116,7 +116,7 @@ namespace AVStaffing.Controllers
         //    return View();
         //}
         [AllowAnonymous]
-        public ActionResult Pocket63K()
+        public ActionResult ServiceDetails()
         {
 
             return View();

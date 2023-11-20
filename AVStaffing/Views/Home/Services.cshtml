@@ -1,0 +1,453 @@
+﻿@using AVStaffing.Models.Entities
+@{
+    ViewBag.Title = "Services";
+    Layout = "~/Views/Shared/_ConsultorLayout.cshtml";
+    var services = new ApplicationDbContext().Pages.FirstOrDefault(x => x.Route == "services");
+}
+
+@*@Html.Raw(services.Content)*@
+
+<div class="inner-page-hero-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 m-auto text-center">
+                <div class="hadding hadding-sec">
+                    <h1>Our Service</h1>
+                    <h6>Home > Our Service</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-bottom-right _absolute">
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-bottom-left _absolute">
+</div>
+<div class="service-page-service sec-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto text-center">
+                <div class="hadding">
+                    <span class="span">Our Service</span>
+                    <h1>We R Offers <span>Multiple Services</span><br> Throughout The Year.</h1>
+                </div>
+            </div>
+        </div>
+        <div class="space20"></div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-1.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2><a href="#">Strategic Planning</a></h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-2.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2><a href="#">Company Formation</a></h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-3.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2><a href="#">Company Formation</a></h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-4.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2><a href="#">Tax Preparation</a></h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-5.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2><a href="#">Cryptoocurrency Taxes</a></h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-6.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2><a href="#">Business Immigration</a></h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-7.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2><a href="#">Corporate & Partnership Tax</a></h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-8.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2><a href="#">Individual Taxation</a></h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="box-after">
+                    <div class="service-box hadding hadding-p">
+                        <img src="@Url.Content("~/Assets/img/icons/service-icon-9.svg")" alt="">
+                        <div class="space20"></div>
+                        <h2><a href="#">Estate & Trust Taxation</a></h2>
+                        <p>We are fortunate to have a team in which a each member is passionate of his work. At HQ Tax & Financial, we are confident of an a what we are <br> doing. </p>
+                        <div class="space20"></div>
+                        <div class="read-more-btn">
+                            <a href="#">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="pricing-plan sec-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 m-auto text-center">
+                <div class="hadding hadding-p">
+                    <span class="span">Pricing Plan</span>
+                    <h1>
+                        Innovative <span>Solutions Satisfied</span> Clients
+                        For Tax Consulting
+                    </h1>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <div class="princing-plans">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="plan-toggle-wrap">
+                            <div class="toggle-inner">
+                                <input id="ce-toggle" checked type="checkbox">
+                                <span class="custom-toggle"></span>
+                                <span class="t-month">Monthly</span>
+                                <span class="t-year">Annual</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-content">
+                    <div id="monthly">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="price-box box-after">
+                                    <div class="hadding hadding-p single-price">
+                                        <h2>Priemium</h2>
+                                        <p>Make your Froms more Beautuful on- a Brand & Analyze</p>
+                                        <div class="space20"></div>
+                                        <h2>$299/mo</h2>
+                                        <p>Billed Monthly</p>
+                                        <div class="space20"></div>
+                                        <div class="price-button btn-after-price">
+                                            <div class="button price-btn text-center">
+                                                <a href="#">Get a Free Consultaion</a>
+                                            </div>
+                                        </div>
+                                        <div class="space40"></div>
+                                        <div class="price-list">
+                                            <ul>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> IRS Tax Problems</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Payroll Services</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Tax Prepration and Planning</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Company Formation</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Business Immigration</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Bookkeeping and Virtual CFO</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check1.svg")" alt=""> Businessman Consulting</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check1.svg")" alt=""> Accounting/Virtual Controller</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="price-box box-after">
+                                    <div class="hadding hadding-p single-price">
+                                        <h2>Plus</h2>
+                                        <p>Make your Froms more Beautuful on- a Brand & Analyze</p>
+                                        <div class="space20"></div>
+                                        <h2>$499/mo</h2>
+                                        <p>Billed Monthly</p>
+                                        <div class="space20"></div>
+                                        <div class="price-button btn-after-price">
+                                            <div class="button price-btn text-center">
+                                                <a href="#">Get a Free Consultaion</a>
+                                            </div>
+                                        </div>
+                                        <div class="space40"></div>
+                                        <div class="price-list">
+                                            <ul>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> IRS Tax Problems</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Payroll Services</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Tax Prepration and Planning</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Company Formation</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Business Immigration</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Bookkeeping and Virtual CFO</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Businessman Consulting</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Accounting/Virtual Controller</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="price-box box-after">
+                                    <div class="hadding hadding-p single-price">
+                                        <h2>Business</h2>
+                                        <p>Make your Froms more Beautuful on- a Brand & Analyze</p>
+                                        <div class="space20"></div>
+                                        <h2>$399/mo</h2>
+                                        <p>Billed Monthly</p>
+                                        <div class="space20"></div>
+                                        <div class="price-button btn-after-price">
+                                            <div class="button price-btn text-center">
+                                                <a href="#">Get a Free Consultaion</a>
+                                            </div>
+                                        </div>
+                                        <div class="space40"></div>
+                                        <div class="price-list">
+                                            <ul>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> IRS Tax Problems</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Payroll Services</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Tax Prepration and Planning</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Company Formation</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Business Immigration</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Bookkeeping and Virtual CFO</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Businessman Consulting</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check1.svg")" alt=""> Accounting/Virtual Controller</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="yearly" style="display:none;">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4">
+                                <div class="price-box box-after">
+                                    <div class="hadding hadding-p single-price">
+                                        <h2>Priemium</h2>
+                                        <p>Make your Froms more Beautuful on- a Brand & Analyze</p>
+                                        <div class="space20"></div>
+                                        <h2>$999/year</h2>
+                                        <p>Billed Yearly</p>
+                                        <div class="space20"></div>
+                                        <div class="price-button btn-after-price">
+                                            <div class="button price-btn text-center">
+                                                <a href="#">Get a Free Consultaion</a>
+                                            </div>
+                                        </div>
+                                        <div class="space40"></div>
+                                        <div class="price-list">
+                                            <ul>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> IRS Tax Problems</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Payroll Services</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Tax Prepration and Planning</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Company Formation</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Business Immigration</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Bookkeeping and Virtual CFO</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check1.svg")" alt=""> Businessman Consulting</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check1.svg")" alt=""> Accounting/Virtual Controller</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="price-box box-after">
+                                    <div class="hadding hadding-p single-price">
+                                        <h2>Plus</h2>
+                                        <p>Make your Froms more Beautuful on- a Brand & Analyze</p>
+                                        <div class="space20"></div>
+                                        <h2>$1299/year</h2>
+                                        <p>Billed Yearly</p>
+                                        <div class="space20"></div>
+                                        <div class="price-button btn-after-price">
+                                            <div class="button price-btn text-center">
+                                                <a href="#">Get a Free Consultaion</a>
+                                            </div>
+                                        </div>
+                                        <div class="space40"></div>
+                                        <div class="price-list">
+                                            <ul>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> IRS Tax Problems</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Payroll Services</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Tax Prepration and Planning</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Company Formation</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Business Immigration</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Bookkeeping and Virtual CFO</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Businessman Consulting</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Accounting/Virtual Controller</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-4">
+                                <div class="price-box box-after">
+                                    <div class="hadding hadding-p single-price">
+                                        <h2>Business</h2>
+                                        <p>Make your Froms more Beautuful on- a Brand & Analyze</p>
+                                        <div class="space20"></div>
+                                        <h2>$1999/year</h2>
+                                        <p>Billed Yearly</p>
+                                        <div class="space20"></div>
+                                        <div class="price-button btn-after-price">
+                                            <div class="button price-btn text-center">
+                                                <a href="#">Get a Free Consultaion</a>
+                                            </div>
+                                        </div>
+                                        <div class="space40"></div>
+                                        <div class="price-list">
+                                            <ul>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> IRS Tax Problems</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Payroll Services</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Tax Prepration and Planning</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Company Formation</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Business Immigration</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Bookkeeping and Virtual CFO</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check.svg")" alt=""> Businessman Consulting</li>
+                                                <li><img src="@Url.Content("~/Assets/img/icons/check1.svg")" alt=""> Accounting/Virtual Controller</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-top-right _absolute">
+    <img src="@Url.Content("~/Assets/img/shapes/shape-1.svg")" alt="" class="shape-bottom-left _absolute">
+</div>
+
+<div class="testimonial sec-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 m-auto text-center">
+                <div class="hadding">
+                    <span class="span">
+                        Testimonial
+                    </span>
+                    <h1>Our <span>Certified Public</span> Accountants Have Knowledge And Experience</h1>
+                </div>
+            </div>
+        </div>
+        <div class="space-sm-30"></div>
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <div class="slider owl-carousel">
+                    <div class="testimonial-box box-after">
+                        <div class="testimonial-box-img text-center hadding hadding-p">
+                            <img src="@Url.Content("~/Assets/img/image/testimonial-box-img.png")" alt="">
+                            <h2>Mr. Scott Wyman</h2>
+                            <p>Mobile Developer</p>
+                        </div>
+                        <h6>Our certified public accountants have knowledge and experience in a wide variety of industries. We offer diverse and very unique specialty services that ensure continued growth, success and longevity for decades to Come to Tax Consulting.</h6>
+                    </div>
+
+                    <div class="testimonial-box box-after">
+                        <div class="testimonial-box-img text-center hadding hadding-p">
+                            <img src="@Url.Content("~/Assets/img/image/testimonial-box-img.png")" alt="">
+                            <h2>Mr. Scott Wyman</h2>
+                            <p>Mobile Developer</p>
+                        </div>
+                        <h6>Our certified public accountants have knowledge and experience in a wide variety of industries. We offer diverse and very unique specialty services that ensure continued growth, success and longevity for decades to Come to Tax Consulting.</h6>
+                    </div>
+
+                    <div class="testimonial-box box-after">
+                        <div class="testimonial-box-img text-center hadding hadding-p">
+                            <img src="@Url.Content("~/Assets/img/image/testimonial-box-img.png")" alt="">
+                            <h2>Mr. Scott Wyman</h2>
+                            <p>Mobile Developer</p>
+                        </div>
+                        <h6>Our certified public accountants have knowledge and experience in a wide variety of industries. We offer diverse and very unique specialty services that ensure continued growth, success and longevity for decades to Come to Tax Consulting.</h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-6 space-sm-30">
+                <div class="testimonial-img text-end">
+                    <img src="@Url.Content("~/Assets/img/image/testimonial-img.png")" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--=====testimonial-end=======-->
