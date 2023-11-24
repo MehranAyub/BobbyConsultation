@@ -5,9 +5,9 @@
     var services = new ApplicationDbContext().Pages.FirstOrDefault(x => x.Route == "services");
 }
 
-@*@Html.Raw(services.Content)*@
+@Html.Raw(services.Content)
 
-<div class="inner-page-hero-area">
+@*<div class="inner-page-hero-area">
     <div class="container">
         <div class="row">
             <div class="col-md-8 m-auto text-center">
@@ -448,6 +448,6 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 
 <!--=====testimonial-end=======-->
