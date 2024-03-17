@@ -1,0 +1,42 @@
+﻿@model AVStaffing.Models.ViewModels.CorporationViewModel
+
+<style>
+    .field-validation-error {
+        color: red
+    }
+
+    .validation-summary-errors {
+        color: red;
+    }
+
+    .box-size {
+        width: 32px;
+        height: 32px;
+    }
+</style>
+
+<div  class="corporation-entry card-body px-0">
+        
+            <div class="form-group row">
+                <!-- FirstName Field -->
+                <div class="col-lg-6">
+                    @Html.LabelFor(x => x.CorpName, new { @class = "col-form-label text-lg-right text-left" })
+                    <div>
+                        @Html.TextBoxFor(x => x.CorpName, new { @class = "form-control form-control-lg form-control-solid" })
+                        @Html.ValidationMessageFor(x => x.CorpName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <!-- MiddleName Field -->
+                <div class="col-lg-6">
+                    @Html.LabelFor(x => x.CorpKey, new { @class = "col-form-label text-lg-right text-left" })
+                    <div>
+                        @Html.TextBoxFor(x => x.CorpKey, new { @class = "form-control form-control-lg form-control-solid" })
+                        @Html.ValidationMessageFor(x => x.CorpKey, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="remove-corporation">Remove</button>
+ 
+</div>
+<!-- End Entry -->

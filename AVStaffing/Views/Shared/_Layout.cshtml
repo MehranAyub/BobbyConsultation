@@ -93,22 +93,31 @@
                                             </a>
                                         </li>
                                     }
-                                    @*@if (User.HasPermission("Person-PersonList"))
+                                    @if (User.HasPermission("Content-Portfolios"))
                                     {
-                                        <li class="nav-item mr-2">
-                                            <a href="#" class="nav-link btn btn-clean @(controller == "Person" ? "active" : "")" data-toggle="tab" data-target="#kt_header_person_tab" role="tab">
-                                                Job Seekers
+
+                                        <li class="nav-item mr-3">
+                                            <a href="#" class="nav-link py-4 px-6 @(controller == "Client" ? "active" : "")" data-toggle="tab" data-target="#kt_header_client_tab" role="tab">
+                                                Clients
                                             </a>
                                         </li>
                                     }
-                                    @if (User.HasPermission("Contact-ContactList"))
-                                    {
-                                        <li class="nav-item mr-2">
-                                            <a href="#" class="nav-link btn btn-clean @(controller == "Contact" ? "active" : "")" data-toggle="tab" data-target="#kt_header_contact_tab" role="tab">
-                                                Employers
-                                            </a>
-                                        </li>
-                                    }*@
+                                    @*@if (User.HasPermission("Person-PersonList"))
+        {
+            <li class="nav-item mr-2">
+                <a href="#" class="nav-link btn btn-clean @(controller == "Person" ? "active" : "")" data-toggle="tab" data-target="#kt_header_person_tab" role="tab">
+                    Job Seekers
+                </a>
+            </li>
+        }
+        @if (User.HasPermission("Contact-ContactList"))
+        {
+            <li class="nav-item mr-2">
+                <a href="#" class="nav-link btn btn-clean @(controller == "Contact" ? "active" : "")" data-toggle="tab" data-target="#kt_header_contact_tab" role="tab">
+                    Employers
+                </a>
+            </li>
+        }*@
                                     @*@if (User.HasPermission("Appointment-AppointmentList"))
         {
 
@@ -723,6 +732,14 @@
                                             </a>
                                         </li>
                                     }
+                                    @if (User.HasPermission("Content-Portfolios"))
+                                    {
+                                        <li class="nav-item mr-2">
+                                            <a href="#" class="nav-link btn btn-clean @(controller == "Client" ? "active" : "")" data-toggle="tab" data-target="#kt_header_content_tab" role="tab">
+                                                Clients
+                                            </a>
+                                        </li>
+                                    }
                                     @if (User.HasPermission("Person-PersonList"))
                                     {
                                         <li class="nav-item mr-2">
@@ -783,7 +800,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                    } 
+                                    }
                                     @if (User.HasPermission("Person-PersonList"))
                                     {
                                         <div class="tab-pane p-5 p-lg-0 show @(controller == "Person" ? "active" : "")" id="kt_header_person_tab">
@@ -879,7 +896,22 @@
                                             </div>
                                         </div>
                                     }
+                                    @if (User.HasPermission("Portfolios-Content"))
+                                    {
+                                        <div class="tab-pane p-5 p-lg-0 show @(controller == "Client" ? "active" : "")" id="kt_header_client_tab">
+                                            <div class="header-menu header-menu-mobile  header-menu-layout-default ">
+                                                <ul class="menu-nav">
 
+                                                    <li class="menu-item  menu-item @((controller == "Client" && action == "Clients") ? "menu-item-active" : "")" aria-haspopup="true">
+                                                        <a href="@Url.Action("Clients", "Client")" class="menu-link "><span class="menu-text">Clients</span></a>
+                                                    </li>
+                                                    <li class="menu-item  menu-item @((controller == "Client" && action == "Corporations") ? "menu-item-active" : "")" aria-haspopup="true">
+                                                        <a href="@Url.Action("Corporations", "Client")" class="menu-link "><span class="menu-text">Corporations</span></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    }
 
 
 

@@ -208,6 +208,9 @@ namespace AVStaffing.Models.Entities
 
         public DbSet<AdministeredMedicine> AdministeredMedicines { get; set; }
         public DbSet<MedicalRecordStaff> MedicalRecordStaff { get; set; }
+        public DbSet<Corporation> Corporation { get; set; }
+        public DbSet<Owner> Owner { get; set; }
+        public DbSet<CorporationOwner> CorporationOwner { get; set; }
 
 
     }
