@@ -67,7 +67,7 @@ namespace AVStaffing.Controllers
             }
             return View(new OwnerViewModel
             {
-
+                DateOfBirth= DateTime.Today,
             });
         }
 
@@ -158,6 +158,8 @@ namespace AVStaffing.Controllers
                 {
                     dbContextTransaction.Rollback();
                     Notify("Error", "Exception", "Found an exception while saving owner", isRedirectMessage: true);
+                    if(userVm.Id>0)
+                        userVm.Corporations = null;
                     return View(userVm);
                 }
             }
