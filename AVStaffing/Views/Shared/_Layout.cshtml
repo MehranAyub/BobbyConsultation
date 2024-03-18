@@ -93,15 +93,12 @@
                                             </a>
                                         </li>
                                     }
-                                    @if (User.HasPermission("Content-Portfolios"))
-                                    {
-
+                                   
                                         <li class="nav-item mr-3">
                                             <a href="#" class="nav-link py-4 px-6 @(controller == "Client" ? "active" : "")" data-toggle="tab" data-target="#kt_header_client_tab" role="tab">
                                                 Clients
                                             </a>
                                         </li>
-                                    }
                                     @*@if (User.HasPermission("Person-PersonList"))
         {
             <li class="nav-item mr-2">
@@ -732,14 +729,13 @@
                                             </a>
                                         </li>
                                     }
-                                    @if (User.HasPermission("Content-Portfolios"))
                                     {
                                         <li class="nav-item mr-2">
                                             <a href="#" class="nav-link btn btn-clean @(controller == "Client" ? "active" : "")" data-toggle="tab" data-target="#kt_header_content_tab" role="tab">
                                                 Clients
                                             </a>
                                         </li>
-                                    }
+                                   
                                     @if (User.HasPermission("Person-PersonList"))
                                     {
                                         <li class="nav-item mr-2">
