@@ -20,10 +20,11 @@
         width: 32px;
         height: 32px;
     }
+
     .checkbox-size {
         width: 20px;
         height: 20px;
-        margin-left:10px;
+        margin-left: 10px;
     }
 </style>
 
@@ -163,15 +164,16 @@
                                 <div class="col-lg-6">
                                     @Html.LabelFor(x => x.IsPersonalHST, new { @class = "col-form-label text-lg-right text-left" })
                                     <div class="mt-2">
-                                        @Html.CheckBoxFor(x => x.IsPersonalHST, new { @class = "box-size" })
+                                        @Html.CheckBoxFor(x => x.IsPersonalHST, new { @class = "box-size", id = "isPersonalHST" })
                                         @Html.ValidationMessageFor(x => x.IsPersonalHST, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <!-- HSTNumber Field -->
-                                <div class="col-lg-6">
+
+                                <!-- HSTNumber Field (wrapped in its own div for easy targeting) -->
+                                <div class="col-lg-6" id="hstNumberContainer">
                                     @Html.LabelFor(x => x.HSTNumber, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
-                                        @Html.TextBoxFor(x => x.HSTNumber, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.TextBoxFor(x => x.HSTNumber, new { @class = "form-control form-control-lg form-control-solid", id = "hstNumber" })
                                         @Html.ValidationMessageFor(x => x.HSTNumber, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -226,8 +228,8 @@
         }
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="corporationModal" tabindex="-1" role="dialog" aria-labelledby="corporationModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade " id="corporationModal" tabindex="-1" role="dialog" aria-labelledby="corporationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="corporationModalLabel">Add Corporation</h5>
@@ -237,65 +239,74 @@
                 </div>
                 <div class="modal-body">
                     <form id="corporationForm">
-                        <div class="form-group d-flex">
-                            <label for="isHSTRegistration">Corporation</label>
-                            <input type="checkbox" class="checkbox-size" id="isCorporation" name="IsCorporation">
-                        </div>
-                        <div class="form-group">
-                            <label for="corpName">Corporation Name</label>
-                            <input type="text" class="form-control" id="corpName" name="CorpName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="corpKey">Corporation Key</label>
-                            <input type="text" class="form-control" id="corpKey" name="CorpKey" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Address</label>
-                            <input type="text" class="form-control" id="address" name="Address" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="businessEmail">Business Email</label>
-                            <input type="email" class="form-control" id="businessEmail" name="BusinessEmail">
-                        </div>
-                        <div class="form-group">
-                            <label for="businessNumber">Business Number</label>
-                            <input type="text" class="form-control" id="businessNumber" name="BusinessNumber" required>
-                        </div>
-                        <div class="form-group d-flex">
-                            <label for="isHSTRegistration">HST Registration</label>
-                            <input type="checkbox" class="checkbox-size" id="isHSTRegistration" name="IsHSTRegistration">
-                        </div>
-                        <div class="form-group">
-                            <label for="hstReportingPeriod">HST Reporting Period</label>
-                            <select class="form-control" id="hstReportingPeriod" name="HSTReportingPeriod" required>
-                                <option value="">Select a period</option>
-                                <option value="Monthly">Monthly</option>
-                                <option value="Quarterly">Quarterly</option>
-                                <option value="Annually">Annually</option>
-                            </select>
-                        </div>
+                        <div class="row">
+                            @*<div class="form-group d-flex col-12">
+                                    <label for="isHSTRegistration">Corporation</label>
+                                    <input type="checkbox" class="checkbox-size" id="isCorporation" name="IsCorporation">
+                                </div>*@
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="corpName">Corporation Name</label>
+                                    <input type="text" class="form-control" id="corpName" name="CorpName" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="corpKey">Corporation Key</label>
+                                    <input type="text" class="form-control" id="corpKey" name="CorpKey" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="address">Business Address</label>
+                                <input type="text" class="form-control" id="address" name="Address" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="businessEmail">Business Email</label>
+                                <input type="email" class="form-control" id="businessEmail" name="BusinessEmail">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="businessNumber">Business Number</label>
+                                <input type="text" class="form-control" id="businessNumber" name="BusinessNumber" required>
+                            </div>
+                            <div class="form-group d-flex col-12">
+                                <label for="isHSTRegistration">HST Registration</label>
+                                <input type="checkbox" class="checkbox-size" id="isHSTRegistration" name="IsHSTRegistration">
+                            </div>
+                            <div id="hstDependentFields" class="row col-12" style="display: none;">
+                                <div class="form-group col-md-6">
+                                    <label for="hstReportingPeriod">HST Reporting Period</label>
+                                    <select class="form-control" id="hstReportingPeriod" name="HSTReportingPeriod">
+                                        <option value="">Select a period</option>
+                                        <option value="Monthly">Monthly</option>
+                                        <option value="Quarterly">Quarterly</option>
+                                        <option value="Annually">Annually</option>
+                                    </select>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="hstFiscalYear">HST Fiscal Year</label>
-                            <input type="date" class="form-control" id="hstFiscalYear" name="HSTFiscalYear">
-                        </div>
-
-                        <div class="form-group d-flex">
-                            <label for="isPayroll">Payroll</label>
-                            <input type="checkbox" class="checkbox-size" id="isPayroll" name="IsPayroll">
-                        </div>
-                        <div class="form-group">
-                            <label for="pd7aReportingPeriod">PD7A Reporting Period</label>
-                            <select class="form-control" id="pd7aReportingPeriod" name="PD7AReportingPeriod" required>
-                                <option value="">Select a period</option>
-                                <option value="Monthly">Monthly</option>
-                                <option value="Quarterly">Quarterly</option>
-                                <option value="Annually">Annually</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="corpFiscalYear">Corporation Fiscal Year</label>
-                            <input type="date" class="form-control" id="corpFiscalYear" name="CorpFiscalYear">
+                                <div class="form-group col-md-6">
+                                    <label for="hstFiscalYear">HST Fiscal Year</label>
+                                    <input type="date" class="form-control" id="hstFiscalYear" name="HSTFiscalYear">
+                                </div>
+                            </div>
+                            <div class="form-group d-flex col-12">
+                                <label for="isPayroll">Payroll</label>
+                                <input type="checkbox" class="checkbox-size" id="isPayroll" name="IsPayroll">
+                            </div>
+                            <div id="PayrollDependentFields" class="row col-12" style="display: none;">
+                                <div class="form-group col-md-6">
+                                    <label for="pd7aReportingPeriod">PD7A Reporting Period</label>
+                                    <select class="form-control" id="pd7aReportingPeriod" name="PD7AReportingPeriod">
+                                        <option value="">Select a period</option>
+                                        <option value="Monthly">Monthly</option>
+                                        <option value="Quarterly">Quarterly</option>
+                                        <option value="Annually">Annually</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="corpFiscalYear">Corporation Fiscal Year</label>
+                                    <input type="date" class="form-control" id="corpFiscalYear" name="CorpFiscalYear">
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -321,7 +332,7 @@
                     } else {
 
                         var corporation = {
-                            IsCorporation: $('#isCorporation').is(':checked'),
+                            IsCorporation: true,
                             CorpName: $('#corpName').val(),
                             CorpKey: $('#corpKey').val(),
                             Address: $('#address').val(),
@@ -334,11 +345,10 @@
                             PD7AReportingPeriod: $('#pd7aReportingPeriod').val(),
                             CorpFiscalYear: $('#corpFiscalYear').val()
                         };
-                        var index = $('#corporationInputs div').length; // Use the number of existing corporation divs to set the index
+                        var index = $('#corporationInputs div').length; 
 
-                        var corporationDiv = $('<div>').addClass('corporation-entry'); // Create a div to hold inputs for this corporation
+                        var corporationDiv = $('<div>').addClass('corporation-entry'); 
 
-                        // Dynamically create hidden inputs for each corporation field
                         $.each(corporation, function (key, value) {
                             var inputName = 'Corporations[' + index + '].' + key;
                             $('<input>').attr({
@@ -348,14 +358,11 @@
                             }).appendTo(corporationDiv);
                         });
 
-                        // Append the corporation div to a container in the form
                         $('#corporationInputs').append(corporationDiv);
 
-                        // Add row to table
                         var newRow = '<tr><td>' + corporation.CorpName + '</td><td>' + corporation.CorpKey + '</td><td>' + corporation.Address + '</td>' + '<td><button type="button" class="btn remove-corp" data-index="' + index +'"><i class="fas fa-trash text-danger"></i></button></td></tr>';
                         $('#corporationsList tbody').append(newRow);
 
-                        // Optionally clear modal inputs and hide modal
                         $('#corporationModal input').val('');
                         $('#corporationModal').modal('hide');
                     }
@@ -363,15 +370,12 @@
                 });
 
                 $('#corporationsList tbody').on('click', '.remove-corp', function () {
-                    var indexToRemove = $(this).data('index'); // Get the index of the row to remove
+                    var indexToRemove = $(this).data('index'); 
 
-                    // Remove the corresponding corporation div
                     $('#corporationInputs .corporation-entry').eq(indexToRemove).remove();
 
-                    // Remove the row from the table
                     $(this).closest('tr').remove();
 
-                    // Update indexes for remaining corporation entries
                     $('#corporationInputs .corporation-entry').each(function (newIndex) {
                         $(this).find('input').each(function () {
                             var name = $(this).attr('name');
@@ -380,32 +384,74 @@
                         });
                     });
 
-                    // Optionally, update other elements' data-index attributes to reflect the new ordering
                     $('#corporationsList tbody .remove-corp').each(function (i) {
                         $(this).data('index', i);
-                        $(this).attr('data-index', i); // Update the data-index attribute as well
+                        $(this).attr('data-index', i); 
                     });
                 });
 
                  $(".deleteSvedCorporation").click(function() {
-            var id = $(this).data("id");
-            var row = $(this).parents("tr");
-            bootbox.confirm("This is saved Corporation. Are you sure you want to delete this Corporation ?",
-                function(r) {
-                    if (r) {
-                        $.post("@Url.Action("DeleteCorporation", "Client")",
-                                {
-                                    corpId: id
+                    var id = $(this).data("id");
+                    var row = $(this).parents("tr");
+                    bootbox.confirm("This is saved Corporation. Are you sure you want to delete this Corporation ?",
+                    function(r) {
+                        if (r) {
+                            $.post("@Url.Action("DeleteCorporation", "Client")",
+                                    {
+                                        corpId: id
+                                    })
+                                .done(function() {
+                                    $(row).remove();
                                 })
-                            .done(function() {
-                                $(row).remove();
-                            })
-                            .fail(function() {
+                                .fail(function() {
 
-                            });
-                    }
+                                });
+                                }
+                        });
+                 });
+
+                toggleHSTNumberField();
+
+                $('#isPersonalHST').change(function () {
+                    toggleHSTNumberField();
                 });
-        });
+
+                $('#isHSTRegistration').change(function () {
+                    toggleHSTDependentFields();
+                });
+                $('#isPayroll').change(function () {
+                    togglePayrollDependentFields();
+                });
+
+                function toggleHSTNumberField() {
+                    if ($('#isPersonalHST').is(':checked')) {
+                        $('#hstNumberContainer').show();
+                    } else {
+                        $('#hstNumberContainer').hide();
+                        $('#hstNumber').val(''); 
+                    }
+                }
+
+                function toggleHSTDependentFields() {
+                    if ($('#isHSTRegistration').is(':checked')) {
+                        $('#hstDependentFields').show();
+                    } else {
+                        $('#hstDependentFields').hide();
+                        $('#hstReportingPeriod').val('');
+                        $('#hstFiscalYear').val('');
+                    }
+                }
+
+                function togglePayrollDependentFields() {
+                    if ($('#isPayroll').is(':checked')) {
+                        $('#PayrollDependentFields').show();
+                    } else {
+                        $('#PayrollDependentFields').hide();
+                        $('#pd7aReportingPeriod').val('');
+                        $('#corpFiscalYear').val('');
+
+                    }
+                }
             });
         </script>
 

@@ -53,6 +53,4 @@ namespace AVStaffing.Models.Entities
         public int CorporationId { get; set; }
         public int OwnerId { get; set; }
     }
-
-
 }

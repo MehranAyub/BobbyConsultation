@@ -44,8 +44,7 @@ namespace AVStaffing.Models.ViewModels
         [Display(Name = "Personal HST")]
         public bool IsPersonalHST { get; set; }
 
-        [Required]
-        [StringLength(9, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 9)]
+       
         [Display(Name = "HST Number")]
         public string HSTNumber { get; set; }
         public List<CorporationViewModel> Corporations { get; set; } = new List<CorporationViewModel>();

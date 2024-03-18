@@ -185,6 +185,19 @@ namespace AVStaffing.Controllers
                 }
 
             }
+            if (ownerVm.IsPersonalHST)
+            {
+                if(ownerVm.HSTNumber=="" || ownerVm.HSTNumber ==null)
+                {
+                    ModelState.AddModelError("HSTNumber", errorMessage: "Enter HST Number");
+                    isValid = false;
+                }
+                else if(ownerVm.HSTNumber.Length!=9)
+                {
+                    ModelState.AddModelError("HSTNumber", errorMessage: "HST Number must be exactly 9 characters long");
+                    isValid = false;
+                }
+            }
             return isValid;
         }
         public async Task<bool> DeleteClient(int clientId)
