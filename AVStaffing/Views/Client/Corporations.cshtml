@@ -45,14 +45,10 @@
                     <h3 class="card-label">Corporation List</h3>
                 </div>
                 <div class="card-toolbar">
-                    <!--begin::Dropdown-->
-                    @*<div class="dropdown dropdown-inline mr-2">
-  
-                    </div>*@
-                    <!--end::Dropdown-->
-                   
-                    
-
+                        <a href="@Url.Action("AddCorporation", "Client")" class="btn btn-primary font-weight-bolder">
+                            <i class="la la-plus"></i>
+                            Add new Corporation
+                        </a>
                 </div>
             </div>
             <div class="card-body">
@@ -81,21 +77,13 @@
                                     <td>@item.BusinessEmail</td>
 
                                     <td>
-
-                                        @*@if (editUserPermission)
-                                        {
                                             <a style="cursor: pointer !important" href="@Url.Action("AddCorporation", "Client", new {id = item.Id})" id=@item.Id>
                                                 <i class="fas fa-pencil-alt text-primary"></i>
                                             </a>
-                                        }*@
-
-                                        @if (deleteUserPermission)
-                                        {
                                             <a style="cursor: pointer !important" href="#/" class="deleteCorp" data-id="@item.Id">
                                                 <i class="fas fa-trash text-danger"></i>
                                             </a>
-                                        }
-
+                                        
                                     </td>
                                 </tr>
                             }

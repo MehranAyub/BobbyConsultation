@@ -1,0 +1,249 @@
+﻿@using AVStaffing.Models
+@model AVStaffing.Models.ViewModels.CorporationViewModel
+@{
+    ViewBag.Title = "AddCorporation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string pageMode = Model.Id != 0 ? "Edit" : "Add";
+}
+
+<style>
+    .field-validation-error {
+        color: red
+    }
+
+    .validation-summary-errors {
+        color: red;
+    }
+
+    .box-size {
+        width: 32px;
+        height: 32px;
+    }
+
+    .checkbox-size {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+    }
+</style>
+
+<!-- Begin Subheader -->
+<div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+        <!-- Begin Info -->
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <!-- Begin Page Heading -->
+            <div class="d-flex align-items-baseline flex-wrap mr-5">
+                <!-- Begin Page Title -->
+                <h5 class="text-dark font-weight-bold my-1 mr-5">
+                    Client Management
+                </h5>
+                <!-- End Page Title -->
+                <!-- Begin Breadcrumb -->
+                <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                    <li class="breadcrumb-item">
+                        <a href="@Url.Action("Corporations", "Client")">
+                            Corporations
+                        </a>
+                    </li>
+
+                    <li class="breadcrumb-item">
+                        <a href="#/" class="text-muted">
+                            @Html.Raw(pageMode == "Add" ? "Add Corporation" : "Edit Corporation")
+                        </a>
+                    </li>
+                </ul>
+                <!-- End Breadcrumb -->
+            </div>
+            <!-- End Page Heading -->
+        </div>
+        <!-- End Info -->
+    </div>
+</div>
+<!-- End Subheader -->
+<!-- Begin Entry -->
+<div class="d-flex flex-column-fluid">
+    <!-- Begin Container -->
+    <div class="container">
+        <!-- Begin Card -->
+        @using (Html.BeginForm("AddCorporation", "Client", FormMethod.Post, new { id = "ownerForm", enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(x => x.Id)
+
+            <div class="card card-custom">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="card-icon"><i class="fa fa-user text-primary"></i></span>
+                        <h3 class="card-label">@Html.Raw(pageMode == "Add" ? "Create Corporation" : "Update Corporation")</h3>
+                    </div>
+                </div>
+
+                <div class="card-body px-0">
+                    <div class="row">
+                        <div class="col-xl-2"></div>
+                        <div class="col-xl-7 my-2">
+                            <div class="form-group row">
+                                <!-- FirstName Field -->
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.CorpName, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.TextBoxFor(x => x.CorpName, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.CorpName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <!-- MiddleName Field -->
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.CorpKey, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.TextBoxFor(x => x.CorpKey, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.CorpKey, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.CorpFiscalYear, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.TextBoxFor(x => x.CorpFiscalYear, "{0:yyyy-MM-dd}", new { @class = "form-control form-control-lg form-control-solid", type = "date" })
+                                        @Html.ValidationMessageFor(x => x.CorpFiscalYear, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <!-- LastName Field -->
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.BusinessNumber, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.TextBoxFor(x => x.BusinessNumber, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.BusinessNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <!-- Email Field -->
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.BusinessEmail, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.TextBoxFor(x => x.BusinessEmail, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.BusinessEmail, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.Address, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <!-- IsPersonalHST Field -->
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.AuthorizationType, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.DropDownListFor(x => x.AuthorizationType, new SelectList(Model.AuthorizationOptions, "Value", "Text"), new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.AuthorizationType, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.IsHSTRegistration, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div class="mt-2">
+                                        @Html.CheckBoxFor(x => x.IsHSTRegistration, new { @class = "box-size", id = "isHSTRegistration" })
+                                        @Html.ValidationMessageFor(x => x.IsHSTRegistration, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div id="hstDependentFields" class="row col-lg-8" style="display: none;margin:0px;padding:0">
+
+                                    <div class="col-lg-6">
+                                        @Html.LabelFor(x => x.HSTReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
+                                        <div>
+                                            @Html.DropDownListFor(x => x.HSTReportingPeriod, new SelectList(Model.HSTReportingPeriodOptions, "Value", "Text"), "Select Reporting Period", new { @class = "form-control form-control-lg form-control-solid", id = "HSTReportingPeriod" })
+                                            @Html.ValidationMessageFor(x => x.HSTReportingPeriod, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        @Html.LabelFor(x => x.HSTFiscalYear, new { @class = "col-form-label text-lg-right text-left" })
+                                        <div>
+                                            @Html.TextBoxFor(x => x.HSTFiscalYear, "{0:yyyy-MM-dd}", new { @class = "form-control form-control-lg form-control-solid", type = "date" })
+                                            @Html.ValidationMessageFor(x => x.HSTFiscalYear, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.IsPayroll, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div class="mt-2">
+                                        @Html.CheckBoxFor(x => x.IsPayroll, new { @class = "box-size", id = "isPayroll" })
+                                        @Html.ValidationMessageFor(x => x.IsPayroll, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div id="PayrollDependentFields" class="col-lg-8" style="display: none;">
+                                    @Html.LabelFor(x => x.PD7AReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.DropDownListFor(x => x.PD7AReportingPeriod, Model.HSTReportingPeriodOptions, "Select Reporting Period", new { @class = "form-control form-control-lg form-control-solid", id = "PD7AReportingPeriod" })
+                                        @Html.ValidationMessageFor(x => x.PD7AReportingPeriod, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="float-right">
+                                    <button type="submit" class="btn btn-primary font-weight-bold btn-lg px-3 font-size-base">
+                                        @Html.Raw(pageMode == "Add" ? "Add Corporation" : "Save Changes")
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- End Container -->
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+            $("#HSTReportingPeriod option:first").attr("disabled", "disabled");
+            $("#PD7AReportingPeriod option:first").attr("disabled", "disabled");
+            toggleHSTDependentFields();
+            togglePayrollDependentFields();
+
+        });
+
+        $('#isHSTRegistration').change(function () {
+            toggleHSTDependentFields();
+        });
+        $('#isPayroll').change(function () {
+            togglePayrollDependentFields();
+        });
+
+        function toggleHSTDependentFields() {
+            if ($('#isHSTRegistration').is(':checked')) {
+                $('#hstDependentFields').show();
+            } else {
+                $('#hstDependentFields').hide();
+                $('#hstReportingPeriod').val('');
+                $('#hstFiscalYear').val('');
+
+            }
+        }
+
+        function togglePayrollDependentFields() {
+            if ($('#isPayroll').is(':checked')) {
+                $('#PayrollDependentFields').show();
+            } else {
+                $('#PayrollDependentFields').hide();
+                $('#pd7aReportingPeriod').val('');
+            }
+        }
+    </script>
+}
+<!-- End Entry -->
