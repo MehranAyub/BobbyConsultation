@@ -6,10 +6,16 @@
 
     string pageMode = Model.Id != 0 ? "Edit" : "Add";
 }
-
 <style>
     .field-validation-error {
         color: red
+    }
+    .ui-datepicker-year {
+        display: none !important;
+    }
+
+    .datepicker-years {
+        display: none !important;
     }
 
     .validation-summary-errors {
@@ -26,9 +32,11 @@
         height: 20px;
         margin-left: 10px;
     }
-    .remove-corp{
-        padding:0;
+
+    .remove-corp {
+        padding: 0;
     }
+
     .search-box {
         position: relative;
         width: 300px; /* Adjust as per your requirement */
@@ -53,11 +61,10 @@
         border-radius: 20px;
         cursor: pointer;
     }
-    
-    .search-button .fas {
+
+        .search-button .fas {
             color: #333; /* Icon color */
         }
-    
 </style>
 
 <!-- Begin Subheader -->
@@ -302,7 +309,12 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="corpFiscalYear">Corporation Fiscal Year</label>
-                                <input type="date" class="form-control" id="corpFiscalYear" name="CorpFiscalYear">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="corpFiscalYear" name="CorpFiscalYear">
+                                    <div class="input-group-append corp-group">
+                                        <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="address">Business Address</label>
@@ -317,8 +329,8 @@
                                 <input type="text" class="form-control" id="businessNumber" name="BusinessNumber" required minlength="8" maxlength="8">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="hstReportingPeriod">Authorization</label>
-                                <select class="form-control" id="authorizationType" name="HSTReportingPeriod">
+                                <label for="authorizationType">Authorization</label>
+                                <select class="form-control" id="authorizationType" name="AuthorizationType">
                                     <option value="Personal">Personal</option>
                                     <option value="Business">Business</option>
                                     <option value="Both">Both</option>
@@ -340,9 +352,15 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="hstFiscalYear">HST Fiscal Year</label>
-                                    <input type="date" class="form-control" id="hstFiscalYear" name="HSTFiscalYear">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="hstFiscalYear" name="HSTFiscalYear">
+                                        <div class="input-group-append hst-group">
+                                            <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="form-group d-flex col-12">
                                 <label for="isPayroll">Payroll</label>
                                 <input type="checkbox" class="checkbox-size" id="isPayroll" name="IsPayroll">
@@ -351,7 +369,7 @@
                                 <div class="form-group col-md-6">
                                     <label for="pd7aReportingPeriod">PD7A Reporting Period</label>
                                     <select class="form-control" id="pd7aReportingPeriod" name="PD7AReportingPeriod">
-                                        <option value="" disabled >Select a period</option>
+                                        <option value="" disabled>Select a period</option>
                                         <option value="Monthly">Monthly</option>
                                         <option value="Quarterly">Quarterly</option>
                                         <option value="Annually">Annually</option>
@@ -383,7 +401,7 @@
                 </div>
                 <div class="modal-body">
 
-                  
+
                     <div style="display:flex;align-items:center;justify-content:center;margin-bottom:20px">
                         <div class="search-box">
                             <input type="text" id="searchField" class="search-input" placeholder="Search...">
@@ -395,7 +413,7 @@
                             </div>
                         </div>
                     </div>
-                
+
                     <div class="row">
                         <div class="col-md-12">
                             <div id="existingCorporationsList">
@@ -427,6 +445,43 @@
     <!-- End Container -->
     @section Scripts{
         <script>
+            $(document).ready(function () {
+                function positionDatePicker(input, inst) {
+                    var inputOffset = $(input).offset();
+                    var inputHeight = $(input).outerHeight();
+                    var datePickerWidth = inst.dpDiv.outerWidth();
+                    var windowWidth = $(window).width();
+
+                    var top =  150+inputHeight;
+                    var left = inputOffset.left;
+
+                    // Adjust if DatePicker goes beyond the window width
+                    if (left + datePickerWidth > windowWidth) {
+                        left = windowWidth - datePickerWidth;
+                    }
+
+                    inst.dpDiv.css({ top: top +'px', left: left + 'px' });
+                }
+
+                $('#hstFiscalYear, #corpFiscalYear').datepicker({
+                    changeMonth: true,
+                    changeYear: false,
+                    showButtonPanel: true,
+                    dateFormat: 'M-dd',
+                    beforeShow: function (input, inst) {
+                        setTimeout(function () {
+                            positionDatePicker(input, inst);
+                        }, 0);
+                    }
+                });
+                $('.corp-group').click(function () {
+                    $('#corpFiscalYear').datepicker('show');
+                });
+                $('.hst-group').click(function () {
+                    $('#hstFiscalYear').datepicker('show');
+                });
+               
+            });
             function escapeHtml(unsafe) {
                 return unsafe.replace(/&/g, "&amp;")
                     .replace(/</g, "&lt;")
@@ -479,7 +534,7 @@
                 var searchField = document.getElementById('searchField');
 
                 searchField.addEventListener('keyup', function () {
-                    clearTimeout(searchTimeout); 
+                    clearTimeout(searchTimeout);
 
                     searchTimeout = setTimeout(function () {
                         var searchQuery = searchField.value.trim();
@@ -529,7 +584,7 @@
                         console.error('Error:', error);
                     });
             }
-           
+
             $(document).ready(function () {
                 $('#saveCorporation').click(function () {
                     var form = document.getElementById('corporationForm');
@@ -538,12 +593,12 @@
                         event.stopPropagation();
                         form.reportValidity();
                     } else {
-
                         var corporation = {
                             Id:0,
                             IsCorporation: true,
                             CorpName: $('#corpName').val(),
                             CorpKey: $('#corpKey').val(),
+                            CorpFiscalYear: $('#corpFiscalYear').val(),
                             Address: $('#address').val(),
                             BusinessEmail: $('#businessEmail').val(),
                             BusinessNumber: $('#businessNumber').val(),
@@ -552,7 +607,7 @@
                             HSTReportingPeriod: $('#hstReportingPeriod').val(),
                             IsPayroll: $('#isPayroll').is(':checked'),
                             PD7AReportingPeriod: $('#pd7aReportingPeriod').val(),
-                            CorpFiscalYear: $('#corpFiscalYear').val()
+                            AuthorizationType: $('#authorizationType').val()
                         };
                         appendCorporation(corporation,'New');
                         $('#addNewCorporationModal input').val('');
@@ -602,7 +657,7 @@
                         });
                  });
 
-                 
+
                 toggleHSTNumberField();
 
                 $('#isPersonalHST').change(function () {
@@ -643,7 +698,7 @@
                         $('#pd7aReportingPeriod').val('');
                     }
                 }
-                
+
 
             });
         </script>

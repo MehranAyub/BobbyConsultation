@@ -8,6 +8,14 @@
 }
 
 <style>
+    .ui-datepicker-year {
+        display: none !important;
+    }
+
+    .datepicker-years {
+        display: none !important;
+    }
+
     .field-validation-error {
         color: red
     }
@@ -103,7 +111,7 @@
                                 <div class="col-lg-4">
                                     @Html.LabelFor(x => x.CorpFiscalYear, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
-                                        @Html.TextBoxFor(x => x.CorpFiscalYear, "{0:yyyy-MM-dd}", new { @class = "form-control form-control-lg form-control-solid", type = "date" })
+                                        @Html.TextBoxFor(x => x.CorpFiscalYear, new { @class = "form-control form-control-lg form-control-solid",id="corpFiscalYearInput" })
                                         @Html.ValidationMessageFor(x => x.CorpFiscalYear, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -165,7 +173,7 @@
                                     <div class="col-lg-6">
                                         @Html.LabelFor(x => x.HSTFiscalYear, new { @class = "col-form-label text-lg-right text-left" })
                                         <div>
-                                            @Html.TextBoxFor(x => x.HSTFiscalYear, "{0:yyyy-MM-dd}", new { @class = "form-control form-control-lg form-control-solid", type = "date" })
+                                            @Html.TextBoxFor(x => x.HSTFiscalYear, new { @class = "form-control form-control-lg form-control-solid", id= "hstFiscalYearInput" })
                                             @Html.ValidationMessageFor(x => x.HSTFiscalYear, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -211,6 +219,19 @@
     <script>
 
         $(document).ready(function () {
+            $('#corpFiscalYearInput,#hstFiscalYearInput').datepicker({
+                changeMonth: true,
+                changeYear: false,
+                showButtonPanel: true,
+                dateFormat: 'M-dd',
+                beforeShow: function (input, inst) {
+                    setTimeout(function () {
+                        $('.ui-datepicker-year').hide(); 
+                    }, 0);
+                }
+            });
+
+
             $("#HSTReportingPeriod option:first").attr("disabled", "disabled");
             $("#PD7AReportingPeriod option:first").attr("disabled", "disabled");
             toggleHSTDependentFields();

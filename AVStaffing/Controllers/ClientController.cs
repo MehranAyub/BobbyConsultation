@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -199,8 +200,8 @@ namespace AVStaffing.Controllers
             }
             return View(new CorporationViewModel
             {
-                HSTFiscalYear = DateTime.Today,
-                CorpFiscalYear= DateTime.Today,
+                HSTFiscalYear = "",
+                CorpFiscalYear=""
             }) ;
         }
 
@@ -220,7 +221,7 @@ namespace AVStaffing.Controllers
                         var corporation = MapToCorporation(corpVm);
                         DbContext.Corporation.Add(corporation);
                         await DbContext.SaveChangesAsync();
-                        Notify("Success", "Successfully Added", "Client Added Successfully", isRedirectMessage: true);
+                        Notify("Success", "Successfully Added", "Corporation Added Successfully", isRedirectMessage: true);
                     }
 
 
@@ -231,13 +232,13 @@ namespace AVStaffing.Controllers
                         {
                             corp.CorpName = corpVm.CorpName;
                             corp.CorpKey = corpVm.CorpKey;
-                            corp.CorpFiscalYear = corpVm.CorpFiscalYear;
+                            corp.CorpFiscalYear = DateTime.ParseExact(corpVm.CorpFiscalYear,"MMM-dd",CultureInfo.CurrentCulture);
                             corp.BusinessEmail = corpVm.BusinessEmail;
                             corp.BusinessNumber = corpVm.BusinessNumber;
                             corp.Address = corpVm.Address;
                             corp.IsHSTRegistration = corpVm.IsHSTRegistration;
                             corp.HSTReportingPeriod = corpVm.HSTReportingPeriod;
-                            corp.HSTFiscalYear = corpVm.HSTFiscalYear;
+                            corp.HSTFiscalYear = DateTime.ParseExact(corpVm.HSTFiscalYear, "MMM-dd", CultureInfo.CurrentCulture);
                             corp.IsPayroll = corpVm.IsPayroll;
                             corp.PD7AReportingPeriod = corpVm.PD7AReportingPeriod;
                             corp.AuthorizationType = corpVm.AuthorizationType;
@@ -440,11 +441,11 @@ namespace AVStaffing.Controllers
                 BusinessEmail = viewModel.BusinessEmail,
                 BusinessNumber = viewModel.BusinessNumber,
                 IsHSTRegistration = viewModel.IsHSTRegistration,
-                HSTFiscalYear = viewModel.HSTFiscalYear,
+                HSTFiscalYear = DateTime.ParseExact(viewModel.HSTFiscalYear, "MMM-dd", CultureInfo.CurrentCulture),
                 HSTReportingPeriod = viewModel.HSTReportingPeriod,
                 IsPayroll = viewModel.IsPayroll,
                 PD7AReportingPeriod = viewModel.PD7AReportingPeriod,
-                CorpFiscalYear = viewModel.CorpFiscalYear,
+                CorpFiscalYear = DateTime.ParseExact(viewModel.CorpFiscalYear, "MMM-dd", CultureInfo.CurrentCulture),
                 AuthorizationType=viewModel.AuthorizationType,
             };
 
@@ -465,11 +466,11 @@ namespace AVStaffing.Controllers
                 BusinessEmail = corporation.BusinessEmail,
                 BusinessNumber = corporation.BusinessNumber,
                 IsHSTRegistration = corporation.IsHSTRegistration,
-                HSTFiscalYear = corporation.HSTFiscalYear,
+                HSTFiscalYear = corporation.HSTFiscalYear.ToString("MMM-dd"),
                 HSTReportingPeriod = corporation.HSTReportingPeriod,
                 IsPayroll = corporation.IsPayroll,
                 PD7AReportingPeriod = corporation.PD7AReportingPeriod,
-                CorpFiscalYear = corporation.CorpFiscalYear,
+                CorpFiscalYear = corporation.CorpFiscalYear.ToString("MMM-dd"),
                 AuthorizationType=corporation.AuthorizationType,
             };
 

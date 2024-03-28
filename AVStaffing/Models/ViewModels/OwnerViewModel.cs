@@ -85,7 +85,7 @@ namespace AVStaffing.Models.ViewModels
         [Display(Name = "HST Reporting Period")]
         public string HSTReportingPeriod { get; set; }
         [Display(Name = "HST Fiscal Year")]
-        public DateTime HSTFiscalYear { get; set; }
+        public string HSTFiscalYear { get; set; }
         [Display(Name = "Payroll")]
         public bool IsPayroll { get; set; }
         [Display(Name = "PD7A Reporting Period")]
@@ -93,7 +93,7 @@ namespace AVStaffing.Models.ViewModels
         [Display(Name = "Authorization")]
         public string AuthorizationType { get; set; }
         [Display(Name = "Corporation Fiscal Year")]
-        public DateTime CorpFiscalYear { get; set; }
+        public string CorpFiscalYear { get; set; }
 
         public IEnumerable<SelectListItem> HSTReportingPeriodOptions { get; set; }
         public IEnumerable<SelectListItem> AuthorizationOptions { get; set; }
