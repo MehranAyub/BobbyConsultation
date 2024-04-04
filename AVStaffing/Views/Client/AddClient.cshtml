@@ -10,6 +10,7 @@
     .field-validation-error {
         color: red
     }
+
     .ui-datepicker-year {
         display: none !important;
     }
@@ -23,8 +24,8 @@
     }
 
     .box-size {
-        width: 32px;
-        height: 32px;
+        width: 20px;
+        height: 30px;
     }
 
     .checkbox-size {
@@ -260,14 +261,10 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="dropdown">
-                                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div>
+                                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addNewCorporationModal">
                                     Add Corporation
                                 </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#addNewCorporationModal">Add New</button>
-                                    <button type="button" class="dropdown-item" data-toggle="modal" data-target="#addExistingCorporationModal">Add Existing</button>
-                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="float-right">
@@ -328,80 +325,65 @@
                                 <label for="businessNumber">Business Number</label>
                                 <input type="text" class="form-control" id="businessNumber" name="BusinessNumber" required minlength="8" maxlength="8">
                             </div>
-                            <div class="form-group col-md-4">
-                                <label for="authorizationType">Authorization</label>
-                                <select class="form-control" id="authorizationType" name="AuthorizationType">
-                                    <option value="Personal">Personal</option>
-                                    <option value="Business">Business</option>
-                                    <option value="Both">Both</option>
-                                </select>
-                            </div>
-                            <div class="form-group d-flex col-12">
-                                <label for="isHSTRegistration">HST Registration</label>
-                                <input type="checkbox" class="checkbox-size" id="isHSTRegistration" name="IsHSTRegistration">
-                            </div>
-                            <div id="hstDependentFields" class="row col-12" style="display: none;">
-                                <div class="form-group col-md-6">
-                                    <label for="hstReportingPeriod">HST Reporting Period</label>
-                                    <select class="form-control" id="hstReportingPeriod" name="HSTReportingPeriod">
-                                        <option value="" disabled>Select a period</option>
-                                        <option value="Monthly">Monthly</option>
-                                        <option value="Quarterly">Quarterly</option>
-                                        <option value="Annually">Annually</option>
+                            <div class="form-group row col-12">
+                                <div class="col-4">
+                                    <label for="authorizationType">Authorization</label>
+                                    <select class="form-control" id="authorizationType" name="AuthorizationType">
+                                        <option value="Personal">Personal</option>
+                                        <option value="Business">Business</option>
+                                        <option value="Both">Both</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="hstFiscalYear">HST Fiscal Year</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="hstFiscalYear" name="HSTFiscalYear">
-                                        <div class="input-group-append hst-group">
-                                            <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                            </div>
+                            <div class="row form-group col-12">
+                                <div class="d-flex flex-column col-4">
+                                    <label for="isHSTRegistration">HST Registration</label>
+                                    <input type="checkbox" class="checkbox-size" id="isHSTRegistration" name="IsHSTRegistration">
+                                </div>
+                                <div id="hstDependentFields" class="row col-8" style="display: none;margin-left:0px;padding-right:0px">
+                                    <div class=" col-6" style="padding-right:0px">
+                                        <label for="hstReportingPeriod">HST Reporting Period</label>
+                                        <select class="form-control" id="hstReportingPeriod" name="HSTReportingPeriod">
+                                            <option value="" disabled>Select a period</option>
+                                            <option value="Monthly">Monthly</option>
+                                            <option value="Quarterly">Quarterly</option>
+                                            <option value="Annually">Annually</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-6" style="padding-right:0px;padding-left:25px">
+                                        <label for="hstFiscalYear">HST Fiscal Year</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="hstFiscalYear" name="HSTFiscalYear">
+                                            <div class="input-group-append hst-group">
+                                                <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                            </div>
                                         </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row form-group col-12">
+                                <div class="d-flex flex-column col-4">
+                                    <label for="isPayroll">Payroll</label>
+                                    <input type="checkbox" class="checkbox-size" id="isPayroll" name="IsPayroll">
+                                </div>
+                                <div id="PayrollDependentFields" class="row col-8" style="display: none; margin-left: 0px; padding-right: 0px">
+                                    <div class="col-md-6" style="padding-right:0px">
+                                        <label for="pd7aReportingPeriod">PD7A Reporting Period</label>
+                                        <select class="form-control" id="pd7aReportingPeriod" name="PD7AReportingPeriod">
+                                            <option value="" disabled>Select a period</option>
+                                            <option value="Monthly">Monthly</option>
+                                            <option value="Quarterly">Quarterly</option>
+                                            <option value="Annually">Annually</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group d-flex col-12">
-                                <label for="isPayroll">Payroll</label>
-                                <input type="checkbox" class="checkbox-size" id="isPayroll" name="IsPayroll">
-                            </div>
-                            <div id="PayrollDependentFields" class="row col-12" style="display: none;">
-                                <div class="form-group col-md-6">
-                                    <label for="pd7aReportingPeriod">PD7A Reporting Period</label>
-                                    <select class="form-control" id="pd7aReportingPeriod" name="PD7AReportingPeriod">
-                                        <option value="" disabled>Select a period</option>
-                                        <option value="Monthly">Monthly</option>
-                                        <option value="Quarterly">Quarterly</option>
-                                        <option value="Annually">Annually</option>
-                                    </select>
-                                </div>
-                            </div>
                         </div>
                     </form>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary btn-sm" id="saveCorporation">Save Corporation</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="modal fade " id="addExistingCorporationModal" tabindex="-1" role="dialog" aria-labelledby="corporationModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="corporationModalLabel">Add Existing Corporation</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-
+                    <hr/>
                     <div style="display:flex;align-items:center;justify-content:center;margin-bottom:20px">
                         <div class="search-box">
                             <input type="text" id="searchField" class="search-input" placeholder="Search...">
@@ -428,6 +410,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr>
+                                            <td colspan="4" style="text-align:center">No data to show</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -435,8 +420,10 @@
                     </div>
                 </div>
 
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary btn-sm" id="saveCorporation">Save Corporation</button>
                 </div>
             </div>
         </div>
@@ -455,7 +442,6 @@
                     var top =  150+inputHeight;
                     var left = inputOffset.left;
 
-                    // Adjust if DatePicker goes beyond the window width
                     if (left + datePickerWidth > windowWidth) {
                         left = windowWidth - datePickerWidth;
                     }
@@ -480,7 +466,7 @@
                 $('.hst-group').click(function () {
                     $('#hstFiscalYear').datepicker('show');
                 });
-               
+
             });
             function escapeHtml(unsafe) {
                 return unsafe.replace(/&/g, "&amp;")
@@ -523,7 +509,7 @@
                     CorpFiscalYear: null
                 };
                 appendCorporation(corporation,'Existing');
-                $('#addExistingCorporationModal').modal('hide');
+                $('#addNewCorporationModal').modal('hide');
 
             }
 
@@ -543,19 +529,25 @@
                             console.log("Searching for:", searchQuery);
                             searchCorporations(searchQuery);
                         }
+                        else {
+                            var tbody = document.querySelector("#existingCorporationsList tbody");
+                            tbody.innerHTML = "";
+                            var row = tbody.insertRow(); 
+                            var cell = row.insertCell(0); 
+                            cell.textContent = "No data to show"; 
+                            cell.setAttribute("colspan", "5"); 
+                            cell.style.textAlign = "center"; 
+                        }
                     }, 1200);
                 });
             });
 
             function searchCorporations(query) {
                 if (query.length === 0) return;
-
-                console.log("searc query api param", query);
                var apiUrl = '@Url.Action("SearchCorporations", "Client")?query=' + encodeURIComponent(query);
                 $('#loadingIcon').show();
                 fetch(apiUrl)
                     .then(response => {
-                        $('#loadingIcon').hide();
                         if (!response.ok) {
                             throw new Error('Network response was not ok');
                         }
@@ -564,23 +556,32 @@
                     .then(data => {
                         var tbody = document.querySelector("#existingCorporationsList tbody");
                         tbody.innerHTML = "";
+                        if (data.length === 0) {
+                            var row = tbody.insertRow(); // Insert a new row
+                            var cell = row.insertCell(0); // Insert a single cell
+                            cell.textContent = "No data to show"; // Set the text
+                            cell.setAttribute("colspan", "5"); // Span the cell across 5 columns
+                            cell.style.textAlign = "center"; // Center the text within the cell
+                        } else {
+                            data.forEach(corp => {
+                                var row = tbody.insertRow();
+                                var cellName = row.insertCell(0);
+                                var cellKey = row.insertCell(1);
+                                var cellAddress = row.insertCell(2);
+                                var cellAction = row.insertCell(3);
 
-                        data.forEach(corp => {
-                            var row = tbody.insertRow();
-                            var cellName = row.insertCell(0);
-                            var cellKey = row.insertCell(1);
-                            var cellAddress = row.insertCell(2);
-                            var cellAction = row.insertCell(3);
-
-                            cellName.textContent = corp.CorpName;
-                            cellKey.textContent = corp.CorpKey;
-                            cellAddress.textContent = corp.Address;
-                            var actionHtml = `<button type="button"  onclick="saveExistingCorporation(${corp.Id},'${escapeHtml(corp.CorpName)}', '${escapeHtml(corp.CorpKey)}', '${escapeHtml(corp.Address)}')" class="btn"><i class="fas fa-plus-circle text-success"></i></button>`; // Replace yourActionFunction with whatever function you need
-                            cellAction.innerHTML = actionHtml;
-                        });
+                                cellName.textContent = corp.CorpName;
+                                cellKey.textContent = corp.CorpKey;
+                                cellAddress.textContent = corp.Address;
+                                var actionHtml = `<button type="button"  onclick="saveExistingCorporation(${corp.Id},'${escapeHtml(corp.CorpName)}', '${escapeHtml(corp.CorpKey)}', '${escapeHtml(corp.Address)}')" class="btn"><i class="fas fa-plus-circle text-success"></i></button>`;
+                                cellAction.innerHTML = actionHtml;
+                            });
+                        }
+                        $('#loadingIcon').hide();
 
                     })
                     .catch(error => {
+                        $('#loadingIcon').hide();
                         console.error('Error:', error);
                     });
             }

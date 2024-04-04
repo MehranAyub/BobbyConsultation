@@ -4,6 +4,10 @@ packages
 .vs
 *.zip
 *.7z
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
 /LeadMonitorWeb/Win64-706915/chrome-win
 /LeadMonitorWeb/Theme.7z
 node_modules

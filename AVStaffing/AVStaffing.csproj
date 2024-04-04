@@ -11058,6 +11058,7 @@
     <Content Include="Views\Client\AddClient.cshtml" />
     <Content Include="Views\Client\_AddCorporation.cshtml" />
     <Content Include="Views\Client\Corporations.cshtml" />
+    <Content Include="Views\Client\AddCorporation.cshtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

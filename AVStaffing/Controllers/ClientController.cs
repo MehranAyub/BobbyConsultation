@@ -79,6 +79,13 @@ namespace AVStaffing.Controllers
             int userId = 0;
             if (!ClientValidations(userVm))
             {
+                if (userVm.Id == 0) {
+                    userVm.Corporations = null;
+                }
+                else
+                {
+                    userVm.Corporations=userVm.Corporations.Where(n=>n.Id>0).ToList();
+                }
                 Notify("Error", "Validation Error", "Please see the validations", isRedirectMessage: true);
                 return View(userVm);
             }
@@ -232,13 +239,13 @@ namespace AVStaffing.Controllers
                         {
                             corp.CorpName = corpVm.CorpName;
                             corp.CorpKey = corpVm.CorpKey;
-                            corp.CorpFiscalYear = DateTime.ParseExact(corpVm.CorpFiscalYear,"MMM-dd",CultureInfo.CurrentCulture);
+                            corp.CorpFiscalYear = DateTime.ParseExact(corpVm.CorpFiscalYear??"jan-01","MMM-dd",CultureInfo.CurrentCulture);
                             corp.BusinessEmail = corpVm.BusinessEmail;
                             corp.BusinessNumber = corpVm.BusinessNumber;
                             corp.Address = corpVm.Address;
                             corp.IsHSTRegistration = corpVm.IsHSTRegistration;
                             corp.HSTReportingPeriod = corpVm.HSTReportingPeriod;
-                            corp.HSTFiscalYear = DateTime.ParseExact(corpVm.HSTFiscalYear, "MMM-dd", CultureInfo.CurrentCulture);
+                            corp.HSTFiscalYear = DateTime.ParseExact(corpVm.HSTFiscalYear ?? "jan-01", "MMM-dd", CultureInfo.CurrentCulture);
                             corp.IsPayroll = corpVm.IsPayroll;
                             corp.PD7AReportingPeriod = corpVm.PD7AReportingPeriod;
                             corp.AuthorizationType = corpVm.AuthorizationType;
@@ -319,12 +326,12 @@ namespace AVStaffing.Controllers
             }
             if (corpVm.IsHSTRegistration)
             {
-                if (corpVm.HSTFiscalYear.Equals(DateTime.MinValue))
+                if (corpVm.HSTFiscalYear==null|| corpVm.HSTFiscalYear == "")
                 {
                     ModelState.AddModelError("HSTFiscalYear", errorMessage: "Enter HST Fiscal Year");
                     isValid = false;
                 }
-                if (corpVm.HSTReportingPeriod=="")
+                if (corpVm.HSTReportingPeriod == null||corpVm.HSTReportingPeriod=="")
                 {
                     ModelState.AddModelError("HSTReportingPeriod", errorMessage: "Select HST Reporting Period");
                     isValid = false;
@@ -441,11 +448,11 @@ namespace AVStaffing.Controllers
                 BusinessEmail = viewModel.BusinessEmail,
                 BusinessNumber = viewModel.BusinessNumber,
                 IsHSTRegistration = viewModel.IsHSTRegistration,
-                HSTFiscalYear = DateTime.ParseExact(viewModel.HSTFiscalYear, "MMM-dd", CultureInfo.CurrentCulture),
+                HSTFiscalYear = DateTime.ParseExact(viewModel.HSTFiscalYear??"jan-01", "MMM-dd", CultureInfo.CurrentCulture),
                 HSTReportingPeriod = viewModel.HSTReportingPeriod,
                 IsPayroll = viewModel.IsPayroll,
                 PD7AReportingPeriod = viewModel.PD7AReportingPeriod,
-                CorpFiscalYear = DateTime.ParseExact(viewModel.CorpFiscalYear, "MMM-dd", CultureInfo.CurrentCulture),
+                CorpFiscalYear = DateTime.ParseExact(viewModel.CorpFiscalYear ?? "jan-01", "MMM-dd", CultureInfo.CurrentCulture),
                 AuthorizationType=viewModel.AuthorizationType,
             };
 
