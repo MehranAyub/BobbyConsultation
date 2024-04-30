@@ -24,8 +24,9 @@ namespace AVStaffing.Models.Entities
         public string HSTReportingPeriod { get; set; }
         public bool IsPayroll { get; set; }
         public string PD7AReportingPeriod { get; set; }
-        public string AuthorizationType { get; set; }
         public DateTime CorpFiscalYear { get; set; }
+        public DateTime? AnniversaryDate { get; set; }
+
         public List<CorporationOwner> CorporationOwners { get; set; }
     }
     [Table("Owner")]
@@ -43,6 +44,8 @@ namespace AVStaffing.Models.Entities
         public string Email { get; set; }
         public bool IsPersonalHST { get; set; }
         public string HSTNumber { get; set; }
+        public bool IsPayroll { get; set; }
+        public string PD7AReportingPeriod { get; set; }
         public string AuthorizationType { get; set; }
         public List<CorporationOwner> CorporationOwners { get; set; }
     }

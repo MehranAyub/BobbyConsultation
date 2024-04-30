@@ -248,8 +248,8 @@ namespace AVStaffing.Controllers
                             corp.HSTFiscalYear = DateTime.ParseExact(corpVm.HSTFiscalYear ?? "jan-01", "MMM-dd", CultureInfo.CurrentCulture);
                             corp.IsPayroll = corpVm.IsPayroll;
                             corp.PD7AReportingPeriod = corpVm.PD7AReportingPeriod;
-                            corp.AuthorizationType = corpVm.AuthorizationType;
-                            await DbContext.SaveChangesAsync();
+                            corp.AnniversaryDate = DateTime.ParseExact(corpVm.AnniversaryDate ?? "jan-01", "MMM-dd", CultureInfo.CurrentCulture);
+                        await DbContext.SaveChangesAsync();
                             Notify("Success", "Successfully Updated", "Client Updated Successfully", isRedirectMessage: true);
 
                         }
@@ -407,6 +407,8 @@ namespace AVStaffing.Controllers
                 Email = owner.Email,
                 IsPersonalHST = owner.IsPersonalHST,
                 HSTNumber = owner.HSTNumber,
+                IsPayroll = owner.IsPayroll,
+                PD7AReportingPeriod = owner.PD7AReportingPeriod,
                 AuthorizationType = owner.AuthorizationType,
 
             };
@@ -429,6 +431,8 @@ namespace AVStaffing.Controllers
                 Email = viewModel.Email,
                 IsPersonalHST = viewModel.IsPersonalHST,
                 HSTNumber = viewModel.HSTNumber,
+                IsPayroll= viewModel.IsPayroll,
+                PD7AReportingPeriod = viewModel.PD7AReportingPeriod,
                 AuthorizationType = viewModel.AuthorizationType,
             };
 
@@ -453,7 +457,7 @@ namespace AVStaffing.Controllers
                 IsPayroll = viewModel.IsPayroll,
                 PD7AReportingPeriod = viewModel.PD7AReportingPeriod,
                 CorpFiscalYear = DateTime.ParseExact(viewModel.CorpFiscalYear ?? "jan-01", "MMM-dd", CultureInfo.CurrentCulture),
-                AuthorizationType=viewModel.AuthorizationType,
+                AnniversaryDate = DateTime.ParseExact(viewModel.AnniversaryDate ?? "jan-01", "MMM-dd", CultureInfo.CurrentCulture),
             };
 
             return corporation;
@@ -478,7 +482,7 @@ namespace AVStaffing.Controllers
                 IsPayroll = corporation.IsPayroll,
                 PD7AReportingPeriod = corporation.PD7AReportingPeriod,
                 CorpFiscalYear = corporation.CorpFiscalYear.ToString("MMM-dd"),
-                AuthorizationType=corporation.AuthorizationType,
+                AnniversaryDate = corporation.AnniversaryDate?.ToString("MMM-dd"),
             };
 
             return viewModel;

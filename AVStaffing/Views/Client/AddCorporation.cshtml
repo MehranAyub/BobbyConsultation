@@ -111,7 +111,7 @@
                                 <div class="col-lg-4">
                                     @Html.LabelFor(x => x.CorpFiscalYear, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
-                                        @Html.TextBoxFor(x => x.CorpFiscalYear, new { @class = "form-control form-control-lg form-control-solid",id="corpFiscalYearInput" })
+                                        @Html.TextBoxFor(x => x.CorpFiscalYear, new { @class = "form-control form-control-lg form-control-solid", id = "corpFiscalYearInput" })
                                         @Html.ValidationMessageFor(x => x.CorpFiscalYear, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
@@ -143,15 +143,31 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <!-- IsPersonalHST Field -->
                                 <div class="col-lg-4">
-                                    @Html.LabelFor(x => x.AuthorizationType, new { @class = "col-form-label text-lg-right text-left" })
+                                    @Html.LabelFor(x => x.AnniversaryDate, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
-                                        @Html.DropDownListFor(x => x.AuthorizationType, new SelectList(Model.AuthorizationOptions, "Value", "Text"), new { @class = "form-control form-control-lg form-control-solid" })
-                                        @Html.ValidationMessageFor(x => x.AuthorizationType, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(x => x.AnniversaryDate, new { @class = "form-control form-control-lg form-control-solid", id = "anniversaryDateInput" })
+                                        @Html.ValidationMessageFor(x => x.AnniversaryDate, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.IsPayroll, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div class="mt-2">
+                                        @Html.CheckBoxFor(x => x.IsPayroll, new { @class = "box-size", id = "isPayroll" })
+                                        @Html.ValidationMessageFor(x => x.IsPayroll, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div id="PayrollDependentFields" class="col-lg-4" style="display: none;">
+                                    @Html.LabelFor(x => x.PD7AReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.DropDownListFor(x => x.PD7AReportingPeriod, Model.HSTReportingPeriodOptions, "Select Reporting Period", new { @class = "form-control form-control-lg form-control-solid", id = "PD7AReportingPeriod" })
+                                        @Html.ValidationMessageFor(x => x.PD7AReportingPeriod, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
                             </div>
+
                             <div class="form-group row">
                                 <div class="col-lg-4">
                                     @Html.LabelFor(x => x.IsHSTRegistration, new { @class = "col-form-label text-lg-right text-left" })
@@ -173,31 +189,13 @@
                                     <div class="col-lg-6">
                                         @Html.LabelFor(x => x.HSTFiscalYear, new { @class = "col-form-label text-lg-right text-left" })
                                         <div>
-                                            @Html.TextBoxFor(x => x.HSTFiscalYear, new { @class = "form-control form-control-lg form-control-solid", id= "hstFiscalYearInput" })
+                                            @Html.TextBoxFor(x => x.HSTFiscalYear, new { @class = "form-control form-control-lg form-control-solid", id = "hstFiscalYearInput" })
                                             @Html.ValidationMessageFor(x => x.HSTFiscalYear, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-lg-4">
-                                    @Html.LabelFor(x => x.IsPayroll, new { @class = "col-form-label text-lg-right text-left" })
-                                    <div class="mt-2">
-                                        @Html.CheckBoxFor(x => x.IsPayroll, new { @class = "box-size", id = "isPayroll" })
-                                        @Html.ValidationMessageFor(x => x.IsPayroll, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div id="PayrollDependentFields" class="col-lg-8" style="display: none;">
-                                    @Html.LabelFor(x => x.PD7AReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
-                                    <div>
-                                        @Html.DropDownListFor(x => x.PD7AReportingPeriod, Model.HSTReportingPeriodOptions, "Select Reporting Period", new { @class = "form-control form-control-lg form-control-solid", id = "PD7AReportingPeriod" })
-                                        @Html.ValidationMessageFor(x => x.PD7AReportingPeriod, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                            </div>
 
                             <div class="form-group">
                                 <div class="float-right">
@@ -219,14 +217,14 @@
     <script>
 
         $(document).ready(function () {
-            $('#corpFiscalYearInput,#hstFiscalYearInput').datepicker({
+            $('#corpFiscalYearInput,#hstFiscalYearInput,#anniversaryDateInput').datepicker({
                 changeMonth: true,
                 changeYear: false,
                 showButtonPanel: true,
                 dateFormat: 'M-dd',
                 beforeShow: function (input, inst) {
                     setTimeout(function () {
-                        $('.ui-datepicker-year').hide(); 
+                        $('.ui-datepicker-year').hide();
                     }, 0);
                 }
             });

@@ -49,10 +49,22 @@ namespace AVStaffing.Models.ViewModels
 
         [Display(Name = "HST Number")]
         public string HSTNumber { get; set; }
+        [Display(Name = "Payroll")]
+        public bool IsPayroll { get; set; }
+        [Display(Name = "PD7A Reporting Period")]
+        public string PD7AReportingPeriod { get; set; }
         public List<CorporationViewModel> Corporations { get; set; } = new List<CorporationViewModel>();
+        public IEnumerable<SelectListItem> PD7AReportingPeriodOptions { get; set; }
+
         public IEnumerable<SelectListItem> AuthorizationOptions { get; set; }
         public OwnerViewModel()
         {
+            PD7AReportingPeriodOptions = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "Monthly", Text = "Monthly" },
+                new SelectListItem { Value = "Quarterly", Text = "Quarterly" },
+                new SelectListItem { Value = "Annually", Text = "Annually" }
+            };
             AuthorizationOptions = new List<SelectListItem>
             {
             new SelectListItem { Value = "Personal", Text = "Personal" },
@@ -86,17 +98,17 @@ namespace AVStaffing.Models.ViewModels
         public string HSTReportingPeriod { get; set; }
         [Display(Name = "HST Fiscal Year")]
         public string HSTFiscalYear { get; set; }
+
+        [Display(Name = "Anniversary Date")]
+        public string AnniversaryDate { get; set; }
         [Display(Name = "Payroll")]
         public bool IsPayroll { get; set; }
         [Display(Name = "PD7A Reporting Period")]
         public string PD7AReportingPeriod { get; set; }
-        [Display(Name = "Authorization")]
-        public string AuthorizationType { get; set; }
         [Display(Name = "Corporation Fiscal Year")]
         public string CorpFiscalYear { get; set; }
 
         public IEnumerable<SelectListItem> HSTReportingPeriodOptions { get; set; }
-        public IEnumerable<SelectListItem> AuthorizationOptions { get; set; }
 
         public CorporationViewModel()
         {
@@ -105,12 +117,6 @@ namespace AVStaffing.Models.ViewModels
                 new SelectListItem { Value = "Monthly", Text = "Monthly" },
                 new SelectListItem { Value = "Quarterly", Text = "Quarterly" },
                 new SelectListItem { Value = "Annually", Text = "Annually" }
-            };
-            AuthorizationOptions = new List<SelectListItem>
-            {
-                new SelectListItem { Value = "Personal", Text = "Personal" },
-                new SelectListItem { Value = "Business", Text = "Business" },
-                new SelectListItem { Value = "Both", Text = "Both" }
             };
         }
 

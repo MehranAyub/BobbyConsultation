@@ -121,11 +121,11 @@
 
                 <div class="card-body px-0">
                     <div class="row">
-                        <div class="col-xl-2"></div>
-                        <div class="col-xl-7 my-2">
+                        @*<div class="col-xl-2"></div>*@
+                        <div class="col-xl-12 my-2" style="padding: 40px; padding-top: 0px">
                             <div class="form-group row">
                                 <!-- FirstName Field -->
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     @Html.LabelFor(x => x.FirstName, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control form-control-lg form-control-solid" })
@@ -133,45 +133,42 @@
                                     </div>
                                 </div>
                                 <!-- MiddleName Field -->
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     @Html.LabelFor(x => x.MiddleName, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.MiddleName, new { @class = "form-control form-control-lg form-control-solid" })
                                         @Html.ValidationMessageFor(x => x.MiddleName, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <!-- LastName Field -->
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     @Html.LabelFor(x => x.LastName, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.LastName, new { @class = "form-control form-control-lg form-control-solid" })
                                         @Html.ValidationMessageFor(x => x.LastName, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="form-group row">
+
                                 <!-- Email Field -->
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     @Html.LabelFor(x => x.Email, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.Email, new { @class = "form-control form-control-lg form-control-solid" })
                                         @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <!-- Address Field -->
-                                <div class="col-lg-6">
-                                    @Html.LabelFor(x => x.Address, new { @class = "col-form-label text-lg-right text-left" })
+                                <!-- Phone Field -->
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.Phone, "Phone", new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
-                                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control form-control-lg form-control-solid" })
-                                        @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.Phone, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <!-- SIN Field -->
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     @Html.LabelFor(x => x.SIN, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.SIN, new { @class = "form-control form-control-lg form-control-solid" })
@@ -181,35 +178,36 @@
                             </div>
 
                             <div class="form-group row">
-                                <!-- Phone Field -->
-                                <div class="col-lg-6">
-                                    @Html.LabelFor(x => x.Phone, "Phone", new { @class = "col-form-label text-lg-right text-left" })
+                                <!-- Address Field -->
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(x => x.Address, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
-                                        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control form-control-lg form-control-solid" })
-                                        @Html.ValidationMessageFor(x => x.Phone, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(x => x.Address, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <!-- DateOfBirth Field -->
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     @Html.LabelFor(x => x.DateOfBirth, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control form-control-lg form-control-solid", type = "date" })
                                         @Html.ValidationMessageFor(x => x.DateOfBirth, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group row">
-                                <!-- IsPersonalHST Field -->
-                                <div class="col-lg-6">
+                                <div class="col-lg-4">
                                     @Html.LabelFor(x => x.AuthorizationType, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.DropDownListFor(x => x.AuthorizationType, new SelectList(Model.AuthorizationOptions, "Value", "Text"), new { @class = "form-control form-control-lg form-control-solid" })
                                         @Html.ValidationMessageFor(x => x.AuthorizationType, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
-                                    @Html.LabelFor(x => x.IsPersonalHST, new { @class = "col-form-label text-lg-right text-left" })
+                            </div>
+
+                            <div class="form-group row">
+
+                                <div class="col-lg-1" style="padding-right:0px">
+                                    @Html.LabelFor(x => x.IsPersonalHST, new { @class = "col-form-label text-left" })
                                     <div class="mt-2">
                                         @Html.CheckBoxFor(x => x.IsPersonalHST, new { @class = "box-size", id = "isPersonalHST" })
                                         @Html.ValidationMessageFor(x => x.IsPersonalHST, "", new { @class = "text-danger" })
@@ -217,13 +215,31 @@
                                 </div>
 
                                 <!-- HSTNumber Field (wrapped in its own div for easy targeting) -->
-                                <div class="col-lg-4" id="hstNumberContainer">
+                                <div class="col-lg-3" id="hstNumberContainer">
                                     @Html.LabelFor(x => x.HSTNumber, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.HSTNumber, new { @class = "form-control form-control-lg form-control-solid", id = "hstNumber" })
                                         @Html.ValidationMessageFor(x => x.HSTNumber, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
+
+                                <div class="col-lg-1" style="padding-right:0px">
+                                    @Html.LabelFor(x => x.IsPayroll, new { @class = "col-form-label text-left" })
+                                    <div class="mt-2">
+                                        @Html.CheckBoxFor(x => x.IsPayroll, new { @class = "box-size", id = "isClientPayroll" })
+                                        @Html.ValidationMessageFor(x => x.IsPayroll, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div id="ClientPayrollDependentFields" class="col-lg-3" style="display: none;">
+                                    @Html.LabelFor(x => x.PD7AReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.DropDownListFor(x => x.PD7AReportingPeriod, Model.PD7AReportingPeriodOptions, "Select Reporting Period", new { @class = "form-control form-control-lg form-control-solid", id = "ClientPD7AReportingPeriod" })
+                                        @Html.ValidationMessageFor(x => x.PD7AReportingPeriod, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
                             </div>
 
                             <div id="corporationInputs"></div>
@@ -241,31 +257,34 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var corporation in Model.Corporations)
+                                        @if (Model.Corporations != null && Model.Corporations.Any())
                                         {
-                                            <tr>
-                                                <td>@corporation.CorpName</td>
-                                                <td>@corporation.CorpKey</td>
-                                                <td>@corporation.Address</td>
-                                                <td>
-                                                    <span class="badge badge-success">Saved</span>
-                                                </td>
+                                            foreach (var corporation in Model.Corporations)
+                                            {
+                                                <tr>
+                                                    <td>@corporation.CorpName</td>
+                                                    <td>@corporation.CorpKey</td>
+                                                    <td>@corporation.Address</td>
+                                                    <td>
+                                                        <span class="badge badge-success">Saved</span>
+                                                    </td>
 
-                                                <td>
-                                                    <a style="cursor: pointer !important" href="#/" class="deleteSvedCorporation" data-id="@corporation.Id">
-                                                        <i class="fas fa-trash text-danger"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
+                                                    <td>
+                                                        <a style="cursor: pointer !important" href="#/" class="deleteSvedCorporation" data-id="@corporation.Id">
+                                                            <i class="fas fa-trash text-danger"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            }
                                         }
                                     </tbody>
                                 </table>
                             </div>
-                            <div>
+                            @*<div>
                                 <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#addNewCorporationModal">
                                     Add Corporation
                                 </button>
-                            </div>
+                            </div>*@
                             <div class="form-group">
                                 <div class="float-right">
                                     <button type="submit" class="btn btn-primary font-weight-bold btn-lg px-3 font-size-base">
@@ -278,18 +297,12 @@
                 </div>
             </div>
         }
-    </div>
-    <!-- Modal -->
-    <div class="modal fade " id="addNewCorporationModal" tabindex="-1" role="dialog" aria-labelledby="corporationModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div style="width: 100%; margin-top: 20px;">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="corporationModalLabel">Add Corporation</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
-                <div class="modal-body">
+                <div id="addNewCorporationModal" class="modal-body">
                     <form id="corporationForm">
                         <div class="row">
                             <div class="col-md-4">
@@ -325,14 +338,30 @@
                                 <label for="businessNumber">Business Number</label>
                                 <input type="text" class="form-control" id="businessNumber" name="BusinessNumber" required minlength="8" maxlength="8">
                             </div>
-                            <div class="form-group row col-12">
-                                <div class="col-4">
-                                    <label for="authorizationType">Authorization</label>
-                                    <select class="form-control" id="authorizationType" name="AuthorizationType">
-                                        <option value="Personal">Personal</option>
-                                        <option value="Business">Business</option>
-                                        <option value="Both">Both</option>
-                                    </select>
+                            <div class="form-group col-md-4">
+                                <label for="anniversaryDate">Anniversary Date</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="anniversaryDate" name="AnniversaryDate">
+                                    <div class="input-group-append anniversary-group">
+                                        <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group col-md-4">
+                                <div class="d-flex flex-column col-4">
+                                    <label for="isPayroll">Payroll</label>
+                                    <input type="checkbox" class="checkbox-size" id="isPayroll" style="margin-top:10px" name="IsPayroll">
+                                </div>
+                                <div id="PayrollDependentFields" class="row col-8" style="display: none; margin-left: 0px; padding-right: 0px">
+                                    <div style="padding-right:0px;width:100%">
+                                        <label for="pd7aReportingPeriod">PD7A Reporting Period</label>
+                                        <select class="form-control" id="pd7aReportingPeriod" name="PD7AReportingPeriod">
+                                            <option value="" disabled>Select a period</option>
+                                            <option value="Monthly">Monthly</option>
+                                            <option value="Quarterly">Quarterly</option>
+                                            <option value="Annually">Annually</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row form-group col-12">
@@ -363,27 +392,9 @@
 
                             </div>
 
-                            <div class="row form-group col-12">
-                                <div class="d-flex flex-column col-4">
-                                    <label for="isPayroll">Payroll</label>
-                                    <input type="checkbox" class="checkbox-size" id="isPayroll" name="IsPayroll">
-                                </div>
-                                <div id="PayrollDependentFields" class="row col-8" style="display: none; margin-left: 0px; padding-right: 0px">
-                                    <div class="col-md-6" style="padding-right:0px">
-                                        <label for="pd7aReportingPeriod">PD7A Reporting Period</label>
-                                        <select class="form-control" id="pd7aReportingPeriod" name="PD7AReportingPeriod">
-                                            <option value="" disabled>Select a period</option>
-                                            <option value="Monthly">Monthly</option>
-                                            <option value="Quarterly">Quarterly</option>
-                                            <option value="Annually">Annually</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </form>
-                    <hr/>
+                    <hr />
                     <div style="display:flex;align-items:center;justify-content:center;margin-bottom:20px">
                         <div class="search-box">
                             <input type="text" id="searchField" class="search-input" placeholder="Search...">
@@ -422,41 +433,28 @@
 
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div id="successMessage" style="display: none; color: green; margin-right:50px">
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-sm" id="clearButton">Clear</button>
                     <button type="submit" class="btn btn-primary btn-sm" id="saveCorporation">Save Corporation</button>
                 </div>
             </div>
         </div>
-    </div>
 
+    </div>
+  
     <!-- End Container -->
     @section Scripts{
         <script>
             $(document).ready(function () {
-                function positionDatePicker(input, inst) {
-                    var inputOffset = $(input).offset();
-                    var inputHeight = $(input).outerHeight();
-                    var datePickerWidth = inst.dpDiv.outerWidth();
-                    var windowWidth = $(window).width();
 
-                    var top =  150+inputHeight;
-                    var left = inputOffset.left;
-
-                    if (left + datePickerWidth > windowWidth) {
-                        left = windowWidth - datePickerWidth;
-                    }
-
-                    inst.dpDiv.css({ top: top +'px', left: left + 'px' });
-                }
-
-                $('#hstFiscalYear, #corpFiscalYear').datepicker({
+                $('#hstFiscalYear, #corpFiscalYear, #anniversaryDate ').datepicker({
                     changeMonth: true,
                     changeYear: false,
                     showButtonPanel: true,
                     dateFormat: 'M-dd',
                     beforeShow: function (input, inst) {
                         setTimeout(function () {
-                            positionDatePicker(input, inst);
                         }, 0);
                     }
                 });
@@ -466,7 +464,9 @@
                 $('.hst-group').click(function () {
                     $('#hstFiscalYear').datepicker('show');
                 });
-
+                $('.anniversary-group').click(function () {
+                    $('#anniversaryDate').datepicker('show');
+                });
             });
             function escapeHtml(unsafe) {
                 return unsafe.replace(/&/g, "&amp;")
@@ -503,14 +503,29 @@
                     BusinessNumber: "",
                     IsHSTRegistration: false,
                     HSTFiscalYear: null,
+                    AnniversaryDate: null,
                     HSTReportingPeriod: null,
                     IsPayroll: false,
                     PD7AReportingPeriod: null,
                     CorpFiscalYear: null
                 };
-                appendCorporation(corporation,'Existing');
-                $('#addNewCorporationModal').modal('hide');
+                appendCorporation(corporation, 'Existing');
+                var searchField = document.getElementById('searchField');
+                searchField.value='';
+                var tbody = document.querySelector("#existingCorporationsList tbody");
+                tbody.innerHTML = "";
+                var row = tbody.insertRow();
+                var cell = row.insertCell(0);
+                cell.textContent = "Corporation added to the List";
+                cell.setAttribute("colspan", "5");
+                cell.style.textAlign = "center";
+                var messageElement = document.getElementById('successMessage');
+                messageElement.style.display = 'block';
+                messageElement.textContent = 'Your Selected Corporation added to the List! You can see it in above List'; // Set the message text
 
+                setTimeout(function () {
+                    messageElement.style.display = 'none';
+                }, 4000); 
             }
 
 
@@ -532,11 +547,11 @@
                         else {
                             var tbody = document.querySelector("#existingCorporationsList tbody");
                             tbody.innerHTML = "";
-                            var row = tbody.insertRow(); 
-                            var cell = row.insertCell(0); 
-                            cell.textContent = "No data to show"; 
-                            cell.setAttribute("colspan", "5"); 
-                            cell.style.textAlign = "center"; 
+                            var row = tbody.insertRow();
+                            var cell = row.insertCell(0);
+                            cell.textContent = "No data to show";
+                            cell.setAttribute("colspan", "5");
+                            cell.style.textAlign = "center";
                         }
                     }, 1200);
                 });
@@ -587,6 +602,15 @@
             }
 
             $(document).ready(function () {
+                $("#ClientPD7AReportingPeriod option:first").attr("disabled", "disabled");
+                toggleClientPayrollDependentFields();
+
+                $('#clearButton').click(function () {
+                    var form = document.getElementById('corporationForm');
+                    form.reset();
+                    // If there are any other actions you need to take when clearing the form, add them here
+                });
+
                 $('#saveCorporation').click(function () {
                     var form = document.getElementById('corporationForm');
                     if (form.checkValidity() === false) {
@@ -605,14 +629,22 @@
                             BusinessNumber: $('#businessNumber').val(),
                             IsHSTRegistration: $('#isHSTRegistration').is(':checked'),
                             HSTFiscalYear: $('#hstFiscalYear').val(),
+                            AnniversaryDate: $('#anniversaryDate').val(),
                             HSTReportingPeriod: $('#hstReportingPeriod').val(),
                             IsPayroll: $('#isPayroll').is(':checked'),
                             PD7AReportingPeriod: $('#pd7aReportingPeriod').val(),
-                            AuthorizationType: $('#authorizationType').val()
                         };
                         appendCorporation(corporation,'New');
                         $('#addNewCorporationModal input').val('');
-                        $('#addNewCorporationModal').modal('hide');
+                        form.reset();
+                        var messageElement = document.getElementById('successMessage');
+                        messageElement.style.display = 'block'; // Make the message visible
+                        messageElement.textContent = 'Corporation have been added successfully! You can see it in above List'; // Set the message text
+
+                        // Optionally, hide the message after a few seconds
+                        setTimeout(function () {
+                            messageElement.style.display = 'none';
+                        }, 4000); 
                     }
 
                 });
@@ -671,7 +703,9 @@
                 $('#isPayroll').change(function () {
                     togglePayrollDependentFields();
                 });
-
+                $('#isClientPayroll').change(function () {
+                    toggleClientPayrollDependentFields();
+                });
                 function toggleHSTNumberField() {
                     if ($('#isPersonalHST').is(':checked')) {
                         $('#hstNumberContainer').show();
@@ -699,7 +733,14 @@
                         $('#pd7aReportingPeriod').val('');
                     }
                 }
-
+                function toggleClientPayrollDependentFields() {
+                    if ($('#isClientPayroll').is(':checked')) {
+                        $('#ClientPayrollDependentFields').show();
+                    } else {
+                        $('#ClientPayrollDependentFields').hide();
+                        $('#clientPD7AReportingPeriod').val('');
+                    }
+                }
 
             });
         </script>
