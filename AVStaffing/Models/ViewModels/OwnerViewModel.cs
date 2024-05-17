@@ -26,100 +26,117 @@ namespace AVStaffing.Models.ViewModels
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [EmailAddress]
+        [Display(Name = "Secondary Email")]
+        public string SecondaryEmail { get; set; }=string.Empty;
+
         [Display(Name = "Address")]
+        [MaxLength]
         public string Address { get; set; }
+
+        [Display(Name = "City/Town")]
+        public string City { get; set; }
+
+        [Display(Name = "Province")]
+        public string Province { get; set; }
+        [Display(Name = "Postal Code")]
+        public string PostalCode { get; set; }
 
         [Required]
         [StringLength(9, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 9)]
-        [Display(Name = "SIN")]
-        public string SIN { get; set; }
+        [Display(Name = "SIN Permanent")]
+        public string SINPermanent { get; set; }
 
         [Required]
-        [StringLength(10, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 10)]
+        [StringLength(9, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 9)]
+        [Display(Name = "SIN Temporary")]
+        public string SINTemporary { get; set; }
+
+        [Required]
+        [StringLength(12, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 12)]
         [Display(Name = "Phone")]
         public string Phone { get; set; }
 
         [Required]
         [Display(Name = "Birthday")]
         public DateTime DateOfBirth { get; set; }
-        [Display(Name = "Personal HST")]
-        public bool IsPersonalHST { get; set; }
-        [Display(Name = "Authorization")]
-        public string AuthorizationType { get; set; }
 
-        [Display(Name = "HST Number")]
+        [Display(Name = "Sole-Proprietor Authorization")]
+        public bool IsSoleProprietorAuthorization { get; set; }
+
+        [Display(Name = "Personal Authorization")]
+        public bool IsPersonalAuthorization { get; set; }
+        [Display(Name = "Sole-Proprietor HST")]
+        public bool IsSoleHST { get; set; }
+
+        [Display(Name = "Sole-Proprietor HST Number")]
         public string HSTNumber { get; set; }
-        [Display(Name = "Payroll")]
+
+        [Display(Name = "HST Access Code")]
+        public string HSTAccessCode { get; set; }
+        [Display(Name = "Sole-proprietor Payroll")]
         public bool IsPayroll { get; set; }
         [Display(Name = "PD7A Reporting Period")]
         public string PD7AReportingPeriod { get; set; }
-        public List<CorporationViewModel> Corporations { get; set; } = new List<CorporationViewModel>();
-        public IEnumerable<SelectListItem> PD7AReportingPeriodOptions { get; set; }
 
-        public IEnumerable<SelectListItem> AuthorizationOptions { get; set; }
-        public OwnerViewModel()
-        {
-            PD7AReportingPeriodOptions = new List<SelectListItem>
-            {
-                new SelectListItem { Value = "Monthly", Text = "Monthly" },
-                new SelectListItem { Value = "Quarterly", Text = "Quarterly" },
-                new SelectListItem { Value = "Annually", Text = "Annually" }
-            };
-            AuthorizationOptions = new List<SelectListItem>
-            {
-            new SelectListItem { Value = "Personal", Text = "Personal" },
-            new SelectListItem { Value = "Business", Text = "Business" },
-            new SelectListItem { Value = "Both", Text = "Both" }
-            };
-        }
+        [Display(Name = "Payroll Web Access Code")]
+        public string PayrollAccessCode { get; set; }
+
+        [Display(Name = "Assigned To")]
+        public string AssignedTo { get; set; }
+        public List<CorporationViewModel> Corporations { get; set; } = new List<CorporationViewModel>();
+        public IEnumerable<SelectListItem> Users { get; set; }
     }
     public class CorporationViewModel
     {
         public int Id { get; set; }
-        public bool IsCorporation { get; set; }
+        [Display(Name = "Corporation Authorization")]
+        public bool IsCorporationAuthorization { get; set; }
         [Required]
-        [Display(Name = "Corporation Name")]
+        [Display(Name = "Business Legal Name")]
         public string CorpName { get; set; }
         [Required]
-        [Display(Name = "Corporation Key")]
-        public string CorpKey { get; set; }
+        [Display(Name = "Federal Key")]
+        public string FederalKey { get; set; }
         [Required]
+        [Display(Name = "Provincial Key")]
+        public string ProvincialKey { get; set; }
+        [Required]
+        [Display(Name = "Business Address")]
         public string Address { get; set; }
+        [Required]
         [Display(Name = "Business Email")]
         public string BusinessEmail { get; set; }
         [Required]
         [StringLength(8, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 8)]
-        [Display(Name = "Business Number")]
+        [Display(Name = "CRA Business No")]
         public string BusinessNumber { get; set; }
+        [Required]
+        [Display(Name = "Corporation Fiscal Year")]
+        public string CorpFiscalYear { get; set; }
+        [Required]
+        [StringLength(12, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 12)]
+        [Display(Name = "Business Phone")]
+        public string BusinessPhone { get; set; }
+        [Display(Name = "City")]
+        public string City { get; set; }
+        [Display(Name = "Province")]
+        public string Province { get; set; }
+        [Display(Name = "Postal Code")]
+        public string PostalCode { get; set; }
         [Display(Name = "HST Registration")]
         public bool IsHSTRegistration { get; set; }
-
-        [Display(Name = "HST Reporting Period")]
-        public string HSTReportingPeriod { get; set; }
-        [Display(Name = "HST Fiscal Year")]
-        public string HSTFiscalYear { get; set; }
-
-        [Display(Name = "Anniversary Date")]
-        public string AnniversaryDate { get; set; }
+        [Display(Name = "HST Number")]
+        public string HSTNo { get; set; }
+        [Display(Name = "HST Access Code")]
+        public string HSTAccessCode { get; set; }
         [Display(Name = "Payroll")]
         public bool IsPayroll { get; set; }
         [Display(Name = "PD7A Reporting Period")]
         public string PD7AReportingPeriod { get; set; }
-        [Display(Name = "Corporation Fiscal Year")]
-        public string CorpFiscalYear { get; set; }
-
-        public IEnumerable<SelectListItem> HSTReportingPeriodOptions { get; set; }
-
-        public CorporationViewModel()
-        {
-            HSTReportingPeriodOptions = new List<SelectListItem>
-            {
-                new SelectListItem { Value = "Monthly", Text = "Monthly" },
-                new SelectListItem { Value = "Quarterly", Text = "Quarterly" },
-                new SelectListItem { Value = "Annually", Text = "Annually" }
-            };
-        }
-
+        [Display(Name = "Payroll Web Access Code")]
+        public string PayrollAccessCode { get; set; }
+        
     }
 
 

@@ -89,11 +89,11 @@
 
                 <div class="card-body px-0">
                     <div class="row">
-                        <div class="col-xl-2"></div>
-                        <div class="col-xl-7 my-2">
+                        @*<div class="col-xl-2"></div>*@
+                        <div class="col-xl-12 my-2" style="padding: 40px; padding-top: 0px">
                             <div class="form-group row">
                                 <!-- FirstName Field -->
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     @Html.LabelFor(x => x.CorpName, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.CorpName, new { @class = "form-control form-control-lg form-control-solid" })
@@ -101,14 +101,21 @@
                                     </div>
                                 </div>
                                 <!-- MiddleName Field -->
-                                <div class="col-lg-4">
-                                    @Html.LabelFor(x => x.CorpKey, new { @class = "col-form-label text-lg-right text-left" })
+                                <div class="col-lg-3">
+                                    @Html.LabelFor(x => x.FederalKey, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
-                                        @Html.TextBoxFor(x => x.CorpKey, new { @class = "form-control form-control-lg form-control-solid" })
-                                        @Html.ValidationMessageFor(x => x.CorpKey, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(x => x.FederalKey, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.FederalKey, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
+                                    @Html.LabelFor(x => x.ProvincialKey, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.TextBoxFor(x => x.ProvincialKey, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.ProvincialKey, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
                                     @Html.LabelFor(x => x.CorpFiscalYear, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.CorpFiscalYear, new { @class = "form-control form-control-lg form-control-solid", id = "corpFiscalYearInput" })
@@ -119,7 +126,7 @@
 
                             <div class="form-group row">
                                 <!-- LastName Field -->
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     @Html.LabelFor(x => x.BusinessNumber, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.BusinessNumber, new { @class = "form-control form-control-lg form-control-solid" })
@@ -127,75 +134,111 @@
                                     </div>
                                 </div>
                                 <!-- Email Field -->
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
                                     @Html.LabelFor(x => x.BusinessEmail, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.BusinessEmail, new { @class = "form-control form-control-lg form-control-solid" })
                                         @Html.ValidationMessageFor(x => x.BusinessEmail, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
+                                <div class="col-lg-3">
+                                    @Html.LabelFor(x => x.BusinessPhone, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.TextBoxFor(x => x.BusinessPhone, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.BusinessPhone, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    @Html.LabelFor(x => x.IsCorporationAuthorization, new { @class = "col-form-label text-left" })
+                                    <div class="mt-2">
+                                        @Html.CheckBoxFor(x => x.IsCorporationAuthorization, new { @class = "box-size", id = "IsCorporationAuthorization" })
+                                        @Html.ValidationMessageFor(x => x.IsCorporationAuthorization, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-3">
                                     @Html.LabelFor(x => x.Address, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.Address, new { @class = "form-control form-control-lg form-control-solid" })
                                         @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-lg-4">
-                                    @Html.LabelFor(x => x.AnniversaryDate, new { @class = "col-form-label text-lg-right text-left" })
+                                <div class="col-lg-3">
+                                    @Html.LabelFor(x => x.City, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
-                                        @Html.TextBoxFor(x => x.AnniversaryDate, new { @class = "form-control form-control-lg form-control-solid", id = "anniversaryDateInput" })
-                                        @Html.ValidationMessageFor(x => x.AnniversaryDate, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(x => x.City, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.City, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    @Html.LabelFor(x => x.IsPayroll, new { @class = "col-form-label text-lg-right text-left" })
+                                <div class="col-lg-3">
+                                    @Html.LabelFor(x => x.Province, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.TextBoxFor(x => x.Province, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.Province, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    @Html.LabelFor(x => x.PostalCode, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.TextBoxFor(x => x.PostalCode, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.PostalCode, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-3" style="padding-right:0px">
+                                    @Html.LabelFor(x => x.IsHSTRegistration, new { @class = "col-form-label text-left" })
+                                    <div class="mt-2">
+                                        @Html.CheckBoxFor(x => x.IsHSTRegistration, new { @class = "box-size", id = "IsHSTRegistration" })
+                                        @Html.ValidationMessageFor(x => x.IsHSTRegistration, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div id="hstDependentFields" class="row col-lg-6" style="display: none;margin:0px;padding:0">
+
+                                    <!-- HSTNumber Field (wrapped in its own div for easy targeting) -->
+                                    <div class="col-lg-6">
+                                        @Html.LabelFor(x => x.HSTNo, new { @class = "col-form-label text-lg-right text-left" })
+                                        <div>
+                                            @Html.TextBoxFor(x => x.HSTNo, new { @class = "form-control form-control-lg form-control-solid", id = "hstNumber" })
+                                            @Html.ValidationMessageFor(x => x.HSTNo, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        @Html.LabelFor(x => x.HSTAccessCode, new { @class = "col-form-label text-lg-right text-left" })
+                                        <div>
+                                            @Html.TextBoxFor(x => x.HSTAccessCode, new { @class = "form-control form-control-lg form-control-solid", id = "hstAccessCode" })
+                                            @Html.ValidationMessageFor(x => x.HSTAccessCode, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-3" style="padding-right:0px">
+                                    @Html.LabelFor(x => x.IsPayroll, new { @class = "col-form-label text-left" })
                                     <div class="mt-2">
                                         @Html.CheckBoxFor(x => x.IsPayroll, new { @class = "box-size", id = "isPayroll" })
                                         @Html.ValidationMessageFor(x => x.IsPayroll, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
 
-                                <div id="PayrollDependentFields" class="col-lg-4" style="display: none;">
-                                    @Html.LabelFor(x => x.PD7AReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
-                                    <div>
-                                        @Html.DropDownListFor(x => x.PD7AReportingPeriod, Model.HSTReportingPeriodOptions, "Select Reporting Period", new { @class = "form-control form-control-lg form-control-solid", id = "PD7AReportingPeriod" })
-                                        @Html.ValidationMessageFor(x => x.PD7AReportingPeriod, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-lg-4">
-                                    @Html.LabelFor(x => x.IsHSTRegistration, new { @class = "col-form-label text-lg-right text-left" })
-                                    <div class="mt-2">
-                                        @Html.CheckBoxFor(x => x.IsHSTRegistration, new { @class = "box-size", id = "isHSTRegistration" })
-                                        @Html.ValidationMessageFor(x => x.IsHSTRegistration, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div id="hstDependentFields" class="row col-lg-8" style="display: none;margin:0px;padding:0">
-
+                                <div id="PayrollDependentFields" class="row col-lg-6" style="display: none;margin:0px;padding:0">
                                     <div class="col-lg-6">
-                                        @Html.LabelFor(x => x.HSTReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
+                                        @Html.LabelFor(x => x.PD7AReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
                                         <div>
-                                            @Html.DropDownListFor(x => x.HSTReportingPeriod, new SelectList(Model.HSTReportingPeriodOptions, "Value", "Text"), "Select Reporting Period", new { @class = "form-control form-control-lg form-control-solid", id = "HSTReportingPeriod" })
-                                            @Html.ValidationMessageFor(x => x.HSTReportingPeriod, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.PD7AReportingPeriod, new { @class = "form-control form-control-lg form-control-solid", id = "pd7aReportingPeriodInput" })
+                                            @Html.ValidationMessageFor(x => x.PD7AReportingPeriod, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-
                                     <div class="col-lg-6">
-                                        @Html.LabelFor(x => x.HSTFiscalYear, new { @class = "col-form-label text-lg-right text-left" })
+                                        @Html.LabelFor(x => x.PayrollAccessCode, new { @class = "col-form-label text-lg-right text-left" })
                                         <div>
-                                            @Html.TextBoxFor(x => x.HSTFiscalYear, new { @class = "form-control form-control-lg form-control-solid", id = "hstFiscalYearInput" })
-                                            @Html.ValidationMessageFor(x => x.HSTFiscalYear, "", new { @class = "text-danger" })
+                                            @Html.TextBoxFor(x => x.PayrollAccessCode, new { @class = "form-control form-control-lg form-control-solid", id = "payrollAccessCode" })
+                                            @Html.ValidationMessageFor(x => x.PayrollAccessCode, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
 
                             <div class="form-group">
                                 <div class="float-right">
@@ -217,27 +260,23 @@
     <script>
 
         $(document).ready(function () {
-            $('#corpFiscalYearInput,#hstFiscalYearInput,#anniversaryDateInput').datepicker({
+            $('#corpFiscalYearInput,#pd7aReportingPeriodInput').datepicker({
                 changeMonth: true,
                 changeYear: false,
                 showButtonPanel: true,
-                dateFormat: 'M-dd',
+                dateFormat: 'MM-dd',
                 beforeShow: function (input, inst) {
                     setTimeout(function () {
                         $('.ui-datepicker-year').hide();
                     }, 0);
                 }
             });
-
-
-            $("#HSTReportingPeriod option:first").attr("disabled", "disabled");
-            $("#PD7AReportingPeriod option:first").attr("disabled", "disabled");
             toggleHSTDependentFields();
             togglePayrollDependentFields();
 
         });
 
-        $('#isHSTRegistration').change(function () {
+        $('#IsHSTRegistration').change(function () {
             toggleHSTDependentFields();
         });
         $('#isPayroll').change(function () {
@@ -245,13 +284,12 @@
         });
 
         function toggleHSTDependentFields() {
-            if ($('#isHSTRegistration').is(':checked')) {
+            if ($('#IsHSTRegistration').is(':checked')) {
                 $('#hstDependentFields').show();
             } else {
                 $('#hstDependentFields').hide();
-                $('#hstReportingPeriod').val('');
-                $('#hstFiscalYear').val('');
-
+                $('#hstNumber').val('');
+                $('#hstAccessCode').val('');
             }
         }
 
@@ -260,7 +298,8 @@
                 $('#PayrollDependentFields').show();
             } else {
                 $('#PayrollDependentFields').hide();
-                $('#pd7aReportingPeriod').val('');
+                $('#pd7aReportingPeriodInput').val('');
+                $('#payrollAccessCode').val('');
             }
         }
     </script>

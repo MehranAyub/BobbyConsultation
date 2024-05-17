@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using AVStaffing.Infrastructure;
@@ -12,6 +13,8 @@ using AVStaffing.Models.Constants;
 using AVStaffing.Models.Entities;
 using AVStaffing.Models.ViewModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.Owin.BuilderProperties;
+using static Humanizer.In;
 
 namespace AVStaffing.Controllers
 {
@@ -37,6 +40,11 @@ namespace AVStaffing.Controllers
         [Permission("Clients => Add/Edit Client")]
         public async Task<ActionResult> AddClient(int id = 0)
         {
+            var users = ApplicationUserManager.GetUsers().Select(u => new SelectListItem
+            {
+                Value = u.Id.ToString(),
+                Text = u.FirstName + u.LastName
+            }).ToList();
             if (id != 0)
             {
                 var owner = await DbContext.Owner.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
@@ -62,13 +70,15 @@ namespace AVStaffing.Controllers
                     {
                         userVm.Corporations.Add(MapToCorporationViewModel(n));
                     });
+                    userVm.Users = users;
                     return View(userVm);
                 }
 
             }
             return View(new OwnerViewModel
             {
-                DateOfBirth= DateTime.Today
+                DateOfBirth = DateTime.Today,
+                Users = users,
             });
         }
 
@@ -79,12 +89,19 @@ namespace AVStaffing.Controllers
             int userId = 0;
             if (!ClientValidations(userVm))
             {
-                if (userVm.Id == 0) {
+                var users = ApplicationUserManager.GetUsers().Select(u => new SelectListItem
+                {
+                    Value = u.Id.ToString(),
+                    Text = u.FirstName + u.LastName
+                }).ToList();
+                userVm.Users = users;
+                if (userVm.Id == 0)
+                {
                     userVm.Corporations = null;
                 }
                 else
                 {
-                    userVm.Corporations=userVm.Corporations.Where(n=>n.Id>0).ToList();
+                    userVm.Corporations = userVm.Corporations.Where(n => n.Id > 0).ToList();
                 }
                 Notify("Error", "Validation Error", "Please see the validations", isRedirectMessage: true);
                 return View(userVm);
@@ -137,14 +154,26 @@ namespace AVStaffing.Controllers
                             owner.FirstName = userVm.FirstName;
                             owner.MiddleName = userVm.MiddleName;
                             owner.LastName = userVm.LastName;
-                            owner.SIN = userVm.SIN;
+                            owner.SINPermanent = userVm.SINPermanent;
+                            owner.SINTemporary = userVm.SINTemporary;
                             owner.DateOfBirth = userVm.DateOfBirth;
                             owner.Address = userVm.Address;
+                            owner.City = userVm.City;
+                            owner.Province = userVm.Province;
+                            owner.PostalCode = userVm.PostalCode;
                             owner.Phone = userVm.Phone;
                             owner.Email = userVm.Email;
-                            owner.IsPersonalHST = userVm.IsPersonalHST;
+                            owner.SecondaryEmail = userVm.SecondaryEmail;
+                            owner.IsPersonalAuthorization = userVm.IsPersonalAuthorization;
+                            owner.IsSoleProprietorAuthorization = userVm.IsSoleProprietorAuthorization;
                             owner.HSTNumber = userVm.HSTNumber;
-                            owner.AuthorizationType = userVm.AuthorizationType;
+                            owner.HSTAccessCode = userVm.HSTAccessCode;
+                            owner.IsPayroll = userVm.IsPayroll;
+                            owner.PD7AReportingPeriod = DateTime.ParseExact(userVm.PD7AReportingPeriod ?? "January-01", "MMMM-dd", new CultureInfo("en-US"));
+                            owner.PayrollAccessCode = userVm.PayrollAccessCode;
+                            owner.AssignedTo = int.Parse(userVm.AssignedTo ?? "0");
+                            owner.IsSoleHST = userVm.IsSoleHST;
+
                             if (userVm.Corporations != null && userVm.Corporations.Count > 0)
                             {
                                 foreach (var corpVm in userVm.Corporations)
@@ -181,8 +210,14 @@ namespace AVStaffing.Controllers
                 catch
                 {
                     dbContextTransaction.Rollback();
+                    var users = ApplicationUserManager.GetUsers().Select(u => new SelectListItem
+                    {
+                        Value = u.Id.ToString(),
+                        Text = u.FirstName + u.LastName
+                    }).ToList();
+                    userVm.Users = users;
                     Notify("Error", "Exception", "Found an exception while saving owner", isRedirectMessage: true);
-                    if(userVm.Id>0)
+                    if (userVm.Id > 0)
                         userVm.Corporations = null;
                     return View(userVm);
                 }
@@ -194,22 +229,22 @@ namespace AVStaffing.Controllers
         [Permission("Clients => Add/Edit Corporation")]
         public async Task<ActionResult> AddCorporation(int id = 0)
         {
-            
+
             if (id != 0)
             {
                 var corporation = await DbContext.Corporation.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
                 if (corporation != null)
                 {
-                    var corp=MapToCorporationViewModel(corporation);
+                    var corp = MapToCorporationViewModel(corporation);
                     return View(corp);
                 }
 
             }
             return View(new CorporationViewModel
             {
-                HSTFiscalYear = "",
-                CorpFiscalYear=""
-            }) ;
+                PD7AReportingPeriod = "",
+                CorpFiscalYear = ""
+            });
         }
 
         [HttpPost]
@@ -221,48 +256,54 @@ namespace AVStaffing.Controllers
                 Notify("Error", "Validation Error", "Please see the validations", isRedirectMessage: true);
                 return View(corpVm);
             }
-                try
+            try
+            {
+                if (corpVm.Id == 0)
                 {
-                    if (corpVm.Id == 0)
+                    var corporation = MapToCorporation(corpVm);
+                    DbContext.Corporation.Add(corporation);
+                    await DbContext.SaveChangesAsync();
+                    Notify("Success", "Successfully Added", "Corporation Added Successfully", isRedirectMessage: true);
+                }
+
+
+                else
+                {
+                    var corp = await DbContext.Corporation.FirstOrDefaultAsync(x => x.Id == corpVm.Id);
+                    if (corp != null)
                     {
-                        var corporation = MapToCorporation(corpVm);
-                        DbContext.Corporation.Add(corporation);
+                        corp.IsCorporationAuthorization = corpVm.IsCorporationAuthorization;
+                        corp.CorpName = corpVm.CorpName;
+                        corp.FederalKey = corpVm.FederalKey;
+                        corp.ProvincialKey = corpVm.ProvincialKey;
+                        corp.Address = corpVm.Address;
+                        corp.BusinessEmail = corpVm.BusinessEmail;
+                        corp.BusinessNumber = corpVm.BusinessNumber;
+                        corp.BusinessPhone = corpVm.BusinessPhone;
+                        corp.CorpFiscalYear = DateTime.ParseExact(corpVm.CorpFiscalYear ?? "January-01", "MMMM-dd", new CultureInfo("en-US"));
+                        corp.IsHSTRegistration = corpVm.IsHSTRegistration;
+                        corp.HSTNo = corpVm.HSTNo;
+                        corp.HSTAccessCode = corpVm.HSTAccessCode;
+                        corp.IsPayroll = corpVm.IsPayroll;
+                        corp.PD7AReportingPeriod = DateTime.ParseExact(corpVm.PD7AReportingPeriod ?? "January-01", "MMMM-dd", new CultureInfo("en-US"));
+                        corp.PayrollAccessCode = corpVm.PayrollAccessCode;
+                        corp.City = corpVm.City;
+                        corp.Province = corpVm.Province;
+                        corp.PostalCode = corpVm.PostalCode;
                         await DbContext.SaveChangesAsync();
-                        Notify("Success", "Successfully Added", "Corporation Added Successfully", isRedirectMessage: true);
+                        Notify("Success", "Successfully Updated", "Corporation Updated Successfully", isRedirectMessage: true);
+
                     }
 
-
-                    else
-                    {
-                        var corp = await DbContext.Corporation.FirstOrDefaultAsync(x => x.Id == corpVm.Id);
-                        if (corp != null)
-                        {
-                            corp.CorpName = corpVm.CorpName;
-                            corp.CorpKey = corpVm.CorpKey;
-                            corp.CorpFiscalYear = DateTime.ParseExact(corpVm.CorpFiscalYear??"jan-01","MMM-dd",CultureInfo.CurrentCulture);
-                            corp.BusinessEmail = corpVm.BusinessEmail;
-                            corp.BusinessNumber = corpVm.BusinessNumber;
-                            corp.Address = corpVm.Address;
-                            corp.IsHSTRegistration = corpVm.IsHSTRegistration;
-                            corp.HSTReportingPeriod = corpVm.HSTReportingPeriod;
-                            corp.HSTFiscalYear = DateTime.ParseExact(corpVm.HSTFiscalYear ?? "jan-01", "MMM-dd", CultureInfo.CurrentCulture);
-                            corp.IsPayroll = corpVm.IsPayroll;
-                            corp.PD7AReportingPeriod = corpVm.PD7AReportingPeriod;
-                            corp.AnniversaryDate = DateTime.ParseExact(corpVm.AnniversaryDate ?? "jan-01", "MMM-dd", CultureInfo.CurrentCulture);
-                        await DbContext.SaveChangesAsync();
-                            Notify("Success", "Successfully Updated", "Client Updated Successfully", isRedirectMessage: true);
-
-                        }
-
-                    }
-                    return RedirectToAction("Corporations", "Client");
                 }
-                catch
-                {
-                    Notify("Error", "Exception", "Found an exception while saving owner", isRedirectMessage: true);
-                    return View(corpVm);
-                }
-            
+                return RedirectToAction("Corporations", "Client");
+            }
+            catch
+            {
+                Notify("Error", "Exception", "Found an exception while saving owner", isRedirectMessage: true);
+                return View(corpVm);
+            }
+
         }
 
 
@@ -287,16 +328,46 @@ namespace AVStaffing.Controllers
                 }
 
             }
-            if (ownerVm.IsPersonalHST)
+            if (ownerVm.IsSoleHST)
             {
-                if(ownerVm.HSTNumber=="" || ownerVm.HSTNumber ==null)
+
+                if (ownerVm.HSTNumber == "" || ownerVm.HSTNumber == null)
                 {
-                    ModelState.AddModelError("HSTNumber", errorMessage: "Enter HST Number");
+                    ModelState.AddModelError("HSTNumber", errorMessage: "Enter Sole-Proprietor HST Number");
                     isValid = false;
                 }
-                else if(ownerVm.HSTNumber.Length!=9)
+                else if (ownerVm.HSTNumber.Length != 9)
                 {
-                    ModelState.AddModelError("HSTNumber", errorMessage: "HST Number must be exactly 9 characters long");
+                    ModelState.AddModelError("HSTNumber", errorMessage: "Sole-Proprietor HST Number must be exactly 9 characters long");
+                    isValid = false;
+                }
+
+                if (ownerVm.HSTAccessCode == "" || ownerVm.HSTAccessCode == null)
+                {
+                    ModelState.AddModelError("HSTAccessCode", errorMessage: "Enter HST Access Code");
+                    isValid = false;
+                }
+                else if (ownerVm.HSTAccessCode.Length != 4)
+                {
+                    ModelState.AddModelError("HSTAccessCode", errorMessage: "HST Access Code must be exactly 4 characters long");
+                    isValid = false;
+                }
+            }
+            if (ownerVm.IsPayroll)
+            {
+                if (ownerVm.PD7AReportingPeriod == null || ownerVm.PD7AReportingPeriod == "")
+                {
+                    ModelState.AddModelError("PD7AReportingPeriod", errorMessage: "Enter PD7A Reporting Period");
+                    isValid = false;
+                }
+                if (ownerVm.PayrollAccessCode == "" || ownerVm.PayrollAccessCode == null)
+                {
+                    ModelState.AddModelError("PayrollAccessCode", errorMessage: "Enter Payroll Access Code");
+                    isValid = false;
+                }
+                else if (ownerVm.PayrollAccessCode.Length != 10)
+                {
+                    ModelState.AddModelError("PayrollAccessCode", errorMessage: "HST Access Code must be exactly 10 characters long");
                     isValid = false;
                 }
             }
@@ -326,14 +397,42 @@ namespace AVStaffing.Controllers
             }
             if (corpVm.IsHSTRegistration)
             {
-                if (corpVm.HSTFiscalYear==null|| corpVm.HSTFiscalYear == "")
+                if (corpVm.HSTNo == null || corpVm.HSTNo == "")
                 {
-                    ModelState.AddModelError("HSTFiscalYear", errorMessage: "Enter HST Fiscal Year");
+                    ModelState.AddModelError("HSTNo", errorMessage: "Enter HST Number");
                     isValid = false;
                 }
-                if (corpVm.HSTReportingPeriod == null||corpVm.HSTReportingPeriod=="")
+                else if (corpVm.HSTNo.Length != 9)
                 {
-                    ModelState.AddModelError("HSTReportingPeriod", errorMessage: "Select HST Reporting Period");
+                    ModelState.AddModelError("HSTNo", errorMessage: "HST Number must be exactly 9 characters long");
+                    isValid = false;
+                }
+                if (corpVm.HSTAccessCode == "" || corpVm.HSTAccessCode == null)
+                {
+                    ModelState.AddModelError("HSTAccessCode", errorMessage: "Enter HST Access Code");
+                    isValid = false;
+                }
+                else if (corpVm.HSTAccessCode.Length != 4)
+                {
+                    ModelState.AddModelError("HSTAccessCode", errorMessage: "HST Access Code must be exactly 4 characters long");
+                    isValid = false;
+                }
+            }
+            if (corpVm.IsPayroll)
+            {
+                if (corpVm.PD7AReportingPeriod == null || corpVm.PD7AReportingPeriod == "")
+                {
+                    ModelState.AddModelError("PD7AReportingPeriod", errorMessage: "Enter PD7A Reporting Period");
+                    isValid = false;
+                }
+                if (corpVm.PayrollAccessCode == "" || corpVm.PayrollAccessCode == null)
+                {
+                    ModelState.AddModelError("PayrollAccessCode", errorMessage: "Enter Payroll Access Code");
+                    isValid = false;
+                }
+                else if (corpVm.PayrollAccessCode.Length != 10)
+                {
+                    ModelState.AddModelError("PayrollAccessCode", errorMessage: "HST Access Code must be exactly 10 characters long");
                     isValid = false;
                 }
             }
@@ -381,8 +480,8 @@ namespace AVStaffing.Controllers
         }
         public async Task<ActionResult> SearchCorporations(string query)
         {
-            var corps = await DbContext.Corporation.AsNoTracking().Where(n => n.CorpName.Contains(query) || n.CorpKey.StartsWith(query)).Take(10).ToListAsync();
-            return Json(corps,JsonRequestBehavior.AllowGet);
+            var corps = await DbContext.Corporation.AsNoTracking().Where(n => n.CorpName.Contains(query) || n.ProvincialKey.StartsWith(query) || n.FederalKey.StartsWith(query)).Take(10).ToListAsync();
+            return Json(corps, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)
@@ -393,26 +492,33 @@ namespace AVStaffing.Controllers
 
         private OwnerViewModel MapOwnerToOwnerViewModel(Owner owner)
         {
-
             var viewModel = new OwnerViewModel
             {
                 Id = owner.Id,
                 FirstName = owner.FirstName,
                 MiddleName = owner.MiddleName,
                 LastName = owner.LastName,
-                SIN = owner.SIN,
+                SINPermanent = owner.SINPermanent,
+                SINTemporary = owner.SINTemporary,
                 DateOfBirth = owner.DateOfBirth,
                 Address = owner.Address,
+                City = owner.City,
+                Province = owner.Province,
+                PostalCode = owner.PostalCode,
                 Phone = owner.Phone,
                 Email = owner.Email,
-                IsPersonalHST = owner.IsPersonalHST,
+                SecondaryEmail = owner.SecondaryEmail,
+                IsPersonalAuthorization = owner.IsPersonalAuthorization,
+                IsSoleHST = owner.IsSoleHST,
                 HSTNumber = owner.HSTNumber,
+                HSTAccessCode = owner.HSTAccessCode,
                 IsPayroll = owner.IsPayroll,
-                PD7AReportingPeriod = owner.PD7AReportingPeriod,
-                AuthorizationType = owner.AuthorizationType,
+                PD7AReportingPeriod = owner.PD7AReportingPeriod?.ToString("MMMM-dd", new CultureInfo("en-US")),
+                PayrollAccessCode = owner.PayrollAccessCode,
+                AssignedTo = owner.AssignedTo.ToString(),
+                IsSoleProprietorAuthorization = owner.IsSoleProprietorAuthorization,
 
             };
-
             return viewModel;
         }
 
@@ -424,16 +530,26 @@ namespace AVStaffing.Controllers
                 FirstName = viewModel.FirstName,
                 MiddleName = viewModel.MiddleName,
                 LastName = viewModel.LastName,
-                SIN = viewModel.SIN,
+                SINPermanent = viewModel.SINPermanent,
+                SINTemporary = viewModel.SINTemporary,
                 DateOfBirth = viewModel.DateOfBirth,
                 Address = viewModel.Address,
+                City = viewModel.City,
+                Province = viewModel.Province,
+                PostalCode = viewModel.PostalCode,
                 Phone = viewModel.Phone,
                 Email = viewModel.Email,
-                IsPersonalHST = viewModel.IsPersonalHST,
+                SecondaryEmail = viewModel.SecondaryEmail,
+                IsPersonalAuthorization = viewModel.IsPersonalAuthorization,
+                IsSoleHST = viewModel.IsSoleHST,
                 HSTNumber = viewModel.HSTNumber,
-                IsPayroll= viewModel.IsPayroll,
-                PD7AReportingPeriod = viewModel.PD7AReportingPeriod,
-                AuthorizationType = viewModel.AuthorizationType,
+                HSTAccessCode = viewModel.HSTAccessCode,
+                IsPayroll = viewModel.IsPayroll,
+                PD7AReportingPeriod = DateTime.ParseExact(viewModel.PD7AReportingPeriod ?? "January-01", "MMMM-dd", new CultureInfo("en-US")),
+                PayrollAccessCode = viewModel.PayrollAccessCode,
+                AssignedTo = int.Parse(viewModel.AssignedTo ?? "0"),
+                IsSoleProprietorAuthorization = viewModel.IsSoleProprietorAuthorization,
+
             };
 
             return owner;
@@ -445,19 +561,24 @@ namespace AVStaffing.Controllers
             var corporation = new Corporation
             {
                 Id = viewModel.Id,
-                IsCorporation = viewModel.IsCorporation,
+                IsCorporationAuthorization = viewModel.IsCorporationAuthorization,
                 CorpName = viewModel.CorpName,
-                CorpKey = viewModel.CorpKey,
+                FederalKey = viewModel.FederalKey,
+                ProvincialKey = viewModel.ProvincialKey,
                 Address = viewModel.Address,
                 BusinessEmail = viewModel.BusinessEmail,
                 BusinessNumber = viewModel.BusinessNumber,
+                BusinessPhone = viewModel.BusinessPhone,
+                CorpFiscalYear = DateTime.ParseExact(viewModel.CorpFiscalYear ?? "January-01", "MMMM-dd", new CultureInfo("en-US")),
                 IsHSTRegistration = viewModel.IsHSTRegistration,
-                HSTFiscalYear = DateTime.ParseExact(viewModel.HSTFiscalYear??"jan-01", "MMM-dd", CultureInfo.CurrentCulture),
-                HSTReportingPeriod = viewModel.HSTReportingPeriod,
+                HSTNo = viewModel.HSTNo,
+                HSTAccessCode = viewModel.HSTAccessCode,
                 IsPayroll = viewModel.IsPayroll,
-                PD7AReportingPeriod = viewModel.PD7AReportingPeriod,
-                CorpFiscalYear = DateTime.ParseExact(viewModel.CorpFiscalYear ?? "jan-01", "MMM-dd", CultureInfo.CurrentCulture),
-                AnniversaryDate = DateTime.ParseExact(viewModel.AnniversaryDate ?? "jan-01", "MMM-dd", CultureInfo.CurrentCulture),
+                PD7AReportingPeriod = DateTime.ParseExact(viewModel.PD7AReportingPeriod ?? "January-01", "MMMM-dd", new CultureInfo("en-US")),
+                PayrollAccessCode = viewModel.PayrollAccessCode,
+                City = viewModel.City,
+                Province = viewModel.Province,
+                PostalCode = viewModel.PostalCode,
             };
 
             return corporation;
@@ -470,19 +591,24 @@ namespace AVStaffing.Controllers
             var viewModel = new CorporationViewModel
             {
                 Id = corporation.Id,
-                IsCorporation = corporation.IsCorporation,
+                IsCorporationAuthorization = corporation.IsCorporationAuthorization,
                 CorpName = corporation.CorpName,
-                CorpKey = corporation.CorpKey,
+                FederalKey = corporation.FederalKey,
+                ProvincialKey = corporation.ProvincialKey,
                 Address = corporation.Address,
                 BusinessEmail = corporation.BusinessEmail,
                 BusinessNumber = corporation.BusinessNumber,
+                BusinessPhone = corporation.BusinessPhone,
+                CorpFiscalYear = corporation.CorpFiscalYear?.ToString("MMMM-dd", new CultureInfo("en-US")),
                 IsHSTRegistration = corporation.IsHSTRegistration,
-                HSTFiscalYear = corporation.HSTFiscalYear.ToString("MMM-dd"),
-                HSTReportingPeriod = corporation.HSTReportingPeriod,
+                HSTNo = corporation.HSTNo,
+                HSTAccessCode = corporation.HSTAccessCode,
                 IsPayroll = corporation.IsPayroll,
-                PD7AReportingPeriod = corporation.PD7AReportingPeriod,
-                CorpFiscalYear = corporation.CorpFiscalYear.ToString("MMM-dd"),
-                AnniversaryDate = corporation.AnniversaryDate?.ToString("MMM-dd"),
+                PD7AReportingPeriod = corporation.PD7AReportingPeriod?.ToString("MMMM-dd", new CultureInfo("en-US")),
+                PayrollAccessCode = corporation.PayrollAccessCode,
+                City = corporation.City,
+                Province = corporation.Province,
+                PostalCode = corporation.PostalCode,
             };
 
             return viewModel;

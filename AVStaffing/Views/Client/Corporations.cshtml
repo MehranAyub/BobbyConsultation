@@ -59,8 +59,9 @@
 
                     <thead>
                         <tr>
-                            <th>Corporation Name</th>
-                            <th>Key</th>
+                            <th>Business Name</th>
+                            <th>Provincial Key</th>
+                            <th>Federal Key</th>
                             <th>Business Number</th>
                             <th>Email</th>
                             <th>Action</th>
@@ -71,19 +72,20 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@item.CorpName</td>
-                                    <td>@item.CorpKey</td>
+                                    <td><a style="cursor: pointer !important;text-decoration:underline" href="@Url.Action("AddCorporation", "Client", new {id = item.Id})" id=@item.Id>@item.CorpName</a></td>
+                                    <td>@item.ProvincialKey</td>
+                                    <td>@item.FederalKey</td>
                                     <td>@item.BusinessNumber</td>
                                     <td>@item.BusinessEmail</td>
 
                                     <td>
-                                            <a style="cursor: pointer !important" href="@Url.Action("AddCorporation", "Client", new {id = item.Id})" id=@item.Id>
-                                                <i class="fas fa-pencil-alt text-primary"></i>
-                                            </a>
-                                            <a style="cursor: pointer !important" href="#/" class="deleteCorp" data-id="@item.Id">
-                                                <i class="fas fa-trash text-danger"></i>
-                                            </a>
-                                        
+                                        <a style="cursor: pointer !important" href="@Url.Action("AddCorporation", "Client", new {id = item.Id})" id=@item.Id>
+                                            <i class="fas fa-pencil-alt text-primary"></i>
+                                        </a>
+                                        <a style="cursor: pointer !important" href="#/" class="deleteCorp" data-id="@item.Id">
+                                            <i class="fas fa-trash text-danger"></i>
+                                        </a>
+
                                     </td>
                                 </tr>
                             }
