@@ -11,13 +11,13 @@ namespace AVStaffing.Models.ViewModels
     public class OwnerViewModel
     {
         public int Id { get; set; }
-        [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
 
+        [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
@@ -28,17 +28,22 @@ namespace AVStaffing.Models.ViewModels
 
         [EmailAddress]
         [Display(Name = "Secondary Email")]
-        public string SecondaryEmail { get; set; }=string.Empty;
+        public string SecondaryEmail { get; set; } = string.Empty;
 
+        [Required]
         [Display(Name = "Address")]
         [MaxLength]
         public string Address { get; set; }
 
+        [Required]
         [Display(Name = "City/Town")]
         public string City { get; set; }
 
+        [Required]
         [Display(Name = "Province")]
         public string Province { get; set; }
+
+        [Required]
         [Display(Name = "Postal Code")]
         public string PostalCode { get; set; }
 
@@ -47,13 +52,11 @@ namespace AVStaffing.Models.ViewModels
         [Display(Name = "SIN Permanent")]
         public string SINPermanent { get; set; }
 
-        [Required]
         [StringLength(9, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 9)]
         [Display(Name = "SIN Temporary")]
         public string SINTemporary { get; set; }
 
         [Required]
-        [StringLength(12, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 12)]
         [Display(Name = "Phone")]
         public string Phone { get; set; }
 
@@ -74,6 +77,10 @@ namespace AVStaffing.Models.ViewModels
 
         [Display(Name = "HST Access Code")]
         public string HSTAccessCode { get; set; }
+
+        [Display(Name = "Reporting Period")]
+        public string HSTReportingPeriod { get; set; }
+
         [Display(Name = "Sole-proprietor Payroll")]
         public bool IsPayroll { get; set; }
         [Display(Name = "PD7A Reporting Period")]
@@ -84,8 +91,18 @@ namespace AVStaffing.Models.ViewModels
 
         [Display(Name = "Assigned To")]
         public string AssignedTo { get; set; }
+        public IEnumerable<SelectListItem> ReportingPeriodOptions { get; set; }
         public List<CorporationViewModel> Corporations { get; set; } = new List<CorporationViewModel>();
         public IEnumerable<SelectListItem> Users { get; set; }
+        public OwnerViewModel()
+        {
+            ReportingPeriodOptions = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "Monthly", Text = "Monthly" },
+                new SelectListItem { Value = "Quarterly", Text = "Quarterly" },
+                new SelectListItem { Value = "Annually", Text = "Annually" }
+            };
+        }
     }
     public class CorporationViewModel
     {
@@ -95,10 +112,8 @@ namespace AVStaffing.Models.ViewModels
         [Required]
         [Display(Name = "Business Legal Name")]
         public string CorpName { get; set; }
-        [Required]
         [Display(Name = "Federal Key")]
         public string FederalKey { get; set; }
-        [Required]
         [Display(Name = "Provincial Key")]
         public string ProvincialKey { get; set; }
         [Required]
@@ -107,27 +122,30 @@ namespace AVStaffing.Models.ViewModels
         [Required]
         [Display(Name = "Business Email")]
         public string BusinessEmail { get; set; }
-        [Required]
-        [StringLength(8, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 8)]
+        [StringLength(9, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 9)]
         [Display(Name = "CRA Business No")]
         public string BusinessNumber { get; set; }
         [Required]
         [Display(Name = "Corporation Fiscal Year")]
         public string CorpFiscalYear { get; set; }
         [Required]
-        [StringLength(12, ErrorMessage = "The {0} must be exactly {1} characters long.", MinimumLength = 12)]
         [Display(Name = "Business Phone")]
         public string BusinessPhone { get; set; }
+        [Required]
         [Display(Name = "City")]
         public string City { get; set; }
+        [Required]
         [Display(Name = "Province")]
         public string Province { get; set; }
+        [Required]
         [Display(Name = "Postal Code")]
         public string PostalCode { get; set; }
         [Display(Name = "HST Registration")]
         public bool IsHSTRegistration { get; set; }
-        [Display(Name = "HST Number")]
-        public string HSTNo { get; set; }
+        [Display(Name = "Reporting Period")]
+        public string HSTReportingPeriod { get; set; }
+        [Display(Name = "Fiscal Year End")]
+        public string HSTFiscalYearEnd { get; set; }
         [Display(Name = "HST Access Code")]
         public string HSTAccessCode { get; set; }
         [Display(Name = "Payroll")]
@@ -136,7 +154,17 @@ namespace AVStaffing.Models.ViewModels
         public string PD7AReportingPeriod { get; set; }
         [Display(Name = "Payroll Web Access Code")]
         public string PayrollAccessCode { get; set; }
-        
+        public IEnumerable<SelectListItem> ReportingPeriodOptions { get; set; }
+        public CorporationViewModel()
+        {
+            ReportingPeriodOptions = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "Monthly", Text = "Monthly" },
+                new SelectListItem { Value = "Quarterly", Text = "Quarterly" },
+                new SelectListItem { Value = "Annually", Text = "Annually" }
+            };
+        }
+
     }
 
 

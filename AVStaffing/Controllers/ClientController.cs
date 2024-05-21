@@ -168,8 +168,9 @@ namespace AVStaffing.Controllers
                             owner.IsSoleProprietorAuthorization = userVm.IsSoleProprietorAuthorization;
                             owner.HSTNumber = userVm.HSTNumber;
                             owner.HSTAccessCode = userVm.HSTAccessCode;
+                            owner.HSTReportingPeriod = userVm.IsSoleHST? userVm.HSTReportingPeriod:null;
                             owner.IsPayroll = userVm.IsPayroll;
-                            owner.PD7AReportingPeriod = DateTime.ParseExact(userVm.PD7AReportingPeriod ?? "January-01", "MMMM-dd", new CultureInfo("en-US"));
+                            owner.PD7AReportingPeriod =owner.IsPayroll? userVm.PD7AReportingPeriod:null;
                             owner.PayrollAccessCode = userVm.PayrollAccessCode;
                             owner.AssignedTo = int.Parse(userVm.AssignedTo ?? "0");
                             owner.IsSoleHST = userVm.IsSoleHST;
@@ -282,11 +283,12 @@ namespace AVStaffing.Controllers
                         corp.BusinessPhone = corpVm.BusinessPhone;
                         corp.CorpFiscalYear = DateTime.ParseExact(corpVm.CorpFiscalYear ?? "January-01", "MMMM-dd", new CultureInfo("en-US"));
                         corp.IsHSTRegistration = corpVm.IsHSTRegistration;
-                        corp.HSTNo = corpVm.HSTNo;
+                        corp.HSTFiscalYearEnd = DateTime.ParseExact(corpVm.HSTFiscalYearEnd ?? "January-01", "MMMM-dd", new CultureInfo("en-US"));
+                        corp.HSTReportingPeriod= corpVm.IsHSTRegistration? corpVm.HSTReportingPeriod:null;
                         corp.HSTAccessCode = corpVm.HSTAccessCode;
                         corp.IsPayroll = corpVm.IsPayroll;
-                        corp.PD7AReportingPeriod = DateTime.ParseExact(corpVm.PD7AReportingPeriod ?? "January-01", "MMMM-dd", new CultureInfo("en-US"));
-                        corp.PayrollAccessCode = corpVm.PayrollAccessCode;
+                        corp.PD7AReportingPeriod = corpVm.IsPayroll? corpVm.PD7AReportingPeriod:null;
+                        corp.PayrollAccessCode = corpVm.IsPayroll? corpVm.PayrollAccessCode:null;
                         corp.City = corpVm.City;
                         corp.Province = corpVm.Province;
                         corp.PostalCode = corpVm.PostalCode;
@@ -336,40 +338,12 @@ namespace AVStaffing.Controllers
                     ModelState.AddModelError("HSTNumber", errorMessage: "Enter Sole-Proprietor HST Number");
                     isValid = false;
                 }
-                else if (ownerVm.HSTNumber.Length != 9)
+                else if (ownerVm.HSTNumber.Length != 15)
                 {
-                    ModelState.AddModelError("HSTNumber", errorMessage: "Sole-Proprietor HST Number must be exactly 9 characters long");
+                    ModelState.AddModelError("HSTNumber", errorMessage: "Sole-Proprietor HST Number must be exactly 15 characters long");
                     isValid = false;
                 }
 
-                if (ownerVm.HSTAccessCode == "" || ownerVm.HSTAccessCode == null)
-                {
-                    ModelState.AddModelError("HSTAccessCode", errorMessage: "Enter HST Access Code");
-                    isValid = false;
-                }
-                else if (ownerVm.HSTAccessCode.Length != 4)
-                {
-                    ModelState.AddModelError("HSTAccessCode", errorMessage: "HST Access Code must be exactly 4 characters long");
-                    isValid = false;
-                }
-            }
-            if (ownerVm.IsPayroll)
-            {
-                if (ownerVm.PD7AReportingPeriod == null || ownerVm.PD7AReportingPeriod == "")
-                {
-                    ModelState.AddModelError("PD7AReportingPeriod", errorMessage: "Enter PD7A Reporting Period");
-                    isValid = false;
-                }
-                if (ownerVm.PayrollAccessCode == "" || ownerVm.PayrollAccessCode == null)
-                {
-                    ModelState.AddModelError("PayrollAccessCode", errorMessage: "Enter Payroll Access Code");
-                    isValid = false;
-                }
-                else if (ownerVm.PayrollAccessCode.Length != 10)
-                {
-                    ModelState.AddModelError("PayrollAccessCode", errorMessage: "HST Access Code must be exactly 10 characters long");
-                    isValid = false;
-                }
             }
             return isValid;
         }
@@ -395,47 +369,7 @@ namespace AVStaffing.Controllers
                 }
 
             }
-            if (corpVm.IsHSTRegistration)
-            {
-                if (corpVm.HSTNo == null || corpVm.HSTNo == "")
-                {
-                    ModelState.AddModelError("HSTNo", errorMessage: "Enter HST Number");
-                    isValid = false;
-                }
-                else if (corpVm.HSTNo.Length != 9)
-                {
-                    ModelState.AddModelError("HSTNo", errorMessage: "HST Number must be exactly 9 characters long");
-                    isValid = false;
-                }
-                if (corpVm.HSTAccessCode == "" || corpVm.HSTAccessCode == null)
-                {
-                    ModelState.AddModelError("HSTAccessCode", errorMessage: "Enter HST Access Code");
-                    isValid = false;
-                }
-                else if (corpVm.HSTAccessCode.Length != 4)
-                {
-                    ModelState.AddModelError("HSTAccessCode", errorMessage: "HST Access Code must be exactly 4 characters long");
-                    isValid = false;
-                }
-            }
-            if (corpVm.IsPayroll)
-            {
-                if (corpVm.PD7AReportingPeriod == null || corpVm.PD7AReportingPeriod == "")
-                {
-                    ModelState.AddModelError("PD7AReportingPeriod", errorMessage: "Enter PD7A Reporting Period");
-                    isValid = false;
-                }
-                if (corpVm.PayrollAccessCode == "" || corpVm.PayrollAccessCode == null)
-                {
-                    ModelState.AddModelError("PayrollAccessCode", errorMessage: "Enter Payroll Access Code");
-                    isValid = false;
-                }
-                else if (corpVm.PayrollAccessCode.Length != 10)
-                {
-                    ModelState.AddModelError("PayrollAccessCode", errorMessage: "HST Access Code must be exactly 10 characters long");
-                    isValid = false;
-                }
-            }
+           
             return isValid;
         }
 
@@ -512,8 +446,9 @@ namespace AVStaffing.Controllers
                 IsSoleHST = owner.IsSoleHST,
                 HSTNumber = owner.HSTNumber,
                 HSTAccessCode = owner.HSTAccessCode,
+                HSTReportingPeriod = owner.HSTReportingPeriod,
                 IsPayroll = owner.IsPayroll,
-                PD7AReportingPeriod = owner.PD7AReportingPeriod?.ToString("MMMM-dd", new CultureInfo("en-US")),
+                PD7AReportingPeriod = owner.PD7AReportingPeriod,
                 PayrollAccessCode = owner.PayrollAccessCode,
                 AssignedTo = owner.AssignedTo.ToString(),
                 IsSoleProprietorAuthorization = owner.IsSoleProprietorAuthorization,
@@ -544,8 +479,9 @@ namespace AVStaffing.Controllers
                 IsSoleHST = viewModel.IsSoleHST,
                 HSTNumber = viewModel.HSTNumber,
                 HSTAccessCode = viewModel.HSTAccessCode,
+                HSTReportingPeriod = viewModel.IsSoleHST? viewModel.HSTReportingPeriod:null,
                 IsPayroll = viewModel.IsPayroll,
-                PD7AReportingPeriod = DateTime.ParseExact(viewModel.PD7AReportingPeriod ?? "January-01", "MMMM-dd", new CultureInfo("en-US")),
+                PD7AReportingPeriod = viewModel.IsPayroll? viewModel.PD7AReportingPeriod:null,
                 PayrollAccessCode = viewModel.PayrollAccessCode,
                 AssignedTo = int.Parse(viewModel.AssignedTo ?? "0"),
                 IsSoleProprietorAuthorization = viewModel.IsSoleProprietorAuthorization,
@@ -571,11 +507,12 @@ namespace AVStaffing.Controllers
                 BusinessPhone = viewModel.BusinessPhone,
                 CorpFiscalYear = DateTime.ParseExact(viewModel.CorpFiscalYear ?? "January-01", "MMMM-dd", new CultureInfo("en-US")),
                 IsHSTRegistration = viewModel.IsHSTRegistration,
-                HSTNo = viewModel.HSTNo,
+                HSTReportingPeriod =viewModel.IsHSTRegistration? viewModel.HSTReportingPeriod:null,
+                HSTFiscalYearEnd = DateTime.ParseExact(viewModel.HSTFiscalYearEnd ?? "January-01", "MMMM-dd", new CultureInfo("en-US")),
                 HSTAccessCode = viewModel.HSTAccessCode,
                 IsPayroll = viewModel.IsPayroll,
-                PD7AReportingPeriod = DateTime.ParseExact(viewModel.PD7AReportingPeriod ?? "January-01", "MMMM-dd", new CultureInfo("en-US")),
-                PayrollAccessCode = viewModel.PayrollAccessCode,
+                PD7AReportingPeriod = viewModel.IsPayroll? viewModel.PD7AReportingPeriod:null,
+                PayrollAccessCode = viewModel.IsPayroll ? viewModel.PayrollAccessCode:null,
                 City = viewModel.City,
                 Province = viewModel.Province,
                 PostalCode = viewModel.PostalCode,
@@ -601,10 +538,11 @@ namespace AVStaffing.Controllers
                 BusinessPhone = corporation.BusinessPhone,
                 CorpFiscalYear = corporation.CorpFiscalYear?.ToString("MMMM-dd", new CultureInfo("en-US")),
                 IsHSTRegistration = corporation.IsHSTRegistration,
-                HSTNo = corporation.HSTNo,
+                HSTReportingPeriod = corporation.HSTReportingPeriod,
+                HSTFiscalYearEnd = corporation.HSTFiscalYearEnd?.ToString("MMMM-dd", new CultureInfo("en-US")),
                 HSTAccessCode = corporation.HSTAccessCode,
                 IsPayroll = corporation.IsPayroll,
-                PD7AReportingPeriod = corporation.PD7AReportingPeriod?.ToString("MMMM-dd", new CultureInfo("en-US")),
+                PD7AReportingPeriod = corporation.PD7AReportingPeriod,
                 PayrollAccessCode = corporation.PayrollAccessCode,
                 City = corporation.City,
                 Province = corporation.Province,

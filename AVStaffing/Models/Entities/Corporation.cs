@@ -28,10 +28,11 @@ namespace AVStaffing.Models.Entities
         public string Province { get; set; }
         public string PostalCode { get; set; }
         public bool IsHSTRegistration { get; set; }
-        public string HSTNo { get; set; }
+        public string HSTReportingPeriod { get; set; }
+        public DateTime? HSTFiscalYearEnd { get; set; }
         public string HSTAccessCode { get; set; }
         public bool IsPayroll { get; set; }
-        public DateTime? PD7AReportingPeriod { get; set; }
+        public string PD7AReportingPeriod { get; set; }
         public string PayrollAccessCode { get; set; }
         public List<CorporationOwner> CorporationOwners { get; set; }
     }
@@ -58,8 +59,9 @@ namespace AVStaffing.Models.Entities
         public bool IsSoleHST { get; set; }
         public string HSTNumber { get; set; }
         public string HSTAccessCode { get; set; }
+        public string HSTReportingPeriod { get; set; }
         public bool IsPayroll { get; set; }
-        public DateTime? PD7AReportingPeriod { get; set; }
+        public string PD7AReportingPeriod { get; set; }
         public string PayrollAccessCode { get; set; }
         public int? AssignedTo { get; set; }
         public List<CorporationOwner> CorporationOwners { get; set; }

@@ -79,8 +79,8 @@
 
                     <thead>
                         <tr>
-                            <th>First Name</th>
                             <th>Last Name</th>
+                            <th>First Name</th>
                             <th>Email</th>
                             <th>Address</th>
                             <th>Action</th>
@@ -91,8 +91,8 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td><a style="cursor: pointer !important;text-decoration:underline" href="@Url.Action("AddClient", "Client", new {id = item.Id})" id=@item.Id>@item.FirstName</a></td>
-                                    <td>@item.LastName</td>
+                                    <td><a style="cursor: pointer !important;text-decoration:underline" href="@Url.Action("AddClient", "Client", new {id = item.Id})" id=@item.Id>@item.LastName</a></td>
+                                    <td>@item.FirstName</td>
                                     <td>@item.Email</td>
                                     <td>@item.Address</td>
 

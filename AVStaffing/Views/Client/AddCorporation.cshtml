@@ -102,17 +102,17 @@
                                 </div>
                                 <!-- MiddleName Field -->
                                 <div class="col-lg-3">
-                                    @Html.LabelFor(x => x.FederalKey, new { @class = "col-form-label text-lg-right text-left" })
-                                    <div>
-                                        @Html.TextBoxFor(x => x.FederalKey, new { @class = "form-control form-control-lg form-control-solid" })
-                                        @Html.ValidationMessageFor(x => x.FederalKey, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
                                     @Html.LabelFor(x => x.ProvincialKey, new { @class = "col-form-label text-lg-right text-left" })
                                     <div>
                                         @Html.TextBoxFor(x => x.ProvincialKey, new { @class = "form-control form-control-lg form-control-solid" })
                                         @Html.ValidationMessageFor(x => x.ProvincialKey, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    @Html.LabelFor(x => x.FederalKey, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div>
+                                        @Html.TextBoxFor(x => x.FederalKey, new { @class = "form-control form-control-lg form-control-solid" })
+                                        @Html.ValidationMessageFor(x => x.FederalKey, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="col-lg-3">
@@ -194,21 +194,28 @@
                                         @Html.ValidationMessageFor(x => x.IsHSTRegistration, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div id="hstDependentFields" class="row col-lg-6" style="display: none;margin:0px;padding:0">
+                                <div id="hstDependentFields" class="row col-lg-9" style="display: none;margin:0px;padding:0">
 
                                     <!-- HSTNumber Field (wrapped in its own div for easy targeting) -->
-                                    <div class="col-lg-6">
-                                        @Html.LabelFor(x => x.HSTNo, new { @class = "col-form-label text-lg-right text-left" })
+                                    <div class="col-lg-4">
+                                        @Html.LabelFor(x => x.HSTReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
                                         <div>
-                                            @Html.TextBoxFor(x => x.HSTNo, new { @class = "form-control form-control-lg form-control-solid", id = "hstNumber" })
-                                            @Html.ValidationMessageFor(x => x.HSTNo, "", new { @class = "text-danger" })
+                                            @Html.DropDownListFor(x => x.HSTReportingPeriod, Model.ReportingPeriodOptions, new { @class = "form-control form-control-lg form-control-solid", })
+                                            @Html.ValidationMessageFor(x => x.HSTReportingPeriod, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         @Html.LabelFor(x => x.HSTAccessCode, new { @class = "col-form-label text-lg-right text-left" })
                                         <div>
                                             @Html.TextBoxFor(x => x.HSTAccessCode, new { @class = "form-control form-control-lg form-control-solid", id = "hstAccessCode" })
                                             @Html.ValidationMessageFor(x => x.HSTAccessCode, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        @Html.LabelFor(x => x.HSTFiscalYearEnd, new { @class = "col-form-label text-lg-right text-left" })
+                                        <div>
+                                            @Html.TextBoxFor(x => x.HSTFiscalYearEnd, new { @class = "form-control form-control-lg form-control-solid", id = "HSTFiscalYearInput" })
+                                            @Html.ValidationMessageFor(x => x.HSTFiscalYearEnd, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
@@ -226,7 +233,7 @@
                                     <div class="col-lg-6">
                                         @Html.LabelFor(x => x.PD7AReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
                                         <div>
-                                            @Html.TextBoxFor(x => x.PD7AReportingPeriod, new { @class = "form-control form-control-lg form-control-solid", id = "pd7aReportingPeriodInput" })
+                                            @Html.DropDownListFor(x => x.PD7AReportingPeriod, Model.ReportingPeriodOptions, new { @class = "form-control form-control-lg form-control-solid", })
                                             @Html.ValidationMessageFor(x => x.PD7AReportingPeriod, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -260,7 +267,7 @@
     <script>
 
         $(document).ready(function () {
-            $('#corpFiscalYearInput,#pd7aReportingPeriodInput').datepicker({
+            $('#corpFiscalYearInput,#HSTFiscalYearInput').datepicker({
                 changeMonth: true,
                 changeYear: false,
                 showButtonPanel: true,
@@ -288,7 +295,6 @@
                 $('#hstDependentFields').show();
             } else {
                 $('#hstDependentFields').hide();
-                $('#hstNumber').val('');
                 $('#hstAccessCode').val('');
             }
         }

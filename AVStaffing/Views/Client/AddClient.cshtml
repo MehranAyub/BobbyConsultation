@@ -263,21 +263,28 @@
                                         @Html.ValidationMessageFor(x => x.IsSoleHST, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div id="hstNumberContainer" class="row col-lg-6" style="display: none;margin:0px;padding:0">
+                                <div id="hstNumberContainer" class="row col-lg-9" style="display: none;margin:0px;padding:0">
 
                                     <!-- HSTNumber Field (wrapped in its own div for easy targeting) -->
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         @Html.LabelFor(x => x.HSTNumber, new { @class = "col-form-label text-lg-right text-left" })
                                         <div>
                                             @Html.TextBoxFor(x => x.HSTNumber, new { @class = "form-control form-control-lg form-control-solid", id = "hstNumber" })
                                             @Html.ValidationMessageFor(x => x.HSTNumber, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         @Html.LabelFor(x => x.HSTAccessCode, new { @class = "col-form-label text-lg-right text-left" })
                                         <div>
                                             @Html.TextBoxFor(x => x.HSTAccessCode, new { @class = "form-control form-control-lg form-control-solid", id = "clientHSTAccessCode" })
                                             @Html.ValidationMessageFor(x => x.HSTAccessCode, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        @Html.LabelFor(x => x.HSTReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
+                                        <div>
+                                            @Html.DropDownListFor(x => x.HSTReportingPeriod, Model.ReportingPeriodOptions, new { @class = "form-control form-control-lg form-control-solid", })
+                                            @Html.ValidationMessageFor(x => x.HSTReportingPeriod, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
                                 </div>
@@ -295,7 +302,7 @@
                                     <div class="col-lg-6">
                                         @Html.LabelFor(x => x.PD7AReportingPeriod, new { @class = "col-form-label text-lg-right text-left" })
                                         <div>
-                                            @Html.TextBoxFor(x => x.PD7AReportingPeriod, new { @class = "form-control form-control-lg form-control-solid", id = "clientPD7AReportingPeriod" })
+                                            @Html.DropDownListFor(x => x.PD7AReportingPeriod, Model.ReportingPeriodOptions, new { @class = "form-control form-control-lg form-control-solid", })
                                             @Html.ValidationMessageFor(x => x.PD7AReportingPeriod, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
@@ -377,19 +384,19 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="provincialKey">Provincial Key</label>
-                                    <input type="text" class="form-control" id="provincialKey" name="ProvincialKey" required>
+                                    <input type="text" class="form-control" id="provincialKey" name="ProvincialKey">
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="federalKey">Federal Key</label>
-                                    <input type="text" class="form-control" id="federalKey" name="FederalKey" required>
+                                    <input type="text" class="form-control" id="federalKey" name="FederalKey">
                                 </div>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="corpFiscalYear">Corporation Fiscal Year</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="corpFiscalYear" name="CorpFiscalYear">
+                                    <input type="text" class="form-control" id="corpFiscalYear" name="CorpFiscalYear" required>
                                     <div class="input-group-append corp-group">
                                         <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                     </div>
@@ -397,7 +404,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="businessNumber">Business Number</label>
-                                <input type="text" class="form-control" id="businessNumber" name="BusinessNumber" required minlength="8" maxlength="8">
+                                <input type="text" class="form-control" id="businessNumber" name="BusinessNumber" required minlength="9" maxlength="9">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="businessEmail">Business Email</label>
@@ -405,7 +412,7 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="businessPhone">Business Phone</label>
-                                <input type="text" class="form-control" id="businessPhone" name="BusinessPhone" minlength="12" maxlength="12" required>
+                                <input type="text" class="form-control" id="businessPhone" name="BusinessPhone" required>
                             </div>
                             <div class="d-flex flex-column col-3">
                                 <label for="isCorporationAuthorization">Corporation Authorization</label>
@@ -417,15 +424,15 @@
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="city">City</label>
-                                <input type="text" class="form-control" id="city" name="city" >
+                                <input type="text" class="form-control" id="city" name="city" required>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="province">Province</label>
-                                <input type="text" class="form-control" id="province" name="province" >
+                                <input type="text" class="form-control" id="province" name="province" required>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="postalCode">Postal Code</label>
-                                <input type="text" class="form-control" id="postalCode" name="postalCode" >
+                                <input type="text" class="form-control" id="postalCode" name="postalCode" required>
                             </div>
                             <div class="row form-group col-12">
                                 <div class="d-flex flex-column col-3">
@@ -433,13 +440,26 @@
                                     <input type="checkbox" class="checkbox-size" id="isHSTRegistration" name="IsHSTRegistration">
                                 </div>
                                 <div id="hstDependentFields" class="row col-9" style="display: none;margin-left:0px;padding-right:0px">
-                                    <div class=" col-4" style="padding-right:0px">
-                                        <label for="hstNo">HST Number</label>
-                                        <input type="text" class="form-control" id="hstNo" minlength="9" maxlength="9" name="hstNo">
+                                    <div class="col-md-4">
+                                        <label for="hstReportingPeriod">HST Reporting Period</label>
+                                        <select class="form-control" id="hstReportingPeriod" name="HSTReportingPeriod">
+                                            <option value="Monthly">Monthly</option>
+                                            <option value="Quarterly">Quarterly</option>
+                                            <option value="Annually">Annually</option>
+                                        </select>
                                     </div>
                                     <div class="col-4" style="padding-right:0px;padding-left:25px">
                                         <label for="hstAccessCode">HST Access Code</label>
-                                        <input type="text" class="form-control" id="hstAccessCode" minlength="4" maxlength="4" name="hstAccessCode">
+                                        <input type="text" class="form-control" id="hstAccessCode" name="hstAccessCode">
+                                    </div>
+                                    <div class="col-4" style="padding-right:0px">
+                                        <label for="HSTFiscalYearEnd">HST Fiscal Year End</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="HSTFiscalYearEnd" name="HSTFiscalYearEnd">
+                                            <div class="input-group-append anniversary-group">
+                                                <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -452,16 +472,15 @@
                                 <div id="PayrollDependentFields" class="row col-9" style="display: none;margin-left:0px;padding-right:0px">
                                     <div class=" col-4" style="padding-right:0px">
                                         <label for="corpPD7AReportingPeriod">PD7A Reporting Period</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="corpPD7AReportingPeriod" name="corpPD7AReportingPeriod">
-                                            <div class="input-group-append anniversary-group">
-                                                <span class="input-group-text"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                            </div>
-                                        </div>
+                                        <select class="form-control" id="corpPD7AReportingPeriod" name="corpPD7AReportingPeriod">
+                                            <option value="Monthly">Monthly</option>
+                                            <option value="Quarterly">Quarterly</option>
+                                            <option value="Annually">Annually</option>
+                                        </select>
                                     </div>
                                     <div class="col-4" style="padding-right:0px;padding-left:25px">
-                                        <label for="payrollAccessCode">HST Access Code</label>
-                                        <input type="text" class="form-control" id="payrollAccessCode" minlength="10" maxlength="10" name="payrollAccessCode">
+                                        <label for="payrollAccessCode">Payroll Web Access Code</label>
+                                        <input type="text" class="form-control" id="payrollAccessCode" name="payrollAccessCode">
                                     </div>
                                 </div>
 
@@ -524,7 +543,7 @@
         <script>
             $(document).ready(function () {
 
-                $('#clientPD7AReportingPeriod, #corpFiscalYear, #corpPD7AReportingPeriod').datepicker({
+                $('#clientPD7AReportingPeriod, #corpFiscalYear, #HSTFiscalYearEnd').datepicker({
                     changeMonth: true,
                     changeYear: false,
                     showButtonPanel: true,
@@ -576,8 +595,9 @@
                     BusinessPhone: "",
                     CorpFiscalYear: null,
                     IsHSTRegistration: false,
-                    HSTNo: null,
+                    HSTFiscalYearEnd: null,
                     HSTAccessCode: null,
+                    HSTReportingPeriod: null,
                     IsPayroll: false,
                     PD7AReportingPeriod: null,
                     PayrollAccessCode: null,
@@ -645,11 +665,11 @@
                         var tbody = document.querySelector("#existingCorporationsList tbody");
                         tbody.innerHTML = "";
                         if (data.length === 0) {
-                            var row = tbody.insertRow(); 
-                            var cell = row.insertCell(0); 
-                            cell.textContent = "No data to show"; 
-                            cell.setAttribute("colspan", "5"); 
-                            cell.style.textAlign = "center"; 
+                            var row = tbody.insertRow();
+                            var cell = row.insertCell(0);
+                            cell.textContent = "No data to show";
+                            cell.setAttribute("colspan", "5");
+                            cell.style.textAlign = "center";
                         } else {
                             data.forEach(corp => {
                                 var row = tbody.insertRow();
@@ -706,8 +726,9 @@
                             BusinessNumber: $('#businessNumber').val(),
                             BusinessPhone: $('#businessPhone').val(),
                             IsHSTRegistration: $('#isHSTRegistration').is(':checked'),
-                            HSTNo: $('#hstNo').val(),
+                            HSTFiscalYearEnd: $('#HSTFiscalYearEnd').val(),
                             HSTAccessCode: $('#hstAccessCode').val(),
+                            hstReportingPeriod: $('#hstReportingPeriod').val(),
                             IsPayroll: $('#isPayroll').is(':checked'),
                             PD7AReportingPeriod: $('#corpPD7AReportingPeriod').val(),
                             PayrollAccessCode: $('#payrollAccessCode').val(),
@@ -717,7 +738,7 @@
                         $('#addNewCorporationModal input').val('');
                         form.reset();
                         var messageElement = document.getElementById('successMessage');
-                        messageElement.style.display = 'block'; 
+                        messageElement.style.display = 'block';
                         messageElement.textContent = 'Corporation have been added successfully! You can see it in above List'; // Set the message text
 
                         setTimeout(function () {
@@ -799,8 +820,9 @@
                         $('#hstDependentFields').show();
                     } else {
                         $('#hstDependentFields').hide();
-                        $('#hstNo').val('');
                         $('#hstAccessCode').val('');
+                        $('#hstReportingPeriod').val('');
+                        $('#hstFiscalYearEnd').val('');
                     }
                 }
 
